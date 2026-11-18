@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OrgaHealth — Contabilidade Médica</title>
+<meta name="description" content="Reduza impostos e organize suas finanças com contabilidade médica especializada. Cuiabá, Várzea Grande e Sinop.">
+<meta property="og:title" content="OrgaHealth — Contabilidade Médica">
+<meta property="og:description" content="Planejamento tributário e patrimonial sob medida, suporte 24h via IA Organa com validação humana e foco na sua rotina médica.">
+<meta name="theme-color" content="#591114">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='100 200 880 700'%3E%3Crect x='100' y='200' width='880' height='700' rx='140' fill='%23591114'/%3E%3Cg fill='%23F8F3ED'%3E%3Cpath d='M868.9,390.2l-41.45,39.7c-.2,37.83-10.77,75.7-31.23,109.44-14.52,23.96-30.05,43.78-48.13,64.26-30.41,32.89-62.1,62.89-96.26,92.32l-159.94,137.74-159.85-137.74c-9.02-7.77-17.85-15.57-26.53-23.45l-31.26,31.77c10.39,9.43,20.97,18.75,31.78,28.06l156.18,134.48c17.52,15.07,41.97,15.05,59.43.05l137.98-118.58,60.58-53.95c29.35-26.11,55.79-53.65,80.55-84.12,39.54-48.66,65.84-100.7,70.71-163.15l.05-34.24c-.56-7.57-1.43-15.11-2.6-22.58Z'/%3E%3Cpolygon points='968.21 215.9 968.08 390.14 904.47 326.86 875.59 354.52 837.3 391.18 625.16 594.39 490.8 454.73 302.32 646.31 271.05 678.1 167.57 783.26 123.14 739.53 226.74 634.23 258.02 602.43 491.18 365.43 626.97 506.31 817.05 324.28 850.38 292.36 860.38 282.76 793.87 215.99 968.21 215.9'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   OrgaHealth LP — v2 (rodada de ajustes 17/11/2026)
+   Paleta oficial (conta-gotas): Marsala #591114 · Marinho #0D1B2A · Dourado #BA8539 · Creme #F8F3ED · Grafite #262626
+   Tipografia: Manrope (títulos) + Lato (texto). Sem degradês.
+   ========================================================= */
+:root{
+  --marsala:#591114; --marsala-2:#6a1c1f; --marsala-75:#814a4a;
+  --navy:#0d1b2a; --navy-2:#16273a;
+  --gold:#ba8539; --gold-50:#d9bc93; --gold-25:#e8d8c0; --gold-12:#f1e6d7;
+  --cream:#f8f3ed; --white:#ffffff;
+  --ink:#0d1b2a; --text:#262626; --text-2:#5a5958; --text-3:#8f8c8a;
+  --line:#dfdad5; --line-dark:rgba(217,188,147,.18);
+
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-drawer:cubic-bezier(.32,.72,0,1);
+
+  --wrap:1200px; --gutter:clamp(16px,4vw,40px);
+  --sec:clamp(80px,9vw,128px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
+body{font:400 17px/1.65 Lato,'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.man{font-family:Manrope,'Segoe UI',Arial,sans-serif}
+h1,h2,h3{text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit}
+img,svg{display:block}
+button{font:inherit;color:inherit}
+.wrap{width:100%;max-width:calc(var(--wrap) + var(--gutter)*2);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.skip{position:absolute;left:16px;top:-60px;z-index:90;background:var(--gold);color:var(--navy);padding:10px 16px;border-radius:10px;font:700 14px Manrope;text-decoration:none;transition:top .2s var(--ease-out)}
+.skip:focus{top:16px}
+
+/* ---------- tipografia ---------- */
+.h2{font-weight:700;font-size:clamp(30px,3.6vw,48px);line-height:1.08;letter-spacing:-.03em;color:var(--ink)}
+.h2 em{font-style:normal;color:var(--marsala)}
+.dark .h2{color:#fff}
+.dark .h2 em{color:var(--gold-50)}
+.lead{font-size:clamp(17px,1.3vw,19px);line-height:1.65;color:var(--text-2);max-width:56ch}
+.dark .lead{color:rgba(255,255,255,.74)}
+
+/* ---------- botão (pílula + ícone aninhado) ---------- */
+.btn{display:inline-flex;align-items:center;gap:18px;min-height:60px;padding:8px 8px 8px 28px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;
+  background:var(--gold);color:var(--navy);font:800 13px/1.25 Manrope;letter-spacing:.07em;text-transform:uppercase;text-align:left;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28);transition:transform .16s var(--ease-out),background-color .2s ease;-webkit-tap-highlight-color:transparent}
+.btn .ic{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold-50);transition:transform .35s var(--ease-out)}
+.btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{background:#c69449}
+  .btn:hover .ic{transform:translateX(3px) rotate(-45deg)}
+}
+.btn-sm{min-height:46px;padding:5px 5px 5px 20px;gap:12px;font-size:11.5px}
+.btn-sm .ic{width:36px;height:36px}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1px rgba(217,188,147,.35)}
+.btn-ghost .ic{background:var(--gold);color:var(--navy)}
+@media (hover:hover) and (pointer:fine){.btn-ghost:hover{background:rgba(255,255,255,.14)}}
+.btn-wa .ic{background:#25d366;color:#fff}
+.cta-row{margin-top:48px;display:flex}
+.cta-row.center{justify-content:center}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* ---------- logo oficial ---------- */
+.logo{display:inline-flex;text-decoration:none;color:var(--cream)}
+.logo .lh{width:212px;height:auto}
+.logo .li{display:none;width:40px;height:auto}
+
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(18px);filter:blur(6px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out),filter .7s var(--ease-out);transition-delay:calc(var(--i,0) * 70ms)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv{transform:none;filter:none;transition:opacity .25s ease}
+}
+
+/* =========================================================
+   HEADER FIXO (dock) — marsala + logo branca
+   ========================================================= */
+.topbar{position:absolute;inset:0 0 auto;z-index:20;padding-top:22px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.dock{position:fixed;left:50%;top:12px;z-index:60;width:min(calc(100% - 24px),820px);transform:translate(-50%,-140%);opacity:0;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 7px 7px 22px;border-radius:999px;
+  background:rgba(89,17,20,.94);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(217,188,147,.2),0 18px 40px -22px rgba(13,27,42,.7);
+  transition:transform .45s var(--ease-drawer),opacity .3s var(--ease-out)}
+.dock.on{transform:translate(-50%,0);opacity:1}
+.dock .logo .lh{width:168px}
+@media (prefers-reduced-transparency:reduce){.dock{background:var(--marsala);-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* =========================================================
+   01 HERO — marsala predominante
+   ========================================================= */
+.hero{position:relative;color:#fff;overflow:hidden;padding:160px 0 clamp(96px,10vw,140px);background:linear-gradient(135deg,#591114 0%,#440c0f 55%,#2a0608 100%);isolation:isolate}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(40px,6vw,88px);align-items:center}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(217,188,147,.3);font:700 11px/1.2 Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-50)}
+.tag i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(186,133,57,.25)}
+.tag i::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-50)}
+.hero h1{font-weight:700;font-size:clamp(34px,4.2vw,58px);line-height:1.04;letter-spacing:-.04em;margin:26px 0 24px}
+.hero h1 em{font-style:normal;color:var(--gold-50)}
+.hero .lead{color:rgba(255,255,255,.8);max-width:50ch;margin-bottom:40px}
+.proof{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(217,188,147,.22);font-size:14.5px;color:rgba(255,255,255,.78)}
+.proof span{display:inline-flex;align-items:center;gap:10px}
+.proof svg{color:var(--gold-50);flex:none}
+
+.video{position:relative;aspect-ratio:4/4.6;border-radius:28px;overflow:hidden;display:grid;place-items:center;isolation:isolate;
+  background:var(--navy);box-shadow:0 0 0 1px rgba(217,188,147,.22),0 40px 80px -40px rgba(13,6,6,.75)}
+.video .vwm{position:absolute;z-index:-1;width:74%;height:auto;color:var(--navy-2)}
+.play{width:84px;height:84px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:var(--gold);color:var(--navy);
+  box-shadow:0 0 0 10px rgba(186,133,57,.16),0 0 0 22px rgba(186,133,57,.07);transition:transform .16s var(--ease-out)}
+.play:active{transform:scale(.95)}
+@media (hover:hover) and (pointer:fine){.play:hover{transform:scale(1.04)}}
+.play svg{margin-left:4px}
+.video .cap{position:absolute;left:18px;right:18px;bottom:18px;display:flex;align-items:center;gap:10px;font:600 12px/1.35 Manrope;color:rgba(255,255,255,.72)}
+.video .cap i{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.07);color:var(--gold-50)}
+
+/* =========================================================
+   02 CONTABILIDADE 100% FOCADA — foto PNG com degradê
+   ========================================================= */
+.s-esp{padding:var(--sec) 0}
+.esp-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:center}
+.team{position:relative;isolation:isolate;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 98%);mask-image:linear-gradient(180deg,#000 62%,transparent 98%)}
+.team::before{content:"";position:absolute;z-index:-1;left:8%;right:8%;top:6%;bottom:0;border-radius:999px 999px 0 0;background:var(--gold-12)}
+.team img{width:100%;height:auto;aspect-ratio:2720/1536;object-fit:contain}
+.js .team.rv{transform:translateY(40px) scale(.96);filter:blur(10px);transition-duration:1s}
+.js .team.rv.in{transform:none;filter:none}
+.big-n{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.big-n b{display:block;font:800 clamp(28px,3.1vw,44px)/1.1 Manrope;letter-spacing:-.035em;color:var(--marsala)}
+.esp-text .lead{margin-top:20px}
+.esp-text .cta-row{margin-top:36px}
+
+/* =========================================================
+   03 DIFERENCIAIS — grade com hover marsala
+   ========================================================= */
+.s-dif{padding:var(--sec) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(36px,4.5vw,56px)}
+.sec-head .lead{padding-bottom:6px}
+.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pillar{position:relative;isolation:isolate;padding:32px 28px 34px;border-radius:20px;cursor:default;outline:0;
+  transition:transform .35s var(--ease-out),color .3s ease}
+.pillar::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--marsala);opacity:0;transition:opacity .35s var(--ease-out);box-shadow:0 26px 50px -28px rgba(89,17,20,.7)}
+.pillar .pi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--marsala);box-shadow:inset 0 0 0 1.5px rgba(89,17,20,.28);margin-bottom:26px;transition:color .3s ease,box-shadow .3s ease,background-color .3s ease}
+.pillar h3{font-weight:700;font-size:clamp(18px,1.5vw,21px);line-height:1.25;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px;transition:color .3s ease}
+.pillar p{color:var(--text-2);font-size:15.5px;transition:color .3s ease}
+.pillar.on{transform:scale(1.035)}
+.pillar.on::before{opacity:1}
+.pillar.on .pi{color:var(--marsala);background:var(--cream);box-shadow:none}
+.pillar.on h3{color:#fff}
+.pillar.on p{color:rgba(255,255,255,.82)}
+.pillar:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (hover:hover) and (pointer:fine){
+  .pillar:hover{transform:scale(1.035)}
+  .pillar:hover::before{opacity:1}
+  .pillar:hover .pi{color:var(--marsala);background:var(--cream);box-shadow:none}
+  .pillar:hover h3{color:#fff}
+  .pillar:hover p{color:rgba(255,255,255,.82)}
+}
+@media (prefers-reduced-motion:reduce){.pillar,.pillar.on,.pillar:hover{transform:none}}
+
+/* =========================================================
+   04 DEPOIMENTOS
+   ========================================================= */
+.s-dep{padding:var(--sec) 0}
+.dep-grid{display:grid;grid-template-columns:minmax(0,4.2fr) minmax(0,7.8fr);gap:clamp(40px,6vw,96px);align-items:start}
+.dep-side .lead{margin-top:18px}
+.g-badge{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:10px 16px 10px 10px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font:600 13.5px Manrope;color:var(--text-2)}
+.g-badge .g{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--cream)}
+.stars{display:inline-flex;gap:3px;color:var(--gold)}
+.dep-nav{display:flex;gap:10px;margin-top:24px}
+.nav-btn{width:48px;height:48px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1px var(--line);transition:transform .16s var(--ease-out),background-color .2s ease,color .2s ease}
+.nav-btn:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.nav-btn:hover{background:var(--marsala);color:#fff}}
+.dep-side .cta-row{margin-top:32px}
+.quote{position:relative;background:#fff;border-radius:28px;padding:clamp(28px,4vw,56px);min-height:320px;display:flex;flex-direction:column;box-shadow:0 0 0 1px var(--line),0 30px 60px -44px rgba(13,27,42,.45)}
+.quote .qm{position:absolute;right:clamp(24px,3vw,44px);top:clamp(14px,2vw,24px);font:800 120px/1 Manrope;color:var(--gold-25);pointer-events:none}
+.quote blockquote{position:relative;font:500 clamp(22px,2.4vw,32px)/1.32 Manrope;letter-spacing:-.02em;color:var(--ink);margin:22px 0 32px;flex:1;transition:opacity .22s var(--ease-out),filter .22s var(--ease-out),transform .22s var(--ease-out)}
+.quote.swap blockquote,.quote.swap .who{opacity:0;filter:blur(4px);transform:translateY(6px)}
+.who{display:flex;align-items:flex-start;gap:14px;transition:opacity .22s var(--ease-out),filter .22s var(--ease-out),transform .22s var(--ease-out)}
+.av{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--marsala);color:var(--gold-50);font:700 15px Manrope}
+.who b{display:block;font:700 16px/1.3 Manrope;color:var(--ink)}
+.who small{display:block;font-size:14px;color:var(--text-3)}
+.tbc{color:var(--gold);font-weight:400}
+.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.tab{position:relative;text-align:left;cursor:pointer;border:0;background:transparent;padding:16px 4px 4px;border-top:1px solid var(--line);font:600 13.5px/1.35 Manrope;color:var(--text-3);transition:color .2s ease;min-width:0}
+.tab small{display:block;font:400 12.5px Lato;color:var(--text-3);margin-top:2px}
+.tab::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:100%;background:var(--marsala);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
+.tab[aria-selected="true"]{color:var(--ink)}
+.tab[aria-selected="true"]::before{transform:scaleX(1)}
+
+/* =========================================================
+   DÚVIDAS FREQUENTES — estilo conversa
+   ========================================================= */
+.s-faq{padding:var(--sec) 0}
+.faq-head{text-align:center;margin-bottom:clamp(36px,4.5vw,56px)}
+.chat{width:min(100%,720px);margin:0 auto;padding:0 50px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.q{display:flex;align-items:center;gap:12px;align-self:flex-start;max-width:100%;border:0;background:none;cursor:pointer;text-align:left;padding:0;-webkit-tap-highlight-color:transparent}
+.q .bubble{background:var(--navy);color:#fff;font:600 clamp(15.5px,1.3vw,17px)/1.4 Manrope;letter-spacing:-.01em;padding:16px 22px;border-radius:22px 22px 22px 8px;transition:background-color .2s ease,transform .16s var(--ease-out)}
+.q .pm{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1px var(--line);transition:transform .35s var(--ease-out),background-color .2s ease,color .2s ease}
+.q:active .bubble{transform:scale(.98)}
+.q[aria-expanded="true"] .pm{transform:rotate(45deg);background:var(--marsala);color:#fff;box-shadow:none}
+@media (hover:hover) and (pointer:fine){
+  .q:hover .bubble{background:var(--navy-2)}
+  .q:hover .pm{background:var(--marsala);color:#fff;box-shadow:none}
+}
+.a{position:relative;z-index:1;width:calc(100% + 50px);margin-left:-50px;display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease-out),margin-top .4s var(--ease-out)}
+.a > div{overflow:hidden;min-height:0}
+.a.open{grid-template-rows:1fr;margin-top:-6px}
+.reply{display:flex;align-items:flex-end;gap:12px;padding:0 0 6px;opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease-out),transform .35s var(--ease-out)}
+.a.open .reply{opacity:1;transform:none;transition-delay:.08s}
+.reply .ava{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--marsala);color:var(--cream)}
+.reply .ava svg{width:22px;height:auto}
+.reply p{background:#fff;color:var(--text);font-size:16px;line-height:1.6;padding:18px 22px;border-radius:22px 22px 22px 8px;box-shadow:0 0 0 1px var(--line),0 18px 36px -24px rgba(13,27,42,.35);flex:1 1 auto;min-width:0}
+@media (prefers-reduced-motion:reduce){.a,.reply,.q .pm{transition:none}}
+
+/* =========================================================
+   05 FORMULÁRIO — azul chapado, sem moldura dupla
+   ========================================================= */
+.s-form{color:#fff;padding:var(--sec) 0;background:var(--navy)}
+.form-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.s-form .lead{margin-top:20px}
+.ticks{list-style:none;margin-top:36px;border-top:1px solid var(--line-dark)}
+.ticks li{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-dark);font:600 16px/1.4 Manrope}
+.ticks i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:rgba(186,133,57,.16);color:var(--gold-50);box-shadow:inset 0 0 0 1px rgba(217,188,147,.24)}
+.fcard{background:var(--cream);color:var(--text);padding:clamp(24px,3.4vw,44px);border-radius:26px}
+.fcard h3{display:flex;align-items:center;gap:12px;font-weight:800;font-size:clamp(19px,1.7vw,23px);letter-spacing:-.02em;color:var(--ink)}
+.fcard h3 i{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--marsala);color:var(--cream)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.f{display:flex;flex-direction:column;gap:8px;grid-column:span 2;min-width:0}
+.f.half{grid-column:span 1}
+.f label{font:700 13px/1 Manrope;color:var(--text-2)}
+.f input,.f select{width:100%;height:54px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:0 16px;font:400 16px Lato;color:var(--ink);transition:border-color .2s ease,box-shadow .2s ease;-webkit-appearance:none;appearance:none}
+.f input::placeholder{color:#a19d99}
+.f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23ba8539' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px}
+.f select:invalid{color:#a19d99}
+.f input:focus,.f select:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 4px rgba(186,133,57,.16)}
+.f .err{display:none;font-size:13px;color:var(--marsala)}
+.f.bad input,.f.bad select{border-color:var(--marsala);box-shadow:0 0 0 4px rgba(89,17,20,.08)}
+.f.bad .err{display:block}
+.phone{display:flex}
+.phone span{flex:none;display:flex;align-items:center;padding:0 14px;border:1px solid var(--line);border-right:0;border-radius:12px 0 0 12px;background:var(--gold-12);font:600 15px Manrope;color:var(--text-2)}
+.phone input{border-radius:0 12px 12px 0}
+.fcard .btn{width:100%;justify-content:space-between;margin-top:24px}
+.fcard .btn[aria-busy="true"]{pointer-events:none;opacity:.8}
+.lgpd{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13.5px;color:var(--text-3)}
+.lgpd svg{flex:none;color:var(--gold)}
+
+/* =========================================================
+   06 PRESENÇA FÍSICA — mapa clicável
+   ========================================================= */
+.s-sede{padding:var(--sec) 0 calc(var(--sec) + 48px)}
+.sede-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,96px);align-items:center}
+.sede-text .lead{margin-top:20px}
+.sede-text .cta-row{margin-top:36px}
+.sede-visual{position:relative}
+.sede-photo{position:relative;aspect-ratio:7/5.4;border-radius:28px;overflow:hidden;display:grid;place-items:center;isolation:isolate;background:var(--gold-12);box-shadow:inset 0 0 0 1px var(--gold-25)}
+.sede-photo .wm{position:absolute;z-index:-1;width:58%;height:auto;color:var(--gold-25)}
+.sede-photo .cap{position:absolute;left:16px;top:16px;right:auto;max-width:52%;display:flex;align-items:center;gap:10px;font:600 12px/1.35 Manrope;color:var(--text-2)}
+.sede-photo .cap i{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.7);color:var(--gold)}
+.map{position:absolute;right:-36px;bottom:-48px;width:min(380px,78%);display:block;text-decoration:none;border-radius:22px;overflow:hidden;background:var(--navy);color:#fff;
+  box-shadow:0 30px 60px -30px rgba(13,27,42,.75),0 0 0 1px rgba(217,188,147,.18);transition:transform .25s var(--ease-out),box-shadow .25s ease}
+.map .frame{position:relative;height:200px;overflow:hidden;background:var(--navy-2)}
+.map iframe{position:absolute;left:50%;top:50%;width:920px;height:600px;margin:-300px 0 0 -460px;border:0;pointer-events:none;display:block;filter:saturate(.85)}
+.map .pin{position:absolute;left:50%;top:50%;width:36px;height:36px;margin:-36px 0 0 -18px;color:var(--marsala);filter:drop-shadow(0 4px 6px rgba(0,0,0,.3));pointer-events:none}
+.map .k{white-space:nowrap;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;font:700 11px Manrope;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-50)}
+.map .k span:last-child{display:inline-flex;align-items:center;gap:6px;color:#fff;letter-spacing:.04em;text-transform:none;font-size:12.5px}
+.map:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.map:hover{transform:translateY(-4px)}}
+
+/* =========================================================
+   07 RODAPÉ — só marsala
+   ========================================================= */
+footer{position:relative;color:rgba(248,243,237,.78);font-size:15px;padding:clamp(110px,11vw,150px) 0 0;background:var(--marsala)}
+.f-wave{position:absolute;left:0;right:0;top:-1px;height:clamp(50px,6vw,90px)}
+.f-wave svg{width:100%;height:100%}
+.f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr .8fr;gap:40px;padding-bottom:64px}
+footer h4{font:700 11.5px Manrope;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-50);margin-bottom:18px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a{text-decoration:none;transition:color .2s ease}
+@media (hover:hover){footer a:hover{color:var(--gold-50)}}
+footer .logo .lh{width:220px}
+.f-about{margin-top:20px;max-width:30ch}
+.socials{display:flex;gap:10px;margin-top:24px}
+.socials a{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px var(--line-dark)}
+.f-bar{border-top:1px solid var(--line-dark)}
+.f-bar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 24px;padding-top:22px;padding-bottom:calc(22px + env(safe-area-inset-bottom));font-size:13.5px;color:rgba(248,243,237,.6)}
+.credit{display:inline-flex;align-items:center;gap:12px;padding:8px 14px;border-radius:12px;background:rgba(0,0,0,.14);box-shadow:inset 0 0 0 1px var(--line-dark);font:600 11px Manrope;letter-spacing:.08em;text-transform:uppercase;color:rgba(248,243,237,.7);text-decoration:none}
+.credit img{height:22px;width:auto}
+.mail{overflow-wrap:anywhere}
+
+/* ---------- botões flutuantes ---------- */
+.fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;gap:12px}
+.wa,.top{position:relative;border-radius:50%;display:grid;place-items:center;text-decoration:none;border:0;cursor:pointer;transition:transform .16s var(--ease-out),opacity .3s var(--ease-out)}
+.wa{width:60px;height:60px;color:#fff;background:#25d366;box-shadow:0 14px 30px -12px rgba(18,140,70,.7)}
+.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:pulse 2s var(--ease-out) infinite;pointer-events:none}
+.wa::after{animation-delay:1s}
+@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.top{width:48px;height:48px;background:var(--navy);color:var(--gold-50);box-shadow:0 0 0 1px rgba(217,188,147,.25),0 12px 26px -12px rgba(13,27,42,.7);opacity:0;transform:translateY(10px) scale(.95);pointer-events:none}
+.top.on{opacity:1;transform:none;pointer-events:auto}
+.wa:active,.top.on:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.wa:hover{transform:scale(1.05)}.top.on:hover{transform:translateY(-2px)}}
+@media (prefers-reduced-motion:reduce){.wa::before,.wa::after{animation:none;opacity:0}}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width:1080px){
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .map{right:-12px}
+}
+@media (max-width:900px){
+  body{font-size:16px}
+  .hero{padding-top:124px}
+  .hero-grid,.esp-grid,.sec-head,.dep-grid,.form-grid,.sede-grid{grid-template-columns:minmax(0,1fr)}
+  .stage{max-width:560px;width:100%;margin:0 auto}
+  .video{aspect-ratio:16/12}
+  .esp-photo{order:-1}
+  .sec-head{gap:16px}
+  .sede-visual{order:-1;margin-bottom:64px}
+  .map{right:16px;bottom:-48px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .dep-grid{display:flex;flex-direction:column;gap:0}
+  .dep-side{display:contents}
+  .dep-grid > div:last-child{order:1;margin-top:28px}
+  .dep-side .cta-row{order:2}
+}
+@media (max-width:640px){
+  .topbar{padding-top:16px}
+  .topbar .logo .lh{width:168px}
+  .topbar .btn-sm{display:none}
+  .hero{padding-top:100px}
+  .hero h1{margin:20px 0 18px}
+  .hero .lead{margin-bottom:32px}
+  .tag{font-size:10px;letter-spacing:.08em}
+  .btn{width:100%;justify-content:space-between;padding-left:22px;font-size:12px;letter-spacing:.06em}
+  .btn-sm{width:auto;white-space:nowrap}
+  .proof{flex-direction:column;gap:12px}
+  .video{border-radius:22px}
+  .cta-row{margin-top:36px}
+  .pillars{grid-template-columns:minmax(0,1fr);gap:8px}
+  .pillar{padding:26px 22px 28px}
+  .pillar.on,.pillar:hover{transform:scale(1.02)}
+  .pillar .pi{margin-bottom:18px}
+  .tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:14px calc(var(--gutter)*-1) 0;padding:0 var(--gutter);gap:14px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 68%;scroll-snap-align:start}
+  .quote{min-height:0;border-radius:22px}
+  .quote .qm{font-size:90px}
+  .q .bubble{padding:14px 18px;border-radius:20px 20px 20px 6px}
+  .q .pm{width:34px;height:34px}
+  .chat{padding:0 0 0 44px}
+  .a{width:calc(100% + 44px);margin-left:-44px}
+  .a.open{margin-top:-6px}
+  .reply .ava{width:32px;height:32px}
+  .reply p{padding:16px 18px;font-size:15.5px}
+  .fields{grid-template-columns:1fr}
+  .f.half{grid-column:span 2}
+  .fcard{border-radius:22px}
+  .sede-visual{margin-bottom:0}
+  .sede-photo{border-radius:22px}
+  .sede-photo .cap{max-width:none;right:16px}
+  .map{position:relative;right:auto;bottom:auto;width:auto;margin:-40px 14px 0}
+  .f-grid{grid-template-columns:1fr;gap:32px}
+  .f-bar .wrap{flex-direction:column;align-items:flex-start}
+  .fab{right:16px;gap:10px}
+  .wa{width:56px;height:56px}
+  .top{width:44px;height:44px}
+  .dock{padding-left:16px}
+  .dock .logo .lh{display:none}
+  .dock .logo .li{display:block;width:34px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ===== símbolos: logo oficial (SVG do cliente) + ícones ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="iso" viewBox="100 200 880 700"><path fill="currentColor" d="M868.9,390.2l-41.45,39.7c-.2,37.83-10.77,75.7-31.23,109.44-14.52,23.96-30.05,43.78-48.13,64.26-30.41,32.89-62.1,62.89-96.26,92.32l-159.94,137.74-159.85-137.74c-9.02-7.77-17.85-15.57-26.53-23.45l-31.26,31.77c10.39,9.43,20.97,18.75,31.78,28.06l156.18,134.48c17.52,15.07,41.97,15.05,59.430.05l137.98-118.58,60.58-53.95c29.35-26.11,55.790-53.65,80.55-84.12,39.54-48.66,65.84-100.7,70.71-163.15l.05-34.24c-.56-7.57-1.43-15.11-2.6-22.58Z"/><path fill="currentColor" d="M827.9,288.09l-7.25,6.95-25.24,24.18c-27.83-42.05-72.85-68.84-123.9-72.38-68.4-4.76-120.25,33.18-154.63,89.66-5.82,9.56-14.98,15.02-25.53,14.81-10.08-.2-18.76-5.61-24.36-14.81-34.41-56.48-86.22-94.4-154.63-89.66-56.73,3.92-105.97,36.57-132.52,86.93-34.4,65.22-30.28,143.29,8.12,206.1,13.47,22.06,28.25,41.39,45.27,60.81l-31.25,31.77c-55.64-62.18-95.62-132.34-89.58-219.15,3.41-48.84,19.25-94.870,49.5-133.07,37.99-47.96,93.47-75.99,154.77-78.18,72.81-2.6,132.51,32.68,175.25,91.5,44.33-60.9,106.91-96.47,182.05-91.04,25.62,1.58,50.13,7.85,72.67,18.22,29.03,13.37,54.76,33.58,75.33,59.49,2.05,2.59,4.04,5.22,5.95,7.88Z"/><polygon fill="currentColor" points="968.21 215.9 968.08 390.14 904.47 326.86 875.59 354.52 837.3 391.18 625.16 594.39 490.8 454.73 302.32 646.31 271.05 678.1 167.57 783.26 123.14 739.53 226.74 634.23 258.02 602.43 491.18 365.43 626.97 506.31 817.05 324.28 850.38 292.36 860.38 282.76 793.87 215.99 968.21 215.9"/></symbol>
+  <!-- Logo_banca_hor.svg (BRANCA) — recortado ao conteúdo -->
+  <symbol id="logo-h" viewBox="52 413 968 246"><g fill="currentColor"><path d="M311.91,487.9l-13.67,13.09c-.07,12.47-3.55,24.96-10.3,36.08-4.79,7.9-9.91,14.43-15.870,21.19-10.03,10.84-20.47,20.73-31.73,30.44l-52.73,45.41-52.7-45.41c-2.97-2.56-5.89-5.13-8.75-7.73l-10.31,10.47c3.42,3.11,6.91,6.18,10.48,9.25l51.49,44.34c5.78,4.97,13.84,4.96,19.590.02l45.49-39.09,19.97-17.79c9.68-8.61,18.39-17.69,26.56-27.73,13.03-16.04,21.71-33.2,23.31-53.79l.02-11.29c-.19-2.5-.47-4.98-.86-7.44Z"/><path d="M298.39,454.24l-2.39,2.29-8.32,7.97c-9.17-13.86-24.02-22.7-40.85-23.86-22.55-1.57-39.64,10.94-50.98,29.56-1.92,3.15-4.94,4.95-8.42,4.88-3.32-.07-6.19-1.85-8.03-4.88-11.35-18.62-28.43-31.12-50.98-29.56-18.7,1.29-34.94,12.06-43.69,28.66-11.34,21.5-9.98,47.24,2.68,67.95,4.44,7.27,9.31,13.65,14.92,20.05l-10.3,10.47c-18.34-20.5-31.52-43.63-29.53-72.25,1.12-16.1,6.35-31.28,16.32-43.87,12.52-15.81,30.82-25.05,51.03-25.77,24-.86,43.69,10.77,57.78,30.16,14.61-20.08,35.25-31.8,60.02-30.01,8.45.52,16.53,2.59,23.96,6.01,9.57,4.41,18.05,11.07,24.84,19.61.68.85,1.33,1.72,1.96,2.6Z"/><polygon points="344.65 430.44 344.6 487.88 323.63 467.02 314.11 476.14 301.49 488.23 231.55 555.22 187.25 509.18 125.11 572.34 114.81 582.82 80.69 617.49 66.04 603.07 100.2 568.36 110.51 557.870 187.38 479.74 232.15 526.18 294.81 466.17 305.8 455.65 309.1 452.48 287.17 430.47 344.65 430.44"/><text transform="translate(374.1 540.23)" font-family="Manrope, sans-serif" font-weight="700" font-size="110.34" letter-spacing="-1">Orga Health</text><text transform="translate(380.17 612.03)" font-family="Manrope, sans-serif" font-weight="700" font-size="48.72">Contabilidade e Financeiro</text></g></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></symbol>
+  <symbol id="star" viewBox="0 0 16 16"><path fill="currentColor" d="M8 .8l2.2 4.6 5 .6-3.7 3.4 1 5L8 11.9l-4.5 2.5 1-5L.8 6l5-.6z"/></symbol>
+</svg>
+
+<!-- header fixo (aparece depois do hero) -->
+<nav class="dock" id="dock" aria-label="Atalho">
+  <a class="logo" href="#topo" aria-label="Orga Health, voltar ao topo"><svg class="lh" viewBox="0 0 968 246" aria-hidden="true"><use href="#logo-h"/></svg><svg class="li" viewBox="0 0 880 700" aria-hidden="true"><use href="#iso"/></svg></a>
+  <a class="btn btn-sm" href="#diagnostico" tabindex="-1">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
+</nav>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 968 246" aria-hidden="true"><use href="#logo-h"/></svg></a>
+    <a class="btn btn-sm btn-ghost" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ================= 01 HERO ================= -->
+<section class="hero dark" id="topo" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag rv"><i aria-hidden="true"></i>Contabilidade exclusiva para médicos e clínicas</span>
+      <h1 id="h1" class="rv" style="--i:1">Reduza impostos e organize suas finanças com <em>contabilidade médica especializada</em></h1>
+      <p class="lead rv" style="--i:2">Planejamento tributário e patrimonial sob medida, suporte 24h via IA Organa com validação humana e foco na sua rotina médica.</p>
+      <a class="btn rv" style="--i:3" id="heroCta" href="#diagnostico">Agendar diagnóstico das minhas finanças<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a>
+      <div class="proof rv" style="--i:4">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Cuiabá, Várzea Grande e Sinop</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Diagnóstico gratuito, sem compromisso</span>
+      </div>
+    </div>
+    <div class="stage rv" style="--i:2">
+      <div class="video" role="img" aria-label="Vídeo institucional dos sócios da Orga Health em ambiente de consultório premium">
+        <svg class="vwm" viewBox="0 0 880 700" aria-hidden="true"><use href="#iso"/></svg>
+        <button class="play" type="button" aria-label="Assistir ao vídeo institucional"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
+        <div class="cap"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg></i>Vídeo institucional dos sócios da Orga Health em ambiente de consultório premium</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 CONTABILIDADE 100% FOCADA ================= -->
+<section class="s-esp" id="especializada" aria-labelledby="t-esp">
+  <div class="wrap esp-grid">
+    <figure class="esp-photo">
+      <div class="team rv"><img src="assets/img/equipe-medica.png" width="2720" height="1536" alt="Equipe médica de três profissionais sorrindo, dois de jaleco branco e um de pijama cirúrgico azul-marinho" loading="lazy" decoding="async"></div>
+    </figure>
+    <div class="esp-text">
+      <div class="big-n rv"><b>100% carteira médica</b></div>
+      <h2 class="h2 rv" style="--i:1" id="t-esp">Contabilidade <em>100% focada</em> em médicos e clínicas</h2>
+      <p class="lead rv" style="--i:2">Carteira 100% médica, planejamento tributário e patrimonial antecipando a LC 214/2025 e suporte 24h via IA Organa com validação humana.</p>
+      <div class="cta-row rv" style="--i:3"><a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 DIFERENCIAIS ================= -->
+<section class="s-dif" id="diferenciais" aria-labelledby="t-dif">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2 rv" id="t-dif">Especialização médica que <em>protege seu patrimônio</em></h2>
+      <p class="lead rv" style="--i:1">Quatro pilares que separam uma contabilidade comum de uma estrutura feita para a realidade do médico.</p>
+    </div>
+    <div class="pillars" id="pillars">
+      <article class="pillar rv" tabindex="0">
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></span>
+        <h3>Foco exclusivo em saúde</h3>
+        <p>100% da carteira são médicos; conhecemos sua rotina, regras do CFM e riscos tributários da profissão.</p>
+      </article>
+      <article class="pillar rv" style="--i:1" tabindex="0">
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.4 8-8 9-4.6-1-8-4.4-8-9V6z"/><path d="M9 12.5l2 2 4-4.5"/></svg></span>
+        <h3>Planejamento patrimonial antecipado</h3>
+        <p>Holding familiar e estrutura tributária preparadas para a LC 214/2025 e a reforma tributária.</p>
+      </article>
+      <article class="pillar rv" style="--i:2" tabindex="0">
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M12 8v4l2.5 1.5"/></svg></span>
+        <h3>Suporte 24h com validação humana</h3>
+        <p>IA Organa responde no WhatsApp na hora; especialistas conferem tudo antes de executar.</p>
+      </article>
+      <article class="pillar rv" style="--i:3" tabindex="0">
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg></span>
+        <h3>Consultoria além das obrigações</h3>
+        <p>Acompanhamento financeiro, folha, treinamento de equipe e diagnóstico personalizado, sem tabela fixa.</p>
+      </article>
+    </div>
+    <div class="cta-row center rv"><a class="btn" href="#diagnostico">Quero uma contabilidade feita para médicos<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- ================= 04 DEPOIMENTOS ================= -->
+<section class="s-dep" id="depoimentos" aria-labelledby="t-dep">
+  <div class="wrap dep-grid">
+    <div class="dep-side">
+      <h2 class="h2 rv" id="t-dep">Médicos que confiam sua contabilidade à <em>Orga Health</em></h2>
+      <p class="lead rv" style="--i:1">Avaliações reais de médicos de Cuiabá, Várzea Grande e Sinop no Google.</p>
+      <span class="g-badge rv" style="--i:2"><span class="g" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.9 6.5-9.6 6.5-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.4A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.8z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 7 4.4 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg></span><span class="stars" aria-label="5 estrelas"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span>Google</span>
+      <div class="dep-nav rv" style="--i:3">
+        <button class="nav-btn" type="button" data-dir="-1" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button class="nav-btn" type="button" data-dir="1" aria-label="Próximo depoimento"><svg width="18" height="18" aria-hidden="true"><use href="#arrow"/></svg></button>
+      </div>
+      <div class="cta-row rv" style="--i:4"><a class="btn" href="#diagnostico">Quero ser atendido pela Orga Health<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
+    </div>
+    <div class="rv" style="--i:2">
+      <div class="quote" id="quote" aria-live="polite">
+        <span class="qm" aria-hidden="true">“</span>
+        <span class="stars" aria-label="5 estrelas"><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg></span>
+        <blockquote id="qText">“Economia tributária real e atendimento que entende a rotina médica.” <span class="tbc">[confirmar]</span></blockquote>
+        <div class="who"><span class="av" id="qAv" aria-hidden="true">DR</span><div><b id="qName">Dr. Nome Sobrenome <span class="tbc">[confirmar]</span></b><small id="qLoc">Especialidade | Cuiabá - MT <span class="tbc">[confirmar]</span></small></div></div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Depoimentos">
+        <button class="tab" role="tab" aria-selected="true" data-i="0">Dr. Nome Sobrenome<small>Cuiabá - MT</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="1">Dra. Nome Sobrenome<small>Várzea Grande - MT</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="2">Dr. Nome Sobrenome<small>Sinop - MT</small></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DÚVIDAS FREQUENTES (conversa) ================= -->
+<section class="s-faq" id="duvidas" aria-labelledby="t-faq">
+  <div class="wrap">
+    <div class="faq-head"><h2 class="h2 rv" id="t-faq">Dúvidas <em>frequentes</em></h2></div>
+    <div class="chat" id="chat">
+      <button class="q rv" type="button" aria-expanded="true" aria-controls="a1"><span class="bubble">Contador generalista atende igual?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a open" id="a1"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 880 700"><use href="#iso"/></svg></span><p>Não. Somos exclusivos da saúde: 100% da carteira são médicos, conhecemos sua rotina e regras</p></div></div></div>
+
+      <button class="q rv" style="--i:1" type="button" aria-expanded="false" aria-controls="a2"><span class="bubble">Vale a pena abrir PJ agora?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a2"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 880 700"><use href="#iso"/></svg></span><p>Sim. Diagnóstico gratuito mostra economia real no seu caso, sem compromisso</p></div></div></div>
+
+      <button class="q rv" style="--i:2" type="button" aria-expanded="false" aria-controls="a3"><span class="bubble">Tenho medo da Reforma Tributária e bitributação.</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a3"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 880 700"><use href="#iso"/></svg></span><p>Planejamento patrimonial antecipa mudanças da LC 214/2025 e protege seu patrimônio</p></div></div></div>
+
+      <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a4"><span class="bubble">Suporte 24h é só robô?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a4"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 880 700"><use href="#iso"/></svg></span><p>IA Organa responde na hora; especialistas validam tudo antes de agir.</p></div></div></div>
+    </div>
+    <div class="cta-row center rv"><a class="btn btn-wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener">Fale com um especialista<span class="ic"><svg width="20" height="20"><use href="#wa"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- ================= 05 FORMULÁRIO ================= -->
+<section class="s-form dark" id="diagnostico" aria-labelledby="t-form">
+  <div class="wrap form-grid">
+    <div>
+      <h2 class="h2 rv" id="t-form">Agende seu diagnóstico <em>financeiro personalizado</em></h2>
+      <p class="lead rv" style="--i:1">Preencha os dados e um especialista em contabilidade médica entrará em contato para apresentar sua proposta.</p>
+      <ul class="ticks rv" style="--i:2">
+        <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Planejamento tributário e patrimonial sob medida</li>
+        <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Suporte 24h via IA Organa com validação humana</li>
+        <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Contabilidade exclusiva para médicos e clínicas</li>
+      </ul>
+    </div>
+    <form class="fcard rv" style="--i:2" id="lead" action="#" method="post" novalidate>
+      <h3><i aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i>Agendar diagnóstico financeiro</h3>
+      <div class="fields">
+        <div class="f half"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="given-name" placeholder="Nome" required maxlength="60"><span class="err">Informe seu nome.</span></div>
+        <div class="f half"><label for="sobrenome">Sobrenome</label><input id="sobrenome" name="sobrenome" autocomplete="family-name" placeholder="Sobrenome" required maxlength="80"><span class="err">Informe seu sobrenome.</span></div>
+        <div class="f"><label for="whats">WhatsApp</label><div class="phone"><span>+55</span><input id="whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(65) 90000-0000" required></div><span class="err">Informe um WhatsApp com DDD.</span></div>
+        <div class="f"><label for="email">E-mail</label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="E-mail" required maxlength="120"><span class="err">Informe um e-mail válido.</span></div>
+        <div class="f"><label for="eusou">Eu sou</label>
+          <select id="eusou" name="eu_sou" required>
+            <option value="" selected disabled>Eu sou</option>
+            <option>Médico plantonista</option>
+            <option>Médico recém-formado</option>
+            <option>Dono de clínica/consultório</option>
+          </select><span class="err">Selecione uma opção.</span></div>
+      </div>
+      <button class="btn" type="submit">Agendar diagnóstico das minhas finanças<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></button>
+      <p class="lgpd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seus dados estão seguros e protegidos conforme LGPD.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= 06 PRESENÇA FÍSICA ================= -->
+<section class="s-sede" id="sede" aria-labelledby="t-sede">
+  <div class="wrap sede-grid">
+    <div class="sede-text">
+      <h2 class="h2 rv" id="t-sede">Presença física em Várzea Grande e atuação em <em>Cuiabá e Sinop</em></h2>
+      <p class="lead rv" style="--i:1">Estrutura dedicada para atender médicos da região com planejamento tributário, patrimonial e suporte 24h validado por especialistas.</p>
+      <div class="cta-row rv" style="--i:2"><a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
+    </div>
+    <div class="sede-visual rv" style="--i:1">
+      <figure class="sede-photo" role="img" aria-label="Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande">
+        <svg class="wm" viewBox="0 0 880 700" aria-hidden="true"><use href="#iso"/></svg>
+        <figcaption class="cap"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></i>Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande</figcaption>
+      </figure>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Mariano%20de%20Campos%20Maia%20(Alameda)%2C%20Ponte%20Nova%20-%20Construmat%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078115-245" target="_blank" rel="noopener" aria-label="Abrir a localização da Orga Health no Google Maps (nova aba)">
+        <div class="frame">
+          <iframe src="https://maps.google.com/maps?q=Rua%20Mariano%20de%20Campos%20Maia%20%28Alameda%29%2C%20Ponte%20Nova%20-%20Construmat%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078115-245&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" title="Mapa da sede da Orga Health em Várzea Grande" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+        </div>
+        <div class="k"><span>Várzea Grande – MT</span><span>Abrir no Google Maps<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= 07 RODAPÉ ================= -->
+<footer>
+  <div class="f-wave" aria-hidden="true"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 0H1440V20C1000 90 420 90 0 30Z" fill="#f8f3ed"/><path d="M0 30C420 90 1000 90 1440 20" fill="none" stroke="#ba8539" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></div>
+  <div class="wrap f-grid">
+    <div>
+      <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 968 246" aria-hidden="true"><use href="#logo-h"/></svg></a>
+      <p class="f-about">Contabilidade exclusiva para médicos e clínicas</p>
+      <div class="socials">
+        <a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener" aria-label="Instagram @orgahealth.oficial"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+        <a href="https://orgahealth.com.br" target="_blank" rel="noopener" aria-label="Site orgahealth.com.br"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></a>
+        <a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" aria-hidden="true"><use href="#wa"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Endereço</h4><p>Várzea Grande – MT<br><span style="color:var(--gold-50)">[endereço completo a confirmar]</span></p></div>
+    <div><h4>Contato</h4><ul>
+      <li><a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener">65 3026-9282</a></li>
+      <li><a class="mail" href="mailto:financeiro@orgahealth.com.br">financeiro@orgahealth.com.br</a></li>
+      <li><a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener">@orgahealth.oficial</a></li>
+    </ul></div>
+    <div><h4>Legal</h4><ul><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos de uso</a></li></ul></div>
+  </div>
+  <div class="f-bar"><div class="wrap"><span>© 2026 Orga Health. Todos os direitos reservados.</span><span class="credit">Desenvolvido por <img src="assets/img/logo-v4-borges-branca.webp" width="78" height="22" alt="V4 Borges &amp; Co"></span></div></div>
+</footer>
+
+<!-- botões flutuantes -->
+<div class="fab">
+  <button class="top" id="toTop" type="button" aria-label="Voltar ao topo" tabindex="-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+  <a class="wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="28" height="28" aria-hidden="true"><use href="#wa"/></svg></a>
+</div>
+
+<script>
+(function(){
+  var d=document.documentElement,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window){d.classList.add('js');}
+
+  /* reveal em cascata */
+  if(d.classList.contains('js')){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+    /* header fixo + voltar ao topo: aparecem quando o CTA do hero sai da tela */
+    var dock=document.getElementById('dock'),dl=dock.querySelector('.btn'),top=document.getElementById('toTop');
+    new IntersectionObserver(function(es){var on=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;dock.classList.toggle('on',on);top.classList.toggle('on',on);dl.tabIndex=on?0:-1;top.tabIndex=on?0:-1;}).observe(document.getElementById('heroCta'));
+  }
+  document.getElementById('toTop').addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});document.querySelector('.topbar .logo').focus({preventScroll:true});});
+
+  /* diferenciais: hover no desktop; toque/teclado ativam a box marsala */
+  var pillars=[].slice.call(document.querySelectorAll('.pillar')),touch=matchMedia('(hover: none)').matches;
+  function act(p){pillars.forEach(function(x){x.classList.toggle('on',x===p)});}
+  if(touch&&pillars[0])pillars[0].classList.add('on');
+  pillars.forEach(function(p){
+    p.addEventListener('click',function(){if(touch)act(p)});
+    p.addEventListener('focus',function(){act(p)});
+    p.addEventListener('blur',function(){if(!touch)p.classList.remove('on')});
+  });
+
+  /* depoimentos */
+  var data=[
+    {q:'“Economia tributária real e atendimento que entende a rotina médica.”',n:'Dr. Nome Sobrenome',l:'Especialidade | Cuiabá - MT'},
+    {q:'“Segurança patrimonial e suporte 24h que resolve de verdade.”',n:'Dra. Nome Sobrenome',l:'Especialidade | Várzea Grande - MT'},
+    {q:'“Migração de CNPJ tranquila e planejamento estratégico personalizado.”',n:'Dr. Nome Sobrenome',l:'Especialidade | Sinop - MT'}
+  ];
+  var cur=0,quote=document.getElementById('quote'),tabs=[].slice.call(document.querySelectorAll('.tab')),T=' <span class="tbc">[confirmar]</span>',busy=null;
+  function initials(n){var w=n.replace(/^(Dra?\.)\s*/,'').trim().split(/\s+/);return ((w[0]||'')[0]||'')+((w.length>1?w[w.length-1]:'')[0]||'');}
+  function show(i,focus){
+    i=(i+data.length)%data.length;if(i===cur&&!focus)return;cur=i;
+    tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;});
+    if(focus)tabs[i].focus();
+    quote.classList.add('swap');clearTimeout(busy);
+    busy=setTimeout(function(){
+      var x=data[i];document.getElementById('qText').innerHTML=x.q+T;document.getElementById('qName').innerHTML=x.n+T;
+      document.getElementById('qLoc').innerHTML=x.l+T;document.getElementById('qAv').textContent=initials(x.n).toUpperCase()||'DR';
+      quote.classList.remove('swap');
+      var tb=tabs[i],tl=tb.parentNode;if(tl.scrollWidth>tl.clientWidth)tl.scrollTo({left:tb.offsetLeft-tl.offsetLeft-16,behavior:reduce?'auto':'smooth'});
+    },reduce?0:200);
+  }
+  tabs.forEach(function(t,j){t.tabIndex=j===0?0:-1;t.addEventListener('click',function(){show(j)});});
+  document.querySelector('.tabs').addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();show(cur+1,true)}if(e.key==='ArrowLeft'){e.preventDefault();show(cur-1,true)}});
+  document.querySelectorAll('.nav-btn').forEach(function(b){b.addEventListener('click',function(){show(cur+(+b.dataset.dir))})});
+  var sx=null,st=0;
+  quote.addEventListener('pointerdown',function(e){sx=e.clientX;st=Date.now();});
+  quote.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx,v=Math.abs(dx)/Math.max(1,Date.now()-st);if(Math.abs(dx)>48||v>.5){show(cur+(dx<0?1:-1));}sx=null;});
+  quote.addEventListener('pointercancel',function(){sx=null});
+
+  /* dúvidas: conversa — o "+" abre a resposta */
+  document.querySelectorAll('.q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var open=q.getAttribute('aria-expanded')==='true',a=document.getElementById(q.getAttribute('aria-controls'));
+      q.setAttribute('aria-expanded',!open);a.classList.toggle('open',!open);
+    });
+  });
+
+  /* formulário: máscara + validação inline */
+  var f=document.getElementById('lead'),w=document.getElementById('whats');
+  w.addEventListener('input',function(){var v=w.value.replace(/\D/g,'').slice(0,11),o=v;if(v.length>2)o='('+v.slice(0,2)+') '+v.slice(2);if(v.length>6)o='('+v.slice(0,2)+') '+v.slice(2,v.length-4)+'-'+v.slice(-4);w.value=o;});
+  function bad(i){var v=i.value.trim();if(!v)return true;if(i.type==='email')return !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);if(i.id==='whats'){var n=v.replace(/\D/g,'');return n.length<10||n.length>11;}return false;}
+  function check(i){var b=bad(i);i.closest('.f').classList.toggle('bad',b);i.setAttribute('aria-invalid',b);return !b;}
+  f.querySelectorAll('input,select').forEach(function(i){
+    var err=i.closest('.f').querySelector('.err');err.id=i.id+'-err';i.setAttribute('aria-describedby',err.id);
+    i.addEventListener('blur',function(){if(i.value)check(i)});
+    i.addEventListener('input',function(){if(i.closest('.f').classList.contains('bad'))check(i)});
+    i.addEventListener('change',function(){check(i)});
+  });
+  f.addEventListener('submit',function(e){
+    var ok=true,first=null;f.querySelectorAll('[required]').forEach(function(i){if(!check(i)){ok=false;first=first||i;}});
+    if(!ok){e.preventDefault();first.focus();return;}
+    f.querySelector('button[type=submit]').setAttribute('aria-busy','true');
+  });
+})();
+</script>
+</body>
+</html>

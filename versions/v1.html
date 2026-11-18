@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrgaHealth — Contabilidade Médica</title>
+<meta name="description" content="Reduza impostos e organize suas finanças com contabilidade médica especializada.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d1b2a; --navy-2:#16283d; --navy-deep:#08121d;
+  --wine:#7a1f28; --wine-2:#93303a;
+  --gold:#c89d4e; --gold-2:#e2c48b; --gold-3:#9a7432; --salmon:#e2b07a;
+  --cream:#f7f3ef; --cream-2:#ece4da; --paper:#fdfbf8;
+  --ink:#0d1b2a; --ink-2:#4a5260; --line:#e6ddd1;
+  --radius:18px; --wrap:1180px;
+  --btn:linear-gradient(135deg,#e6c98f 0%,#c89d4e 48%,#9a7432 100%);
+  --shadow:0 24px 60px -24px rgba(13,27,42,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Lato,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;overflow-x:hidden}
+h1,h2,h3,.f-man{font-family:Manrope,system-ui,sans-serif;letter-spacing:-.02em;line-height:1.12}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:Manrope;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-3)}
+.eyebrow::before{content:"";width:3px;height:14px;border-radius:2px;background:var(--wine)}
+.on-dark .eyebrow{color:var(--gold-2)}
+.on-dark .eyebrow::before{background:var(--gold)}
+
+/* Buttons */
+.btn{--h:58px;display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:var(--h);padding:0 14px 0 30px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--btn);color:#1d1307;font-family:Manrope;font-weight:800;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+  box-shadow:0 14px 30px -12px rgba(154,116,50,.7), inset 0 1px 0 rgba(255,255,255,.5);transition:transform .25s, box-shadow .25s;text-align:left}
+.btn .ar{flex:none;width:34px;height:34px;border-radius:50%;background:rgba(13,27,42,.92);color:var(--gold-2);display:grid;place-items:center;transition:transform .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 20px 38px -14px rgba(154,116,50,.85), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn:hover .ar{transform:translateX(3px)}
+.btn:focus-visible,.field input:focus-visible,.field select:focus-visible,.faq summary:focus-visible,.car-btn:focus-visible{outline:3px solid var(--salmon);outline-offset:3px}
+.btn-sm{--h:46px;font-size:12px;padding:0 8px 0 22px}
+.btn-sm .ar{width:30px;height:30px}
+
+/* Header */
+.top{position:absolute;inset:0 0 auto;z-index:20;padding:22px 0}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.logo-ico{width:46px;height:46px;color:var(--gold-2);flex:none}
+.logo-txt{font-family:Manrope;line-height:1}
+.logo-txt b{display:block;font-weight:700;font-size:21px;letter-spacing:-.01em;color:#fff}
+.logo-txt span{display:block;font-weight:600;font-size:10.5px;letter-spacing:.06em;color:var(--gold-2);margin-top:5px}
+.top .btn-sm{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px rgba(226,196,139,.45)}
+.top .btn-sm .ar{background:var(--btn);color:var(--navy)}
+
+/* HERO */
+.hero{position:relative;color:#fff;background:
+  radial-gradient(900px 520px at 85% 20%,rgba(122,31,40,.55),transparent 60%),
+  radial-gradient(700px 500px at 0% 100%,rgba(200,157,78,.12),transparent 60%),
+  linear-gradient(180deg,var(--navy-deep),var(--navy) 70%);
+  padding:150px 0 150px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse at 60% 40%,#000 20%,transparent 75%);pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(32px,4vw,54px);font-weight:700;margin:22px 0 22px}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--gold-2),var(--gold) 55%,var(--salmon));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:clamp(17px,1.4vw,19px);color:rgba(255,255,255,.78);max-width:540px;margin-bottom:36px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:34px;font-size:14px;color:rgba(255,255,255,.72)}
+.hero-meta span{display:inline-flex;align-items:center;gap:10px}
+.hero-meta i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(200,157,78,.14);color:var(--gold-2);box-shadow:inset 0 0 0 1px rgba(226,196,139,.25)}
+
+.media{position:relative}
+.video{position:relative;aspect-ratio:4/4.3;border-radius:26px;overflow:hidden;
+  background:radial-gradient(120% 80% at 70% 0%,rgba(147,48,58,.55),transparent 55%),linear-gradient(160deg,#1a2c42,#08121d 70%);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.8),inset 0 0 0 1px rgba(226,196,139,.28)}
+.video::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,8,30,.85));pointer-events:none}
+.ph-label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;color:rgba(255,255,255,.5);font-size:12.5px;letter-spacing:.04em;width:80%}
+.play{display:grid;place-items:center;margin:0 auto 18px;width:84px;height:84px;border-radius:50%;border:0;cursor:pointer;background:var(--btn);color:var(--navy);box-shadow:0 0 0 12px rgba(200,157,78,.16),0 0 0 26px rgba(200,157,78,.07)}
+.play svg{margin-left:4px}
+.video-cap{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.85)}
+.video-cap .dot{width:8px;height:8px;border-radius:50%;background:var(--salmon);box-shadow:0 0 0 5px rgba(233,168,142,.2)}
+.chip{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(6,20,58,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px rgba(226,196,139,.28),0 20px 40px -18px rgba(0,0,0,.6);font-size:13px;line-height:1.3;color:#fff;max-width:250px}
+.chip b{font-family:Manrope;font-size:22px;color:var(--gold-2);font-weight:800;letter-spacing:-.02em}
+.chip i{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--btn);color:var(--navy)}
+.chip-a{left:-34px;top:12%}
+.chip-b{right:-26px;bottom:20%}
+
+.curve{position:absolute;left:0;right:0;bottom:-1px;height:110px;z-index:4;pointer-events:none}
+.curve svg{width:100%;height:100%;display:block}
+.down{position:absolute;left:50%;bottom:52px;transform:translateX(-50%);z-index:5;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:var(--btn);color:var(--navy);box-shadow:0 0 0 10px var(--cream),0 18px 30px -10px rgba(13,27,42,.5);text-decoration:none;transition:transform .25s}
+.down:hover{transform:translateX(-50%) translateY(3px)}
+
+/* Sections */
+section{position:relative}
+.sec{padding:110px 0}
+.cream{background:var(--cream)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.h2{font-size:clamp(30px,3.4vw,44px);font-weight:700;color:var(--ink);margin:18px 0 20px}
+.h2 em{font-style:normal;color:var(--wine)}
+.on-dark .h2{color:#fff}
+.on-dark .h2 em{color:var(--gold-2)}
+.p{color:var(--ink-2);font-size:18px;max-width:540px}
+.on-dark .p{color:rgba(255,255,255,.75)}
+
+.photo{position:relative;border-radius:24px;aspect-ratio:5/4.2;overflow:hidden;background:
+  radial-gradient(100% 70% at 20% 0%,rgba(200,157,78,.35),transparent 60%),linear-gradient(150deg,#e9dfcf,#d6c6ad);
+  box-shadow:var(--shadow)}
+.photo .ph-label{color:rgba(13,24,52,.55)}
+.photo .ph-ico{display:grid;place-items:center;margin:0 auto 14px;width:58px;height:58px;border-radius:16px;background:rgba(255,255,255,.55);color:var(--gold-3)}
+.photo-wrap{position:relative}
+.photo-wrap::before{content:"";position:absolute;inset:-18px 18px 18px -18px;border-radius:28px;border:1px solid var(--gold);opacity:.55}
+.stat{position:absolute;right:-22px;bottom:-26px;background:var(--navy);color:#fff;border-radius:18px;padding:18px 22px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center;max-width:270px}
+.stat b{font-family:Manrope;font-size:38px;font-weight:800;line-height:1;background:var(--btn);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:13px;line-height:1.35;color:rgba(255,255,255,.8)}
+.text-col .btn{margin-top:34px}
+
+/* Diferenciais */
+.dif-head{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:end;margin-bottom:56px}
+.dif-head .p{margin-bottom:10px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{position:relative;background:#fff;border-radius:var(--radius);padding:30px 26px 32px;box-shadow:0 1px 0 var(--line),0 0 0 1px var(--line);transition:transform .3s,box-shadow .3s;overflow:hidden}
+.card::after{content:"";position:absolute;left:26px;right:26px;top:0;height:3px;border-radius:0 0 3px 3px;background:var(--btn);transform:scaleX(.18);transform-origin:left;transition:transform .4s}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--line),0 28px 50px -28px rgba(13,27,42,.35)}
+.card:hover::after{transform:scaleX(1)}
+.ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:var(--btn);color:var(--navy);box-shadow:0 10px 22px -10px rgba(154,116,50,.8);margin-bottom:26px}
+.card .n{position:absolute;right:22px;top:24px;font-family:Manrope;font-weight:800;font-size:13px;color:var(--line)}
+.card h3{font-size:19px;font-weight:700;margin-bottom:12px}
+.card p{font-size:15.5px;color:var(--ink-2)}
+
+/* Depoimentos */
+.dep{background:linear-gradient(180deg,var(--paper),var(--cream))}
+.center{text-align:center;max-width:760px;margin:0 auto 54px}
+.center .p{margin:0 auto}
+.g-badge{display:inline-flex;align-items:center;gap:10px;margin-top:22px;padding:8px 16px 8px 10px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--line);font-size:13.5px;color:var(--ink-2)}
+.g-badge .g{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px var(--line)}
+.stars{color:var(--gold);letter-spacing:2px;font-size:15px}
+.carousel{position:relative}
+.track{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tcard{background:#fff;border-radius:22px;padding:34px 30px 28px;box-shadow:0 0 0 1px var(--line),0 24px 50px -36px rgba(13,27,42,.4);display:flex;flex-direction:column;position:relative}
+.tcard .q{position:absolute;right:26px;top:22px;font-family:Georgia,serif;font-size:72px;line-height:1;color:var(--cream-2)}
+.tcard blockquote{font-size:18px;line-height:1.55;color:var(--ink);margin:18px 0 28px;flex:1}
+.who{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line)}
+.av{flex:none;width:50px;height:50px;border-radius:50%;background:linear-gradient(140deg,var(--navy-2),var(--navy));display:grid;place-items:center;color:var(--gold-2);font-family:Manrope;font-weight:700;box-shadow:0 0 0 3px #fff,0 0 0 4px var(--gold)}
+.who b{display:block;font-family:Manrope;font-size:15px}
+.who small{display:block;color:var(--ink-2);font-size:13px}
+.tbc{color:#a07d3f;font-weight:400}
+.car-nav{display:none;justify-content:center;align-items:center;gap:14px;margin-top:26px}
+.car-btn{width:44px;height:44px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;color:var(--navy);display:grid;place-items:center}
+.dots{display:flex;gap:8px}
+.dots i{width:8px;height:8px;border-radius:99px;background:var(--line);transition:all .3s}
+.dots i.on{width:26px;background:var(--gold)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.faq{display:grid;gap:14px}
+.faq details{background:#fff;border-radius:16px;box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s}
+.faq details[open]{box-shadow:0 0 0 1px var(--gold),0 20px 40px -30px rgba(13,27,42,.5)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;padding:22px 24px;font-family:Manrope;font-weight:700;font-size:17px;border-radius:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .num{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--cream);color:var(--wine);font-size:13px}
+.faq summary .pm{margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:var(--gold-2);transition:transform .3s}
+.faq details[open] .pm{transform:rotate(45deg)}
+.faq .ans{padding:0 24px 22px 74px;color:var(--ink-2)}
+
+/* Form */
+.form-sec{color:#fff;background:
+  radial-gradient(700px 500px at 100% 0%,rgba(122,31,40,.45),transparent 60%),
+  radial-gradient(600px 400px at 0% 100%,rgba(200,157,78,.12),transparent 60%),var(--navy);overflow:hidden}
+.form-sec .split{grid-template-columns:1fr 1.02fr;align-items:center}
+.ticks{list-style:none;display:grid;gap:14px;margin-top:34px}
+.ticks li{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(226,196,139,.18);font-weight:700;font-size:16px}
+.ticks i{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--btn);color:var(--navy)}
+.fcard{background:var(--paper);color:var(--ink);border-radius:26px;padding:40px 38px 34px;box-shadow:0 50px 90px -40px rgba(0,0,0,.8),0 0 0 1px rgba(226,196,139,.4)}
+.fcard h3{font-size:22px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+.fcard h3 i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--navy);color:var(--gold-2)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.field{display:flex;flex-direction:column;gap:7px;grid-column:span 2}
+.field.half{grid-column:span 1}
+.field label{font-family:Manrope;font-weight:700;font-size:12.5px;letter-spacing:.04em;color:var(--ink-2)}
+.field input,.field select{height:54px;border-radius:12px;border:1px solid var(--line);background:#fff;padding:0 16px;font:inherit;font-size:16px;color:var(--ink);transition:border-color .2s, box-shadow .2s;width:100%;appearance:none;-webkit-appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%239a7432' stroke-width='2'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(200,157,78,.18);outline:0}
+.field input::placeholder{color:#9aa1b2}
+.field.err input,.field.err select{border-color:var(--wine-2);box-shadow:0 0 0 4px rgba(147,48,58,.1)}
+.phone{display:flex;gap:0}
+.phone span{flex:none;display:flex;align-items:center;gap:8px;padding:0 14px;border:1px solid var(--line);border-right:0;border-radius:12px 0 0 12px;background:var(--cream);font-size:15px;color:var(--ink-2)}
+.phone input{border-radius:0 12px 12px 0}
+.fcard .btn{width:100%;margin-top:22px;justify-content:space-between}
+.lgpd{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13.5px;color:var(--ink-2)}
+.lgpd svg{color:var(--gold-3);flex:none}
+
+/* Presença */
+.cities{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cities span{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;background:#fff;box-shadow:0 0 0 1px var(--line);font-family:Manrope;font-weight:700;font-size:13.5px}
+.cities span.main{background:var(--navy);color:#fff;box-shadow:none}
+.cities svg{color:var(--gold)}
+
+/* Footer */
+footer{position:relative;background:linear-gradient(160deg,var(--wine) 0%,#4a1219 30%,var(--navy) 62%,var(--navy-deep));color:rgba(255,255,255,.75);padding:120px 0 0;font-size:15px}
+.f-wave{position:absolute;left:0;right:0;top:-1px;height:90px}.f-wave svg{width:100%;height:100%;display:block}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px}
+footer h4{font-family:Manrope;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);margin-bottom:18px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a{text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--gold-2)}
+.f-about{max-width:320px;margin-top:20px;font-size:14.5px}
+.socials{display:flex;gap:10px;margin-top:22px}
+.socials a{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(226,196,139,.2);color:#fff}
+.f-bar{border-top:1px solid rgba(226,196,139,.16);padding:22px 0;font-size:13.5px}
+.f-bar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+
+/* WhatsApp float */
+.wa{position:fixed;right:22px;bottom:22px;z-index:50;width:62px;height:62px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(37,211,102,.6);text-decoration:none;transition:transform .25s}
+.wa::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:pulse 2.4s infinite}
+.wa:hover{transform:scale(1.07)}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.wa::before{animation:none}html{scroll-behavior:auto}}
+
+/* Responsive */
+@media (max-width:1080px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .chip-a{left:-12px}.chip-b{right:-10px}
+}
+@media (max-width:900px){
+  body{font-size:16px}
+  .hero{padding:120px 0 140px}
+  .hero-grid,.split,.form-sec .split,.faq-grid,.dif-head{grid-template-columns:1fr;gap:44px}
+  .hero-grid .copy{text-align:left}
+  .media{max-width:520px;width:100%;margin:0 auto}
+  .video{aspect-ratio:16/12}
+  .sec{padding:84px 0}
+  .split .photo-wrap{order:-1}
+  .dif-head{gap:8px;margin-bottom:38px}
+  .stat{right:12px;bottom:-22px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;padding:4px 24px 24px;margin:0 -24px;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .tcard{flex:0 0 min(86%,420px);scroll-snap-align:center}
+  .car-nav{display:flex}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .top{padding:16px 0}
+  .top .btn-sm{width:auto;--h:42px;font-size:10.5px;letter-spacing:.06em;padding:0 6px 0 16px;gap:10px}
+  .top .btn-sm .ar{width:28px;height:28px}
+  .logo-ico{width:36px;height:36px}
+  .logo-txt b{font-size:16px}
+  .logo-txt span{font-size:8.5px;white-space:nowrap}
+  .top .btn-sm{white-space:nowrap}
+  .top .logo-txt span{display:none}
+  .hero{padding:104px 0 130px}
+  .hero h1{margin:18px 0}
+  .btn{width:100%;justify-content:space-between;font-size:12.5px;padding-left:22px}
+  .chip{font-size:12px;padding:10px 12px;max-width:200px}
+  .chip b{font-size:18px}
+  .chip i{width:28px;height:28px}
+  .chip-a{left:8px;top:14px}.chip-b{right:8px;bottom:64px}
+  .cards{grid-template-columns:1fr}
+  .photo-wrap::before{inset:-10px 10px 10px -10px}
+  .fcard{padding:28px 20px 24px;border-radius:22px}
+  .fgrid{grid-template-columns:1fr}
+  .field.half{grid-column:span 2}
+  .faq .ans{padding:0 20px 20px 20px}
+  .faq summary{padding:18px 18px;font-size:16px;gap:14px}
+  .track{padding:4px 16px 24px;margin:0 -16px}
+  .f-grid{grid-template-columns:1fr}
+  .wa{right:16px;bottom:16px;width:56px;height:56px}
+  .curve{height:70px}
+  .down{width:56px;height:56px;bottom:34px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="oh-mark" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="4.2" stroke-linejoin="round"><path d="M16.8 56.2C10.8 49.4 8.4 43 8.4 36.2 8.4 26 16 18.6 29.9 18.6 35.6 18.6 40 22.6 42.9 27.6 45.8 22.6 50.6 18.6 61 18.6 66.5 18.6 71 21.2 73.6 24.8"/><path d="M79.6 39.2C79 47 74 54 63.4 62.6L42.9 79.6 28 64.8"/><path stroke-width="5.6" stroke-linejoin="miter" d="M13.4 70.4 42.9 37.6 57.9 52.4 80.5 30.6"/></g><path fill="currentColor" d="M70.2 19.9H89.6V39.3Z"/></symbol></svg>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="Orga Health">
+      <svg class="logo-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#oh-mark"/></svg><span class="logo-txt"><b>Orga Health</b><span>Contabilidade e Financeiro</span></span>
+    </a>
+    <a class="btn btn-sm" href="#diagnostico"><span class="lbl">Agendar diagnóstico</span><span class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  </div>
+</header>
+
+<!-- ============ 01 HERO ============ -->
+<section class="hero on-dark" id="topo">
+  <div class="wrap hero-grid">
+    <div class="copy rv">
+      <span class="eyebrow">Contabilidade exclusiva para médicos e clínicas</span>
+      <h1>Reduza impostos e organize suas finanças com <em>contabilidade médica especializada</em></h1>
+      <p class="lead">Planejamento tributário e patrimonial sob medida, suporte 24h via IA Organa com validação humana e foco na sua rotina médica.</p>
+      <a class="btn" href="#diagnostico">Agendar diagnóstico das minhas finanças<span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <div class="hero-meta">
+        <span><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i>Cuiabá, Várzea Grande e Sinop</span>
+        <span><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></i>Diagnóstico gratuito, sem compromisso</span>
+      </div>
+    </div>
+
+    <div class="media rv d2">
+      <div class="video" role="img" aria-label="Vídeo institucional dos sócios da Orga Health">
+        <div class="ph-label">
+          <button class="play" type="button" aria-label="Assistir vídeo"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+          Vídeo institucional dos sócios da Orga Health<br>em ambiente de consultório premium
+        </div>
+        <div class="video-cap"><span class="dot"></span>Orga Health · Várzea Grande – MT</div>
+      </div>
+      <div class="chip chip-a"><b>90%</b><span>da carteira são médicos</span></div>
+      <div class="chip chip-b"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><span>Suporte 24h com validação humana</span></div>
+    </div>
+  </div>
+
+  <div class="curve" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 110 C 300 -10, 1000 -30, 1440 70 L1440 110 Z" fill="#7a1f28"/><path d="M0 110 C 300 -10, 1000 -30, 1440 70" fill="none" stroke="#c89d4e" stroke-width="2.5" vector-effect="non-scaling-stroke"/><path d="M0 110 C 360 14, 1080 14, 1440 110 Z" fill="#f7f3ef"/></svg></div>
+  <a class="down" href="#especializada" aria-label="Rolar para a próxima seção"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+</section>
+
+<!-- ============ 02 IMAGEM + TEXTO ============ -->
+<section class="sec cream" id="especializada">
+  <div class="wrap split">
+    <div class="photo-wrap rv">
+      <div class="photo" role="img" aria-label="Foto da equipe Orga Health na sede em Várzea Grande">
+        <div class="ph-label"><span class="ph-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></span>Foto da equipe Orga Health na sede em Várzea Grande</div>
+      </div>
+      <div class="stat"><b>90%</b><span>Carteira 90% médica</span></div>
+    </div>
+    <div class="text-col rv d1">
+      <span class="eyebrow">Orga Health</span>
+      <h2 class="h2">Contabilidade <em>100% focada</em> em médicos e clínicas</h2>
+      <p class="p">Carteira 90% médica, planejamento tributário e patrimonial antecipando a LC 214/2025 e suporte 24h via IA Organa com validação humana.</p>
+      <a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 DIFERENCIAIS ============ -->
+<section class="sec" id="diferenciais">
+  <div class="wrap">
+    <div class="dif-head">
+      <div class="rv">
+        <span class="eyebrow">Diferenciais</span>
+        <h2 class="h2" style="margin-bottom:0">Especialização médica que <em>protege seu patrimônio</em></h2>
+      </div>
+      <p class="p rv d1">Quatro pilares que separam uma contabilidade comum de uma estrutura feita para a realidade do médico.</p>
+    </div>
+    <div class="cards">
+      <article class="card rv">
+        <span class="n">01</span>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></div>
+        <h3>Foco exclusivo em saúde</h3>
+        <p>90% da carteira são médicos; conhecemos sua rotina, regras do CFM e riscos tributários da profissão.</p>
+      </article>
+      <article class="card rv d1">
+        <span class="n">02</span>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.4 8-8 9-4.6-1-8-4.4-8-9V6z"/><path d="M9 12.5l2 2 4-4.5"/></svg></div>
+        <h3>Planejamento patrimonial antecipado</h3>
+        <p>Holding familiar e estrutura tributária preparadas para a LC 214/2025 e a reforma tributária.</p>
+      </article>
+      <article class="card rv d2">
+        <span class="n">03</span>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M12 8v4l2.5 1.5"/></svg></div>
+        <h3>Suporte 24h com validação humana</h3>
+        <p>IA Organa responde no WhatsApp na hora; especialistas conferem tudo antes de executar.</p>
+      </article>
+      <article class="card rv d3">
+        <span class="n">04</span>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg></div>
+        <h3>Consultoria além das obrigações</h3>
+        <p>Acompanhamento financeiro, folha, treinamento de equipe e diagnóstico personalizado, sem tabela fixa.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 DEPOIMENTOS ============ -->
+<section class="sec dep" id="depoimentos">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="eyebrow">Prova social</span>
+      <h2 class="h2">Médicos que confiam sua contabilidade à <em>Orga Health</em></h2>
+      <p class="p">Avaliações reais de médicos de Cuiabá, Várzea Grande e Sinop no Google.</p>
+      <span class="g-badge"><span class="g"><svg width="14" height="14" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.9 6.5-9.6 6.5-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.4A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.8z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 7 4.4 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg></span><span class="stars" aria-label="5 estrelas">★★★★★</span> Google</span>
+    </div>
+
+    <div class="carousel rv d1">
+      <div class="track" id="track">
+        <article class="tcard">
+          <span class="q" aria-hidden="true">”</span>
+          <span class="stars" aria-label="5 estrelas">★★★★★</span>
+          <blockquote>“Economia tributária real e atendimento que entende a rotina médica.” <span class="tbc">[confirmar]</span></blockquote>
+          <div class="who"><span class="av">DR</span><div><b>Dr. Nome Sobrenome <span class="tbc">[confirmar]</span></b><small>Especialidade | Cuiabá - MT <span class="tbc">[confirmar]</span></small></div></div>
+        </article>
+        <article class="tcard">
+          <span class="q" aria-hidden="true">”</span>
+          <span class="stars" aria-label="5 estrelas">★★★★★</span>
+          <blockquote>“Segurança patrimonial e suporte 24h que resolve de verdade.” <span class="tbc">[confirmar]</span></blockquote>
+          <div class="who"><span class="av">DR</span><div><b>Dra. Nome Sobrenome <span class="tbc">[confirmar]</span></b><small>Especialidade | Várzea Grande - MT <span class="tbc">[confirmar]</span></small></div></div>
+        </article>
+        <article class="tcard">
+          <span class="q" aria-hidden="true">”</span>
+          <span class="stars" aria-label="5 estrelas">★★★★★</span>
+          <blockquote>“Migração de CNPJ tranquila e planejamento estratégico personalizado.” <span class="tbc">[confirmar]</span></blockquote>
+          <div class="who"><span class="av">DR</span><div><b>Dr. Nome Sobrenome <span class="tbc">[confirmar]</span></b><small>Especialidade | Sinop - MT <span class="tbc">[confirmar]</span></small></div></div>
+        </article>
+      </div>
+      <div class="car-nav">
+        <button class="car-btn" type="button" data-dir="-1" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <div class="dots" id="dots"><i class="on"></i><i></i><i></i></div>
+        <button class="car-btn" type="button" data-dir="1" aria-label="Próximo depoimento"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OBJEÇÕES (FAQ) ============ -->
+<section class="sec cream" id="duvidas">
+  <div class="wrap faq-grid">
+    <div class="rv">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2 class="h2">Contador generalista <em>atende igual?</em></h2>
+      <p class="p">Não. Somos exclusivos da saúde: 90% da carteira são médicos, conhecemos sua rotina e regras</p>
+    </div>
+    <div class="faq rv d1">
+      <details open>
+        <summary><span class="num">01</span>Vale a pena abrir PJ agora?<span class="pm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p class="ans">Sim. Diagnóstico gratuito mostra economia real no seu caso, sem compromisso</p>
+      </details>
+      <details>
+        <summary><span class="num">02</span>Tenho medo da Reforma Tributária e bitributação.<span class="pm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p class="ans">Planejamento patrimonial antecipa mudanças da LC 214/2025 e protege seu patrimônio</p>
+      </details>
+      <details>
+        <summary><span class="num">03</span>Suporte 24h é só robô?<span class="pm"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p class="ans">IA Organa responde na hora; especialistas validam tudo antes de agir.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 FORMULÁRIO ============ -->
+<section class="sec form-sec on-dark" id="diagnostico">
+  <div class="wrap split">
+    <div class="rv">
+      <span class="eyebrow">Diagnóstico financeiro</span>
+      <h2 class="h2">Agende seu diagnóstico <em>financeiro personalizado</em></h2>
+      <p class="p">Preencha os dados e um especialista em contabilidade médica entrará em contato para apresentar sua proposta.</p>
+      <ul class="ticks">
+        <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></i>Planejamento tributário e patrimonial sob medida</li>
+        <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></i>Suporte 24h via IA Organa com validação humana</li>
+        <li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></i>Contabilidade exclusiva para médicos e clínicas</li>
+      </ul>
+    </div>
+
+    <form class="fcard rv d1" id="lead" novalidate action="#" method="post">
+      <h3><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i>Agendar diagnóstico financeiro</h3>
+      <div class="fgrid">
+        <div class="field half"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="given-name" placeholder="Nome" required></div>
+        <div class="field half"><label for="sobrenome">Sobrenome</label><input id="sobrenome" name="sobrenome" autocomplete="family-name" placeholder="Sobrenome" required></div>
+        <div class="field"><label for="whats">WhatsApp</label><div class="phone"><span>+55</span><input id="whats" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="(65) 90000-0000" required></div></div>
+        <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="E-mail" required></div>
+        <div class="field"><label for="eusou">Eu sou</label>
+          <select id="eusou" name="eu_sou" required>
+            <option value="" selected disabled>Eu sou</option>
+            <option>Médico plantonista</option>
+            <option>Médico recém-formado</option>
+            <option>Dono de clínica/consultório</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn" type="submit">Agendar diagnóstico das minhas finanças<span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <p class="lgpd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seus dados estão seguros e protegidos conforme LGPD.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ 06 PRESENÇA FÍSICA ============ -->
+<section class="sec cream" id="sede">
+  <div class="wrap split">
+    <div class="photo-wrap rv">
+      <div class="photo" role="img" aria-label="Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande">
+        <div class="ph-label"><span class="ph-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5M9 11h.01M15 11h.01"/></svg></span>Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande</div>
+      </div>
+    </div>
+    <div class="text-col rv d1">
+      <span class="eyebrow">Localização</span>
+      <h2 class="h2">Presença física em Várzea Grande e atuação em <em>Cuiabá e Sinop</em></h2>
+      <p class="p">Estrutura dedicada para atender médicos da região com planejamento tributário, patrimonial e suporte 24h validado por especialistas.</p>
+      <div class="cities">
+        <span class="main"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Várzea Grande</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Cuiabá</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Sinop</span>
+      </div>
+      <a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 RODAPÉ ============ -->
+<footer>
+  <div class="f-wave" aria-hidden="true"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 0H1440V20C1000 90 420 90 0 30Z" fill="#f7f3ef"/><path d="M0 30C420 90 1000 90 1440 20" fill="none" stroke="#c89d4e" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg></div>
+  <div class="wrap f-grid">
+    <div>
+      <a class="logo" href="#topo" aria-label="Orga Health">
+        <svg class="logo-ico" viewBox="0 0 100 100" aria-hidden="true"><use href="#oh-mark"/></svg><span class="logo-txt"><b>Orga Health</b><span>Contabilidade e Financeiro</span></span>
+      </a>
+      <p class="f-about">Contabilidade exclusiva para médicos e clínicas</p>
+      <div class="socials">
+        <a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener" aria-label="Instagram @orgahealth.oficial"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://orgahealth.com.br" target="_blank" rel="noopener" aria-label="orgahealth.com.br"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></a>
+        <a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Endereço</h4>
+      <p>Várzea Grande – MT<br><span class="tbc">[endereço completo a confirmar]</span></p>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener">65 3026-9282</a></li>
+        <li><a href="mailto:financeiro@orgahealth.com.br">financeiro@orgahealth.com.br</a></li>
+        <li><a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener">@orgahealth.oficial</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Política de privacidade</a></li>
+        <li><a href="#">Termos de uso</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bar"><div class="wrap"><span>© 2026 Orga Health. Todos os direitos reservados.</span><span>orgahealth.com.br</span></div></div>
+</footer>
+
+<!-- WhatsApp flutuante -->
+<a class="wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg></a>
+
+<script>
+// Reveal on scroll
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+// Carousel (mobile)
+(function(){
+  var t=document.getElementById('track'),dots=[].slice.call(document.querySelectorAll('#dots i'));
+  function idx(){var c=t.children,best=0,min=1e9,mid=t.scrollLeft+t.clientWidth/2;for(var i=0;i<c.length;i++){var d=Math.abs(c[i].offsetLeft+c[i].offsetWidth/2-mid);if(d<min){min=d;best=i}}return best}
+  t.addEventListener('scroll',function(){var i=idx();dots.forEach(function(d,j){d.classList.toggle('on',i===j)})},{passive:true});
+  document.querySelectorAll('.car-btn').forEach(function(b){b.addEventListener('click',function(){var i=Math.max(0,Math.min(t.children.length-1,idx()+(+b.dataset.dir)));var c=t.children[i];t.scrollTo({left:c.offsetLeft-(t.clientWidth-c.offsetWidth)/2,behavior:'smooth'})})});
+})();
+// WhatsApp mask + validation
+(function(){
+  var w=document.getElementById('whats');
+  w.addEventListener('input',function(){var v=w.value.replace(/\D/g,'').slice(0,11);var o=v;if(v.length>2)o='('+v.slice(0,2)+') '+v.slice(2);if(v.length>7)o='('+v.slice(0,2)+') '+v.slice(2,v.length-4)+'-'+v.slice(-4);w.value=o});
+  var f=document.getElementById('lead');
+  f.addEventListener('submit',function(e){
+    var ok=true;
+    f.querySelectorAll('[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value))||(i.id==='whats'&&i.value.replace(/\D/g,'').length<10);i.closest('.field').classList.toggle('err',bad);if(bad)ok=false});
+    if(!ok){e.preventDefault();var first=f.querySelector('.err input,.err select');if(first)first.focus();}
+  });
+  f.querySelectorAll('input,select').forEach(function(i){i.addEventListener('input',function(){i.closest('.field').classList.remove('err')});i.addEventListener('change',function(){i.closest('.field').classList.remove('err')})});
+})();
+</script>
+</body>
+</html>

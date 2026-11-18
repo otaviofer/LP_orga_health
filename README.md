@@ -95,7 +95,6 @@ LP_orga_health/
 │   ├── orga-health-lp.figcraft  # Layout editável no FigCraft (desktop + mobile)
 │   └── orga-health-lp.svg       # Mesmo layout em SVG
 ├── docs/
-│   ├── ajustes-lp-v2.md       # Histórico de ajustes aprovados com o time
 │   ├── preview-desktop.png
 │   └── preview-mobile.png
 └── versions/

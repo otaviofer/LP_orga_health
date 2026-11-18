@@ -13,3 +13,6 @@ node_modules/
 *.log
 *.tmp
 .env
+
+# Anotações internas (ficam só na máquina)
+docs/ajustes-lp-v2.md

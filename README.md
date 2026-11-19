@@ -41,14 +41,14 @@ A página foi desenhada a partir do briefing do cliente, com a copy aprovada, e 
 
 1. **Hero** — título, subtítulo, CTA principal e vídeo institucional dos sócios
 2. **Contabilidade 100% focada** — foto da equipe médica com entrada animada e degradê
-3. **Diferenciais** — 4 pilares com destaque marsala no hover (toque no mobile)
+3. **Diferenciais** — 4 pilares com destaque marsala no hover (toque no mobile) e botão "Contratar" que leva ao formulário
 4. **Depoimentos** — citação em destaque com seletor, setas, teclado e swipe
 5. **Dúvidas frequentes** — objeções em formato de conversa (pergunta → resposta)
 6. **Formulário** — Nome, Sobrenome, WhatsApp, E-mail e "Eu sou", com validação inline
 7. **Presença física** — foto da sede e mapa do Google clicável
 8. **Rodapé** — contatos, redes, links legais e crédito da V4 Borges & Co
 
-Elementos fixos: header flutuante que aparece após o hero, **botão de WhatsApp pulsando** e botão **voltar ao topo**.
+Elementos fixos: header flutuante que aparece após o hero e botão **voltar ao topo**. Todos os CTAs levam ao formulário, que é a conversão da página; o WhatsApp aparece só no rodapé.
 
 ## Identidade visual
 

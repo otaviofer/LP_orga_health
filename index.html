@@ -68,7 +68,6 @@ button{font:inherit;color:inherit}
 .btn-ghost{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1px rgba(217,188,147,.35)}
 .btn-ghost .ic{background:var(--gold);color:var(--navy)}
 @media (hover:hover) and (pointer:fine){.btn-ghost:hover{background:rgba(255,255,255,.14)}}
-.btn-wa .ic{background:#25d366;color:#fff}
 .cta-row{margin-top:48px;display:flex}
 .cta-row.center{justify-content:center}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -160,7 +159,7 @@ button{font:inherit;color:inherit}
 .pillar h3{font-weight:700;font-size:clamp(18px,1.5vw,21px);line-height:1.25;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px;transition:color .3s ease}
 .pillar{display:flex;flex-direction:column}
 .pillar p{color:var(--text-2);font-size:15.5px;transition:color .3s ease;flex:1}
-.pbtn{align-self:flex-start;margin-top:22px;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;background:transparent;color:var(--marsala);box-shadow:inset 0 0 0 1.5px rgba(89,17,20,.35);font:800 11.5px/1 Manrope;letter-spacing:.08em;text-transform:uppercase;transition:background-color .25s ease,color .25s ease,box-shadow .25s ease,transform .16s var(--ease-out)}
+.pbtn{text-decoration:none;align-self:flex-start;margin-top:22px;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;background:transparent;color:var(--marsala);box-shadow:inset 0 0 0 1.5px rgba(89,17,20,.35);font:800 11.5px/1 Manrope;letter-spacing:.08em;text-transform:uppercase;transition:background-color .25s ease,color .25s ease,box-shadow .25s ease,transform .16s var(--ease-out)}
 .pbtn:active{transform:scale(.96)}
 .pillar.on .pbtn{background:var(--cream);color:var(--marsala);box-shadow:none}
 @media (hover:hover) and (pointer:fine){.pillar:hover .pbtn{background:var(--cream);color:var(--marsala);box-shadow:none}.pillar .pbtn:hover{background:var(--gold-12)}}
@@ -317,16 +316,11 @@ footer .logo .lh{width:220px}
 
 /* ---------- botões flutuantes ---------- */
 .fab{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:55;display:flex;align-items:center;gap:12px}
-.wa,.top{position:relative;border-radius:50%;display:grid;place-items:center;text-decoration:none;border:0;cursor:pointer;transition:transform .16s var(--ease-out),opacity .3s var(--ease-out)}
-.wa{width:60px;height:60px;color:#fff;background:#25d366;box-shadow:0 14px 30px -12px rgba(18,140,70,.7)}
-.wa::before,.wa::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:pulse 2s var(--ease-out) infinite;pointer-events:none}
-.wa::after{animation-delay:1s}
-@keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.top{position:relative;border-radius:50%;display:grid;place-items:center;text-decoration:none;border:0;cursor:pointer;transition:transform .16s var(--ease-out),opacity .3s var(--ease-out)}
 .top{width:48px;height:48px;background:var(--navy);color:var(--gold-50);box-shadow:0 0 0 1px rgba(217,188,147,.25),0 12px 26px -12px rgba(13,27,42,.7);opacity:0;transform:translateY(10px) scale(.95);pointer-events:none}
 .top.on{opacity:1;transform:none;pointer-events:auto}
-.wa:active,.top.on:active{transform:scale(.94)}
-@media (hover:hover) and (pointer:fine){.wa:hover{transform:scale(1.05)}.top.on:hover{transform:translateY(-2px)}}
-@media (prefers-reduced-motion:reduce){.wa::before,.wa::after{animation:none;opacity:0}}
+.top.on:active{transform:scale(.94)}
+@media (hover:hover) and (pointer:fine){.top.on:hover{transform:translateY(-2px)}}
 
 /* =========================================================
    POP-UPS (contratar, política, termos)
@@ -341,14 +335,6 @@ footer .logo .lh{width:220px}
 .m-x{position:absolute;right:12px;top:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:var(--cream);color:var(--navy);transition:background-color .2s ease,transform .16s var(--ease-out)}
 .m-x:active{transform:scale(.94)}
 @media (hover:hover){.m-x:hover{background:var(--gold-12)}}
-.m-contact{width:400px;padding:36px 28px 28px;text-align:center}
-.m-contact .m-ic{width:56px;height:56px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--marsala);color:var(--cream)}
-.m-contact .m-ic svg{width:30px;height:auto}
-.m-contact h3{font-weight:800;font-size:22px;line-height:1.25;letter-spacing:-.02em;color:var(--ink)}
-.m-contact p{margin-top:8px;font-size:15px;color:var(--text-2)}
-.wa-go{margin-top:24px;width:100%;min-height:54px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:14px;background:#25d366;color:#fff;text-decoration:none;font:800 15px Manrope;box-shadow:0 14px 28px -14px rgba(18,140,70,.8);transition:background-color .2s ease,transform .16s var(--ease-out)}
-.wa-go:active{transform:scale(.98)}
-@media (hover:hover){.wa-go:hover{background:#1fbd5a}}
 .m-doc{width:760px;display:flex;flex-direction:column;max-height:calc(100dvh - 48px)}
 .m-doc header{padding:30px 72px 18px 36px;border-bottom:1px solid var(--line)}
 .m-doc header small{display:block;font:700 11px Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
@@ -416,7 +402,6 @@ footer .logo .lh{width:220px}
   .tabs::-webkit-scrollbar{display:none}
   .tab{flex:0 0 58%;scroll-snap-align:start}
   .who{flex-wrap:wrap}
-  .m-contact{width:auto;padding:34px 22px 22px}
   .m-doc header{padding:24px 64px 14px 22px}
   .m-body{padding:18px 22px 26px;font-size:15px}
   .cookie{left:12px;right:12px;bottom:calc(88px + env(safe-area-inset-bottom));max-width:none;padding:10px 10px 10px 14px;gap:10px;font-size:12.5px}
@@ -439,7 +424,6 @@ footer .logo .lh{width:220px}
   .f-grid{grid-template-columns:1fr;gap:32px}
   .f-bar .wrap{flex-direction:column;align-items:flex-start}
   .fab{right:16px;gap:10px}
-  .wa{width:56px;height:56px}
   .top{width:44px;height:44px}
   .dock{padding-left:16px}
   .dock .logo .lh{display:none}
@@ -527,25 +511,25 @@ footer .logo .lh{width:220px}
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></span>
         <h3>Foco exclusivo em saúde</h3>
         <p>100% da carteira são médicos; conhecemos sua rotina, regras do CFM e riscos tributários da profissão.</p>
-        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
+        <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
       <article class="pillar rv" style="--i:1" tabindex="0">
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.4 8-8 9-4.6-1-8-4.4-8-9V6z"/><path d="M9 12.5l2 2 4-4.5"/></svg></span>
         <h3>Planejamento patrimonial antecipado</h3>
         <p>Holding familiar e estrutura tributária preparadas para a LC 214/2025 e a reforma tributária.</p>
-        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
+        <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
       <article class="pillar rv" style="--i:2" tabindex="0">
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M12 8v4l2.5 1.5"/></svg></span>
         <h3>Suporte 24h com validação humana</h3>
         <p>IA Organa responde no WhatsApp na hora; especialistas conferem tudo antes de executar.</p>
-        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
+        <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
       <article class="pillar rv" style="--i:3" tabindex="0">
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg></span>
         <h3>Consultoria além das obrigações</h3>
         <p>Acompanhamento financeiro, folha, treinamento de equipe e diagnóstico personalizado, sem tabela fixa.</p>
-        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
+        <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
     </div>
     <div class="cta-row center rv"><a class="btn" href="#diagnostico">Quero uma contabilidade feita para médicos<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
@@ -600,7 +584,7 @@ footer .logo .lh{width:220px}
       <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a4"><span class="bubble">Suporte 24h é só robô?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
       <div class="a" id="a4"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>IA Organa responde na hora; especialistas validam tudo antes de agir.</p></div></div></div>
     </div>
-    <div class="cta-row center rv"><a class="btn btn-wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20OrgaHealth" target="_blank" rel="noopener">Fale com um especialista<span class="ic"><svg width="20" height="20"><use href="#wa"/></svg></span></a></div>
+    <div class="cta-row center rv"><a class="btn" href="#diagnostico">Fale com um especialista<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
   </div>
 </section>
 
@@ -687,15 +671,6 @@ footer .logo .lh{width:220px}
 </footer>
 
 <!-- ================= POP-UPS ================= -->
-<dialog class="modal" id="m-contato" aria-labelledby="m-contato-t">
-  <div class="m-card m-contact">
-    <button class="m-x" type="button" data-close aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span>
-    <h3 id="m-contato-t">Quero falar com especialista</h3>
-    <p>Um especialista em contabilidade médica da OrgaHealth responde você pelo WhatsApp.</p>
-    <a class="wa-go" href="https://wa.me/556530269282?text=Ol%C3%A1%21%20Quero%20falar%20com%20um%20especialista%20da%20OrgaHealth." target="_blank" rel="noopener"><svg width="22" height="22" aria-hidden="true"><use href="#wa"/></svg>Ir para WhatsApp</a>
-  </div>
-</dialog>
 
 <dialog class="modal" id="m-politica" aria-labelledby="m-politica-t">
   <div class="m-card m-doc">
@@ -824,7 +799,6 @@ footer .logo .lh{width:220px}
 <!-- botões flutuantes -->
 <div class="fab">
   <button class="top" id="toTop" type="button" aria-label="Voltar ao topo" tabindex="-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
-  <a class="wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20OrgaHealth" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="28" height="28" aria-hidden="true"><use href="#wa"/></svg></a>
 </div>
 
 <script>

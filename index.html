@@ -104,7 +104,8 @@ button{font:inherit;color:inherit}
    01 HERO — marsala predominante
    ========================================================= */
 .hero{position:relative;color:#fff;overflow:hidden;padding:160px 0 clamp(96px,10vw,140px);background:linear-gradient(135deg,#591114 0%,#440c0f 55%,#2a0608 100%);isolation:isolate}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,6vw,88px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.14fr);gap:clamp(36px,4.5vw,64px);align-items:start}
+.hero .stage{margin-top:clamp(40px,5vw,72px);margin-right:calc(min(var(--gutter),40px) * -.5)}
 .tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(217,188,147,.3);font:700 11px/1.2 Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-50)}
 .tag i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(186,133,57,.25)}
 .tag i::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-50)}
@@ -138,8 +139,10 @@ button{font:inherit;color:inherit}
 .team img{width:100%;height:auto;aspect-ratio:2720/1536;object-fit:contain}
 .js .team.rv{transform:translateY(40px) scale(.96);filter:blur(10px);transition-duration:1s}
 .js .team.rv.in{transform:none;filter:none}
-.big-n{margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--line)}
-.big-n b{display:block;font:800 clamp(28px,3.1vw,44px)/1.1 Manrope;letter-spacing:-.035em;color:var(--marsala)}
+.big-n{margin-bottom:22px}
+.tag-navy{background:rgba(13,27,42,.06);box-shadow:inset 0 0 0 1px rgba(13,27,42,.22);color:var(--navy)}
+.tag-navy i{background:rgba(13,27,42,.12)}
+.tag-navy i::before{background:var(--navy)}
 .esp-text .lead{margin-top:20px}
 .esp-text .cta-row{margin-top:36px}
 
@@ -381,7 +384,7 @@ footer .logo .lh{width:220px}
   body{font-size:16px}
   .hero{padding-top:124px}
   .hero-grid,.esp-grid,.sec-head,.dep-grid,.form-grid,.sede-grid{grid-template-columns:minmax(0,1fr)}
-  .stage{max-width:560px;width:100%;margin:0 auto}
+  .hero .stage{max-width:640px;width:100%;margin:0 auto}
   .esp-photo{order:-1}
   .sec-head{gap:16px}
   .sede-visual{order:-1;margin-bottom:64px}
@@ -461,13 +464,13 @@ footer .logo .lh{width:220px}
 
 <!-- header fixo (aparece depois do hero) -->
 <nav class="dock" id="dock" aria-label="Atalho">
-  <a class="logo" href="#topo" aria-label="Orga Health, voltar ao topo"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg><svg class="li" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg></a>
+  <a class="logo" href="#topo" aria-label="OrgaHealth, voltar ao topo"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg><svg class="li" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg></a>
   <a class="btn btn-sm" href="#diagnostico" tabindex="-1">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
 </nav>
 
 <header class="topbar">
   <div class="wrap">
-    <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
+    <a class="logo" href="#topo" aria-label="OrgaHealth"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
     <a class="btn btn-sm btn-ghost" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
   </div>
 </header>
@@ -490,8 +493,8 @@ footer .logo .lh{width:220px}
     <div class="stage rv" style="--i:2">
       <div class="video" id="video">
         <img class="poster" src="assets/video/poster.jpg" width="1280" height="720" alt="" decoding="async">
-        <button class="play" type="button" id="play" aria-label="Assistir ao vídeo institucional da Orga Health"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
-        <div class="cap"><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Conheça a Orga Health · 1 min</div>
+        <button class="play" type="button" id="play" aria-label="Assistir ao vídeo institucional da OrgaHealth"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
+        <div class="cap"><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Conheça a OrgaHealth · 1 min</div>
       </div>
     </div>
   </div>
@@ -504,7 +507,7 @@ footer .logo .lh{width:220px}
       <div class="team rv"><img src="assets/img/equipe-medica.png" width="2720" height="1536" alt="Equipe médica de três profissionais sorrindo, dois de jaleco branco e um de pijama cirúrgico azul-marinho" loading="lazy" decoding="async"></div>
     </figure>
     <div class="esp-text">
-      <div class="big-n rv"><b>100% carteira médica</b></div>
+      <div class="big-n rv"><span class="tag tag-navy"><i aria-hidden="true"></i>100% carteira médica</span></div>
       <h2 class="h2 rv" style="--i:1" id="t-esp">Contabilidade <em>100% focada</em> em médicos</h2>
       <p class="lead rv" style="--i:2">Carteira 100% médica, planejamento tributário e patrimonial antecipando a LC 214/2025 e suporte 24h via IA Organa com validação humana.</p>
       <div class="cta-row rv" style="--i:3"><a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
@@ -553,14 +556,14 @@ footer .logo .lh{width:220px}
 <section class="s-dep" id="depoimentos" aria-labelledby="t-dep">
   <div class="wrap dep-grid">
     <div class="dep-side">
-      <h2 class="h2 rv" id="t-dep">Médicos que confiam sua contabilidade à <em>Orga Health</em></h2>
-      <p class="lead rv" style="--i:1">Avaliações reais de clientes da Orga Health no Google.</p>
+      <h2 class="h2 rv" id="t-dep">Médicos que confiam sua contabilidade à <em>OrgaHealth</em></h2>
+      <p class="lead rv" style="--i:1">Avaliações reais de clientes da OrgaHealth no Google.</p>
       <a class="g-badge rv" href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.624796,-56.0982515,17z/data=!4m8!3m7!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!9m1!1b1!16s%2Fg%2F11rq4177zr" target="_blank" rel="noopener" style="--i:2"><span class="g" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.9 6.5-9.6 6.5-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.4A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.8z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 7 4.4 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg></span><span class="stars" aria-label="5 estrelas"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span><span><b>5,0</b> · 41 avaliações no Google</span></a>
       <div class="dep-nav rv" style="--i:3">
         <button class="nav-btn" type="button" data-dir="-1" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
         <button class="nav-btn" type="button" data-dir="1" aria-label="Próximo depoimento"><svg width="18" height="18" aria-hidden="true"><use href="#arrow"/></svg></button>
       </div>
-      <div class="cta-row rv" style="--i:4"><a class="btn" href="#diagnostico">Quero ser atendido pela Orga Health<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
+      <div class="cta-row rv" style="--i:4"><a class="btn" href="#diagnostico">Quero ser atendido pela OrgaHealth<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
     </div>
     <div class="rv" style="--i:2">
       <div class="quote" id="quote" aria-live="polite">
@@ -597,7 +600,7 @@ footer .logo .lh{width:220px}
       <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a4"><span class="bubble">Suporte 24h é só robô?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
       <div class="a" id="a4"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>IA Organa responde na hora; especialistas validam tudo antes de agir.</p></div></div></div>
     </div>
-    <div class="cta-row center rv"><a class="btn btn-wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener">Fale com um especialista<span class="ic"><svg width="20" height="20"><use href="#wa"/></svg></span></a></div>
+    <div class="cta-row center rv"><a class="btn btn-wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20OrgaHealth" target="_blank" rel="noopener">Fale com um especialista<span class="ic"><svg width="20" height="20"><use href="#wa"/></svg></span></a></div>
   </div>
 </section>
 
@@ -643,13 +646,13 @@ footer .logo .lh{width:220px}
       <div class="cta-row rv" style="--i:2"><a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
     </div>
     <div class="sede-visual rv" style="--i:1">
-      <figure class="sede-photo" role="img" aria-label="Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande">
+      <figure class="sede-photo" role="img" aria-label="Foto da fachada ou ambiente interno da sede da OrgaHealth em Várzea Grande">
         <svg class="wm" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg>
-        <figcaption class="cap"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></i>Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande</figcaption>
+        <figcaption class="cap"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></i>Foto da fachada ou ambiente interno da sede da OrgaHealth em Várzea Grande</figcaption>
       </figure>
-      <a class="map" href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.6246961,-56.0982957,159a,75y,165.14h,88.38t/data=!3m7!1e1!3m5!1smTmoWq3UsBP6fLeyMyfMoQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.6223937990303057%26panoid%3DmTmoWq3UsBP6fLeyMyfMoQ%26yaw%3D165.14140999172295!7i16384!8i8192!4m14!1m7!3m6!1s0x939daf4623e6bca5:0x697af7324472d65f!2sOrgaHealth+Contabilidade!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr!3m5!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr?entry=ttu&amp;g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Abrir a localização da Orga Health no Google Maps (nova aba)">
+      <a class="map" href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.6246961,-56.0982957,159a,75y,165.14h,88.38t/data=!3m7!1e1!3m5!1smTmoWq3UsBP6fLeyMyfMoQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.6223937990303057%26panoid%3DmTmoWq3UsBP6fLeyMyfMoQ%26yaw%3D165.14140999172295!7i16384!8i8192!4m14!1m7!3m6!1s0x939daf4623e6bca5:0x697af7324472d65f!2sOrgaHealth+Contabilidade!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr!3m5!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr?entry=ttu&amp;g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Abrir a localização da OrgaHealth no Google Maps (nova aba)">
         <div class="frame">
-          <iframe src="https://maps.google.com/maps?q=-15.624796,-56.0982515&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc=near" title="Mapa da sede da Orga Health em Várzea Grande" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+          <iframe src="https://maps.google.com/maps?q=-15.624796,-56.0982515&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc=near" title="Mapa da sede da OrgaHealth em Várzea Grande" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
         </div>
         <div class="k"><span>Várzea Grande – MT</span><span>Abrir no Google Maps<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
       </a>
@@ -664,23 +667,23 @@ footer .logo .lh{width:220px}
   <div class="f-wave" aria-hidden="true"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 0H1440V20C1000 90 420 90 0 30Z" fill="#f8f3ed"/><path d="M0 30C420 90 1000 90 1440 20" fill="none" stroke="#ba8539" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></div>
   <div class="wrap f-grid">
     <div>
-      <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
+      <a class="logo" href="#topo" aria-label="OrgaHealth"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
       <p class="f-about">Contabilidade exclusiva para médicos</p>
       <div class="socials">
         <a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener" aria-label="Instagram @orgahealth.oficial"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
         <a href="https://orgahealth.com.br" target="_blank" rel="noopener" aria-label="Site orgahealth.com.br"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></a>
-        <a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" aria-hidden="true"><use href="#wa"/></svg></a>
+        <a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20OrgaHealth" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" aria-hidden="true"><use href="#wa"/></svg></a>
       </div>
     </div>
     <div><h4>Endereço</h4><p><a href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.6246961,-56.0982957,159a,75y,165.14h,88.38t/data=!3m7!1e1!3m5!1smTmoWq3UsBP6fLeyMyfMoQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.6223937990303057%26panoid%3DmTmoWq3UsBP6fLeyMyfMoQ%26yaw%3D165.14140999172295!7i16384!8i8192!4m14!1m7!3m6!1s0x939daf4623e6bca5:0x697af7324472d65f!2sOrgaHealth+Contabilidade!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr!3m5!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr?entry=ttu&amp;g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">R. Mariano de Campos Maia (Alameda)<br>Construmat, Várzea Grande – MT<br>CEP 78115-245</a></p></div>
     <div><h4>Contato</h4><ul>
-      <li><a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener">65 3026-9282</a></li>
+      <li><a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20OrgaHealth" target="_blank" rel="noopener">65 3026-9282</a></li>
       <li><a class="mail" href="mailto:financeiro@orgahealth.com.br">financeiro@orgahealth.com.br</a></li>
       <li><a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener">@orgahealth.oficial</a></li>
     </ul></div>
     <div><h4>Legal</h4><ul><li><a href="#politica-de-privacidade" data-open="m-politica">Política de privacidade</a></li><li><a href="#termos-de-uso" data-open="m-termos">Termos de uso</a></li></ul></div>
   </div>
-  <div class="f-bar"><div class="wrap"><span>© 2026 Orga Health. Todos os direitos reservados.</span><span class="credit">Desenvolvido por <img src="assets/img/logo-v4-borges-branca.webp" width="78" height="22" alt="V4 Borges &amp; Co"></span></div></div>
+  <div class="f-bar"><div class="wrap"><span>© 2026 OrgaHealth. Todos os direitos reservados.</span><span class="credit">Desenvolvido por <img src="assets/img/logo-v4-borges-branca.webp" width="78" height="22" alt="V4 Borges &amp; Co"></span></div></div>
 </footer>
 
 <!-- ================= POP-UPS ================= -->
@@ -689,8 +692,8 @@ footer .logo .lh{width:220px}
     <button class="m-x" type="button" data-close aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span>
     <h3 id="m-contato-t">Quero falar com especialista</h3>
-    <p>Um especialista em contabilidade médica da Orga Health responde você pelo WhatsApp.</p>
-    <a class="wa-go" href="https://wa.me/556530269282?text=Ol%C3%A1%21%20Quero%20falar%20com%20um%20especialista%20da%20Orga%20Health." target="_blank" rel="noopener"><svg width="22" height="22" aria-hidden="true"><use href="#wa"/></svg>Ir para WhatsApp</a>
+    <p>Um especialista em contabilidade médica da OrgaHealth responde você pelo WhatsApp.</p>
+    <a class="wa-go" href="https://wa.me/556530269282?text=Ol%C3%A1%21%20Quero%20falar%20com%20um%20especialista%20da%20OrgaHealth." target="_blank" rel="noopener"><svg width="22" height="22" aria-hidden="true"><use href="#wa"/></svg>Ir para WhatsApp</a>
   </div>
 </dialog>
 
@@ -700,8 +703,8 @@ footer .logo .lh{width:220px}
     <header><small>Legal</small><h3 id="m-politica-t">Política de Privacidade</h3><p>Última atualização: 19 de novembro de 2026</p></header>
     <div class="m-body">
       <h4>1. Quem somos</h4>
-      <p>Esta Política de Privacidade explica como a <strong>OrgaHealth Contabilidade</strong> (“Orga Health”, “nós”), com sede na R. Mariano de Campos Maia (Alameda), Construmat, Várzea Grande – MT, CEP 78115-245, trata os dados pessoais de quem acessa esta página e preenche nossos formulários, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 – LGPD).</p>
-      <p>Para os fins da LGPD, a Orga Health é a controladora dos dados pessoais tratados por meio desta página.</p>
+      <p>Esta Política de Privacidade explica como a <strong>OrgaHealth Contabilidade</strong> (“OrgaHealth”, “nós”), com sede na R. Mariano de Campos Maia (Alameda), Construmat, Várzea Grande – MT, CEP 78115-245, trata os dados pessoais de quem acessa esta página e preenche nossos formulários, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 – LGPD).</p>
+      <p>Para os fins da LGPD, a OrgaHealth é a controladora dos dados pessoais tratados por meio desta página.</p>
 
       <h4>2. Quais dados coletamos</h4>
       <ul>
@@ -771,10 +774,10 @@ footer .logo .lh{width:220px}
     <header><small>Legal</small><h3 id="m-termos-t">Termos de Uso</h3><p>Última atualização: 19 de novembro de 2026</p></header>
     <div class="m-body">
       <h4>1. Aceitação</h4>
-      <p>Estes Termos de Uso regulam o acesso e o uso desta página, mantida pela <strong>OrgaHealth Contabilidade</strong> (“Orga Health”). Ao navegar por ela ou enviar o formulário, você declara que leu e concorda com estes termos e com a nossa <a href="#politica-de-privacidade" data-open="m-politica">Política de Privacidade</a>. Se não concordar, não utilize a página.</p>
+      <p>Estes Termos de Uso regulam o acesso e o uso desta página, mantida pela <strong>OrgaHealth Contabilidade</strong> (“OrgaHealth”). Ao navegar por ela ou enviar o formulário, você declara que leu e concorda com estes termos e com a nossa <a href="#politica-de-privacidade" data-open="m-politica">Política de Privacidade</a>. Se não concordar, não utilize a página.</p>
 
       <h4>2. Finalidade da página</h4>
-      <p>Esta página apresenta os serviços de contabilidade da Orga Health para médicos e permite solicitar um diagnóstico financeiro e contato com nossa equipe. O conteúdo é informativo e não constitui consultoria contábil, tributária ou jurídica individual, que depende da análise do seu caso e da contratação formal dos serviços.</p>
+      <p>Esta página apresenta os serviços de contabilidade da OrgaHealth para médicos e permite solicitar um diagnóstico financeiro e contato com nossa equipe. O conteúdo é informativo e não constitui consultoria contábil, tributária ou jurídica individual, que depende da análise do seu caso e da contratação formal dos serviços.</p>
 
       <h4>3. Cadastro e informações enviadas</h4>
       <p>Ao preencher o formulário, você se compromete a informar dados verdadeiros, atuais e de sua titularidade, e é responsável por eles. O envio do formulário não cria obrigação de contratação para nenhuma das partes.</p>
@@ -789,13 +792,13 @@ footer .logo .lh{width:220px}
       </ul>
 
       <h4>5. Propriedade intelectual</h4>
-      <p>Marcas, logotipos, textos, imagens, vídeos e o layout desta página pertencem à Orga Health ou são usados com autorização, e são protegidos pela legislação de propriedade intelectual. O acesso à página não concede nenhuma licença de uso sobre eles.</p>
+      <p>Marcas, logotipos, textos, imagens, vídeos e o layout desta página pertencem à OrgaHealth ou são usados com autorização, e são protegidos pela legislação de propriedade intelectual. O acesso à página não concede nenhuma licença de uso sobre eles.</p>
 
       <h4>6. Links e serviços de terceiros</h4>
-      <p>A página pode conter links e recursos de terceiros, como Google Maps, Instagram e WhatsApp. Esses serviços têm termos e políticas próprios, pelos quais a Orga Health não se responsabiliza.</p>
+      <p>A página pode conter links e recursos de terceiros, como Google Maps, Instagram e WhatsApp. Esses serviços têm termos e políticas próprios, pelos quais a OrgaHealth não se responsabiliza.</p>
 
       <h4>7. Limitação de responsabilidade</h4>
-      <p>Buscamos manter as informações da página corretas e atualizadas, mas elas podem conter imprecisões ou ficar desatualizadas, especialmente diante de mudanças na legislação tributária. A Orga Health não se responsabiliza por decisões tomadas exclusivamente com base no conteúdo desta página, nem por indisponibilidades temporárias, falhas técnicas ou danos causados por vírus ou ações de terceiros.</p>
+      <p>Buscamos manter as informações da página corretas e atualizadas, mas elas podem conter imprecisões ou ficar desatualizadas, especialmente diante de mudanças na legislação tributária. A OrgaHealth não se responsabiliza por decisões tomadas exclusivamente com base no conteúdo desta página, nem por indisponibilidades temporárias, falhas técnicas ou danos causados por vírus ou ações de terceiros.</p>
 
       <h4>8. Avaliações de clientes</h4>
       <p>Os depoimentos exibidos são avaliações públicas feitas por clientes no Google e refletem experiências individuais. Resultados podem variar conforme a situação de cada profissional.</p>
@@ -821,7 +824,7 @@ footer .logo .lh{width:220px}
 <!-- botões flutuantes -->
 <div class="fab">
   <button class="top" id="toTop" type="button" aria-label="Voltar ao topo" tabindex="-1"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
-  <a class="wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="28" height="28" aria-hidden="true"><use href="#wa"/></svg></a>
+  <a class="wa" href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20OrgaHealth" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg width="28" height="28" aria-hidden="true"><use href="#wa"/></svg></a>
 </div>
 
 <script>
@@ -892,7 +895,7 @@ footer .logo .lh{width:220px}
   document.getElementById('play').addEventListener('click',function(){
     var v=document.createElement('video');
     v.src='assets/video/orgahealth-institucional.mp4';v.poster='assets/video/poster.jpg';
-    v.controls=true;v.playsInline=true;v.preload='auto';v.setAttribute('aria-label','Vídeo institucional da Orga Health');
+    v.controls=true;v.playsInline=true;v.preload='auto';v.setAttribute('aria-label','Vídeo institucional da OrgaHealth');
     vbox.appendChild(v);vbox.querySelector('.play').hidden=true;vbox.querySelector('.cap').hidden=true;
     var p=v.play();if(p&&p.catch)p.catch(function(){});v.focus();
   });

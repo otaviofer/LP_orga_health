@@ -104,7 +104,7 @@ button{font:inherit;color:inherit}
    01 HERO — marsala predominante
    ========================================================= */
 .hero{position:relative;color:#fff;overflow:hidden;padding:160px 0 clamp(96px,10vw,140px);background:linear-gradient(135deg,#591114 0%,#440c0f 55%,#2a0608 100%);isolation:isolate}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:clamp(40px,6vw,88px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,6vw,88px);align-items:center}
 .tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(217,188,147,.3);font:700 11px/1.2 Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-50)}
 .tag i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(186,133,57,.25)}
 .tag i::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-50)}
@@ -115,16 +115,18 @@ button{font:inherit;color:inherit}
 .proof span{display:inline-flex;align-items:center;gap:10px}
 .proof svg{color:var(--gold-50);flex:none}
 
-.video{position:relative;aspect-ratio:4/4.6;border-radius:28px;overflow:hidden;display:grid;place-items:center;isolation:isolate;
+.video{position:relative;aspect-ratio:16/9;border-radius:28px;overflow:hidden;display:grid;place-items:center;isolation:isolate;
   background:var(--navy);box-shadow:0 0 0 1px rgba(217,188,147,.22),0 40px 80px -40px rgba(13,6,6,.75)}
-.video .vwm{position:absolute;z-index:-1;width:74%;height:auto;color:var(--navy-2)}
 .play{width:84px;height:84px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:var(--gold);color:var(--navy);
   box-shadow:0 0 0 10px rgba(186,133,57,.16),0 0 0 22px rgba(186,133,57,.07);transition:transform .16s var(--ease-out)}
 .play:active{transform:scale(.95)}
 @media (hover:hover) and (pointer:fine){.play:hover{transform:scale(1.04)}}
 .play svg{margin-left:4px}
-.video .cap{position:absolute;left:18px;right:18px;bottom:18px;display:flex;align-items:center;gap:10px;font:600 12px/1.35 Manrope;color:rgba(255,255,255,.72)}
-.video .cap i{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.07);color:var(--gold-50)}
+.video .poster{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover}
+.video::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(13,6,6,.28);pointer-events:none}
+.video video{position:absolute;inset:0;width:100%;height:100%;background:#000;z-index:2}
+.video .cap{position:absolute;left:18px;bottom:16px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;background:rgba(13,6,6,.55);font:600 12px/1.2 Manrope;color:rgba(255,255,255,.86)}
+.video .cap i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(186,133,57,.3);color:var(--gold-50)}
 
 /* =========================================================
    02 CONTABILIDADE 100% FOCADA — foto PNG com degradê
@@ -153,7 +155,12 @@ button{font:inherit;color:inherit}
 .pillar::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--marsala);opacity:0;transition:opacity .35s var(--ease-out);box-shadow:0 26px 50px -28px rgba(89,17,20,.7)}
 .pillar .pi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--marsala);box-shadow:inset 0 0 0 1.5px rgba(89,17,20,.28);margin-bottom:26px;transition:color .3s ease,box-shadow .3s ease,background-color .3s ease}
 .pillar h3{font-weight:700;font-size:clamp(18px,1.5vw,21px);line-height:1.25;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px;transition:color .3s ease}
-.pillar p{color:var(--text-2);font-size:15.5px;transition:color .3s ease}
+.pillar{display:flex;flex-direction:column}
+.pillar p{color:var(--text-2);font-size:15.5px;transition:color .3s ease;flex:1}
+.pbtn{align-self:flex-start;margin-top:22px;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;background:transparent;color:var(--marsala);box-shadow:inset 0 0 0 1.5px rgba(89,17,20,.35);font:800 11.5px/1 Manrope;letter-spacing:.08em;text-transform:uppercase;transition:background-color .25s ease,color .25s ease,box-shadow .25s ease,transform .16s var(--ease-out)}
+.pbtn:active{transform:scale(.96)}
+.pillar.on .pbtn{background:var(--cream);color:var(--marsala);box-shadow:none}
+@media (hover:hover) and (pointer:fine){.pillar:hover .pbtn{background:var(--cream);color:var(--marsala);box-shadow:none}.pillar .pbtn:hover{background:var(--gold-12)}}
 .pillar.on{transform:scale(1.035)}
 .pillar.on::before{opacity:1}
 .pillar.on .pi{color:var(--marsala);background:var(--cream);box-shadow:none}
@@ -185,14 +192,20 @@ button{font:inherit;color:inherit}
 .dep-side .cta-row{margin-top:32px}
 .quote{position:relative;background:#fff;border-radius:28px;padding:clamp(28px,4vw,56px);min-height:320px;display:flex;flex-direction:column;box-shadow:0 0 0 1px var(--line),0 30px 60px -44px rgba(13,27,42,.45)}
 .quote .qm{position:absolute;right:clamp(24px,3vw,44px);top:clamp(14px,2vw,24px);font:800 120px/1 Manrope;color:var(--gold-25);pointer-events:none}
-.quote blockquote{position:relative;font:500 clamp(22px,2.4vw,32px)/1.32 Manrope;letter-spacing:-.02em;color:var(--ink);margin:22px 0 32px;flex:1;transition:opacity .22s var(--ease-out),filter .22s var(--ease-out),transform .22s var(--ease-out)}
+.quote blockquote{position:relative;font:500 clamp(19px,1.9vw,26px)/1.4 Manrope;letter-spacing:-.02em;color:var(--ink);margin:22px 0 32px;flex:1;transition:opacity .22s var(--ease-out),filter .22s var(--ease-out),transform .22s var(--ease-out)}
 .quote.swap blockquote,.quote.swap .who{opacity:0;filter:blur(4px);transform:translateY(6px)}
 .who{display:flex;align-items:flex-start;gap:14px;transition:opacity .22s var(--ease-out),filter .22s var(--ease-out),transform .22s var(--ease-out)}
 .av{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--marsala);color:var(--gold-50);font:700 15px Manrope}
 .who b{display:block;font:700 16px/1.3 Manrope;color:var(--ink)}
 .who small{display:block;font-size:14px;color:var(--text-3)}
 .tbc{color:var(--gold);font-weight:400}
-.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.who{align-items:center}
+.who > div{flex:1;min-width:0}
+.g-link{flex:none;display:inline-flex;align-items:center;gap:6px;font:700 12.5px Manrope;color:var(--marsala);text-decoration:none;padding:8px 12px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);transition:background-color .2s ease}
+@media (hover:hover){.g-link:hover{background:var(--gold-12)}}
+.g-badge{text-decoration:none}
+.g-badge b{color:var(--ink);font-weight:800}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:14px}
 .tab{position:relative;text-align:left;cursor:pointer;border:0;background:transparent;padding:16px 4px 4px;border-top:1px solid var(--line);font:600 13.5px/1.35 Manrope;color:var(--text-3);transition:color .2s ease;min-width:0}
 .tab small{display:block;font:400 12.5px Lato;color:var(--text-3);margin-top:2px}
 .tab::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:100%;background:var(--marsala);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
@@ -313,10 +326,55 @@ footer .logo .lh{width:220px}
 @media (prefers-reduced-motion:reduce){.wa::before,.wa::after{animation:none;opacity:0}}
 
 /* =========================================================
+   POP-UPS (contratar, política, termos)
+   ========================================================= */
+.modal{border:0;padding:0;margin:auto;background:transparent;color:var(--text);max-width:calc(100% - 32px);max-height:calc(100% - 32px);overflow:visible}
+.modal::backdrop{background:rgba(13,6,6,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.modal[open]{animation:mIn .32s var(--ease-out)}
+.modal[open]::backdrop{animation:bIn .3s ease}
+@keyframes mIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bIn{from{opacity:0}to{opacity:1}}
+.m-card{position:relative;background:#fff;border-radius:24px;box-shadow:0 40px 80px -30px rgba(13,6,6,.6)}
+.m-x{position:absolute;right:12px;top:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:var(--cream);color:var(--navy);transition:background-color .2s ease,transform .16s var(--ease-out)}
+.m-x:active{transform:scale(.94)}
+@media (hover:hover){.m-x:hover{background:var(--gold-12)}}
+.m-contact{width:400px;padding:36px 28px 28px;text-align:center}
+.m-contact .m-ic{width:56px;height:56px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;background:var(--marsala);color:var(--cream)}
+.m-contact .m-ic svg{width:30px;height:auto}
+.m-contact h3{font-weight:800;font-size:22px;line-height:1.25;letter-spacing:-.02em;color:var(--ink)}
+.m-contact p{margin-top:8px;font-size:15px;color:var(--text-2)}
+.wa-go{margin-top:24px;width:100%;min-height:54px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:14px;background:#25d366;color:#fff;text-decoration:none;font:800 15px Manrope;box-shadow:0 14px 28px -14px rgba(18,140,70,.8);transition:background-color .2s ease,transform .16s var(--ease-out)}
+.wa-go:active{transform:scale(.98)}
+@media (hover:hover){.wa-go:hover{background:#1fbd5a}}
+.m-doc{width:760px;display:flex;flex-direction:column;max-height:calc(100dvh - 48px)}
+.m-doc header{padding:30px 72px 18px 36px;border-bottom:1px solid var(--line)}
+.m-doc header small{display:block;font:700 11px Manrope;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.m-doc header h3{margin-top:6px;font-weight:800;font-size:clamp(22px,2.4vw,28px);letter-spacing:-.025em;color:var(--ink)}
+.m-doc header p{margin-top:4px;font-size:13.5px;color:var(--text-3)}
+.m-body{overflow-y:auto;padding:22px 36px 32px;font-size:15.5px;line-height:1.7;color:var(--text-2);overscroll-behavior:contain}
+.m-body h4{margin:26px 0 8px;font:800 16px/1.35 Manrope;color:var(--ink)}
+.m-body h4:first-child{margin-top:0}
+.m-body p+p,.m-body p+ul,.m-body ul+p{margin-top:10px}
+.m-body ul{padding-left:20px;display:grid;gap:6px}
+.m-body a{color:var(--marsala)}
+.m-body strong{color:var(--text)}
+/* aviso de cookies */
+.cookie{position:fixed;left:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:70;max-width:440px;display:flex;align-items:center;gap:16px;padding:12px 12px 12px 18px;border-radius:16px;background:var(--navy);color:rgba(255,255,255,.82);font-size:13.5px;line-height:1.45;box-shadow:0 0 0 1px rgba(217,188,147,.22),0 20px 40px -20px rgba(13,6,6,.7);transform:translateY(16px);opacity:0;transition:transform .45s var(--ease-out),opacity .35s var(--ease-out)}
+.cookie[hidden]{display:none}
+.cookie.on{transform:none;opacity:1}
+.cookie .lnk{border:0;background:none;padding:0;cursor:pointer;color:var(--gold-50);text-decoration:underline;text-underline-offset:2px;font:inherit}
+.cookie .ok{flex:none;min-height:38px;padding:0 16px;border-radius:999px;border:0;cursor:pointer;background:var(--gold);color:var(--navy);font:800 12px Manrope;letter-spacing:.04em;transition:transform .16s var(--ease-out)}
+.cookie .ok:active{transform:scale(.96)}
+@media (prefers-reduced-motion:reduce){.modal[open],.modal[open]::backdrop{animation:none}.cookie{transition:opacity .2s ease;transform:none}}
+
+/* =========================================================
    RESPONSIVO
    ========================================================= */
 @media (max-width:1080px){
   .pillars{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 30%;scroll-snap-align:start}
   .map{right:-12px}
 }
 @media (max-width:900px){
@@ -324,7 +382,6 @@ footer .logo .lh{width:220px}
   .hero{padding-top:124px}
   .hero-grid,.esp-grid,.sec-head,.dep-grid,.form-grid,.sede-grid{grid-template-columns:minmax(0,1fr)}
   .stage{max-width:560px;width:100%;margin:0 auto}
-  .video{aspect-ratio:16/12}
   .esp-photo{order:-1}
   .sec-head{gap:16px}
   .sede-visual{order:-1;margin-bottom:64px}
@@ -332,7 +389,7 @@ footer .logo .lh{width:220px}
   .f-grid{grid-template-columns:1fr 1fr}
   .dep-grid{display:flex;flex-direction:column;gap:0}
   .dep-side{display:contents}
-  .dep-grid > div:last-child{order:1;margin-top:28px}
+  .dep-grid > div:last-child{order:1;margin-top:28px;width:100%;min-width:0}
   .dep-side .cta-row{order:2}
 }
 @media (max-width:640px){
@@ -354,7 +411,12 @@ footer .logo .lh{width:220px}
   .pillar .pi{margin-bottom:18px}
   .tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:14px calc(var(--gutter)*-1) 0;padding:0 var(--gutter);gap:14px;scrollbar-width:none}
   .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:0 0 68%;scroll-snap-align:start}
+  .tab{flex:0 0 58%;scroll-snap-align:start}
+  .who{flex-wrap:wrap}
+  .m-contact{width:auto;padding:34px 22px 22px}
+  .m-doc header{padding:24px 64px 14px 22px}
+  .m-body{padding:18px 22px 26px;font-size:15px}
+  .cookie{left:12px;right:12px;bottom:calc(88px + env(safe-area-inset-bottom));max-width:none;padding:10px 10px 10px 14px;gap:10px;font-size:12.5px}
   .quote{min-height:0;border-radius:22px}
   .quote .qm{font-size:90px}
   .q .bubble{padding:14px 18px;border-radius:20px 20px 20px 6px}
@@ -388,8 +450,8 @@ footer .logo .lh{width:220px}
 <!-- ===== símbolos: logo oficial (SVG do cliente) + ícones ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="iso" viewBox="107 217 865 645"><g id="Icone_coracao"><path fill="currentColor" d="M968.21,224v5.98c-.22.14-.43.38-.43.85v.84s-.11.75-.11.75l-.18.67-.16.75-.12.76-.12.69-.13.73-.12.78-.12.72-.12.69-.12.77-.12.76-.12.69-.12.73-.12.78-.12.72-.12.68-.92,5.53-.12.78-.12.72-.12.69-.12.77-.12.77-.12.74-9.1,52.86-.14.84-.12.72-.13.69-.13.77-.12.76-.13.71-4.85,28.08-.14.81-.11.72-.13.69-.13.74-.12.71-.12.7-.13.77-.13.76-.13.69-.13.73-.12.79-.12.72-.13.68-.14.77-.03,1.01c-.59.76-1.3-.17-1.95-.66l-26.07-19.71-7.13-5.38c-.34-.25-.97-.88-1.35-.85-.28.02-.72.56-1.01.9l-18.11,21.28-77.64,102.46-3.18,4.66-4.65,6.9c-1.87,2.77-4.63,4.91-7.99,5.65-6.02,1.33-13.64-3.13-18.46-7.29l-4.38-3.77-13.47-13.47-6.43-6.43-4.86-4.59c-3.61-3.4-15.02-12.15-16.22-11.81-.2.06-.35.26-.64.6l-37.56,44.91-5.35,6.38-31.93,38.23-77.33,93.84c-3.08,3.73-7.76,5.65-12.02,7.25-3.11,1.17-6.39,1.36-9.5.82-2.79-.48-4.78-2.11-6.31-4.4l-27.57-41.3-20.57-30.81c-.11-.51-.58-.69-.89-.25l-.56.79-.35.5-.36.5-.35.51-.38.51-14.83,20.64-.36.52-.37.49-.36.49-.35.51-.35.5-.36.5-.36.5-.37.49-.36.5-4.11,5.74-4.38,5.48-.47.38c-5.2,4.2-10.35,8.96-17.49,6.73-3.87-1.21-7.17-3.38-10.05-6.15-1.86-1.79-3.1-3.65-4.49-5.85l-17.4-27.49c-1.28-2.02-3.32-3.38-5.22-4.73-1.39-.99-6.64,1.58-8.04,3.6l-48.9,70.88-42.85,61.95c-1.28,1.85-2.69,3.04-4.29,4.41-4.23,3.61-9.73,6.72-15.33,6.93-3.3.05-6.22-1.21-8.14-3.95l-39.27-56.3-57.59,63.55-52.52,60.89c-3.45,4-8.22,6.29-12.96,8.02-2.67.98-5.33.63-7.64-.76-4.6-2.77-9.79-8.59-11.34-13.43s3.19-12.53,6.87-16.76l27.69-31.81,95.4-109.96c1.51-1.74,2.87-2.88,4.78-3.95,3.69-2.07,9.06-4.54,12.31-2.94,3.06,1.5,6.9,2.87,9.06,5.87l35.91,50.04c.25.35.42.61.63.58.17-.02.4-.37.63-.67,11.27-14.05,21.98-28.54,32.19-43.53l68.62-100.8c2.01-2.96,4.45-4.98,7.87-5.94,6.49-1.81,14.78.3,18.36,5.5l29.43,42.78,29.8-41.28c1.29-1.79,2.64-3.1,4.62-4.03,2.22-1.22,4.45-2.28,7-2.84,4.07-.9,10.76,2.43,13.94,5.76l43.18,66.4c1.98,3.05,10.88,5.95,14.76,1.28l88.49-106.61,59.08-70.1c5.64-6.69,17.86-5.84,22.74-.98l37.03,36.9c1.64,1.64,3.76,2.41,5.76,3.26,1.45.61,2.94.42,4.22-.41,2.53-1.63,4.74-3.36,6.65-5.88l56.84-74.89,21.91-29.47c3.12-4.2,1.89-10.61-1.65-13.72l-27.39-24.15,6.09-5.69,3.4-3.12,99.67-38.04,8.14.46c1.08.06,1.01,1.23,1.73,1.65Z"/><path fill="currentColor" d="M111.79,446.65v-23.12c.21-.12.45-.39.45-.82l-.03-3.04c0-.81-.05-1.58.34-2.29,3.62-43.33,21.73-83.78,51.7-115.18l6.7-6.71c28.03-26.61,62.31-43.69,100.14-51.77,18.62-3.97,37.85-4.95,56.57-1.35l23.73,4.57c45.26,13.08,84.74,36.54,120.07,67.51,4.5.27,9.82-.27,13.23-2.75l10.81-8.06,29.12-20.52c30.37-19.9,58.07-32.1,93.84-39.3,28.92-5.82,57.42-4.18,85.55,4.61,19.53,6.1,37.37,15.49,53.95,27.34l21.74,15.53c5.68,4.06,8.25,10.52,7.84,17.46-.22,3.76-1.76,6.85-4.37,9.37-4.79,4.61-9.44,6.39-16.13,4.24-3.49-1.12-6.72-2.72-9.76-4.78l-11.99-8.13-17.15-11.52-16.06-8.83c-10.54-5.04-21.31-8.58-32.78-10.91l-22.41-3.33c-14.46-1.17-28.6.07-42.23,4.91l-32.54,11.55-13.11,5.8c-14.72,7-28.2,15.63-40.99,25.77-9.47,7.51-18.24,15.25-26.97,23.54l-10.78,10.24c-3.5,3.32-7.83,5.4-12.81,5.16-3.09-.14-6.06-1.14-8.35-3.18l-9.73-8.67-11.88-10.43c-9.08-7.97-18.25-15.32-28.1-22.43-30.88-22.29-71.84-41.3-110.34-42.04-59.45-1.15-115.38,32.96-144.26,84.5l-6.72,13.46c-3.61,7.25-5.8,14.83-6.7,22.88l-1.94,17.32c-1.23,10.95-1.74,21.5-1.02,32.52,2.91,44.47,19.55,89.75,39.72,129.1,4.38,6.56.99,14.88-4.7,20.08-2.01,1.84-4.34,2.93-7.11,3.1-6.59.42-13.87-2.54-17.32-8.18-20.99-34.37-35.28-71.9-42.9-111.54-1.53-7.96-2.42-15.54-3.44-23.54l-.34-2.67-.09-4.63c0-.46-.25-.71-.46-.84Z"/><path fill="currentColor" d="M251.27,687.19c5.94-4.06,14.52-5.04,19.33-.25l19.76,19.67c18.98,18.1,38.79,34.89,59.92,50.47l33.11,22.62c29.84,18.75,61.01,34.36,94.48,45.47l29.89-11.26,34.48-16.07c19.15-9.99,36.86-21.83,53.86-35.16l38.64-30.3,29.13-24.8,9.49-9.04c15.37-14.65,28.93-30.67,41.74-47.67l24.68-32.74c10.75-14.27,20.47-28.89,29.03-44.6,9.33-17.1,16.97-34.68,23.01-53.21,4.33-13.31,7.51-26.44,10-40.15,1.15-6.34,5.35-12.65,10.95-15.97,4.59-2.72,9.97-2.65,14.58,0,7.6,4.38,12.12,14.52,9.98,22.87l-7.87,30.66c-5.03,16.16-11.05,31.55-18.19,46.86l-10.71,21.5c-24.14,45.54-56.98,88.88-92.45,126.21l-23.61,23.61c-53.74,51.16-115.39,91.53-184.75,118.25-15.82,6.1-34.41,4.83-49.75-1.96l-33.28-14.73c-29.92-14.51-58.23-31.74-85.06-51.45-17.39-12.78-34.03-26.32-49.73-40.96l-6.49-6.05-11.95-11.6-14.64-15.29c-5.9-6.16-6.83-18.64,2.43-24.96Z"/></g></symbol>
-  <!-- Logo_banca_hor.svg (BRANCA) — recortado ao conteúdo -->
-  <symbol id="logo-h" viewBox="61 420 957 228"><g id="Icone_coracao"><path fill="currentColor" d="M348.31,435.82v1.97c-.07.04-.14.13-.14.28v.28s-.04.25-.04.25l-.06.22-.05.25-.04.25-.04.23-.04.24-.04.26-.04.24-.04.23-.04.25-.04.25-.04.23-.04.24-.04.26-.04.24-.04.23-.3,1.82-.04.26-.04.24-.04.23-.04.25-.04.25-.04.24-3,17.43-.05.28-.04.24-.04.23-.04.25-.04.25-.04.23-1.6,9.26-.04.27-.04.24-.04.23-.04.24-.04.23-.04.23-.04.25-.04.25-.04.23-.04.24-.04.26-.04.24-.04.23-.05.25v.33c-.21.25-.44-.06-.65-.22l-8.6-6.5-2.35-1.77c-.11-.08-.32-.29-.44-.28-.09,0-.24.18-.33.3l-5.97,7.02-25.6,33.78-1.05,1.54-1.53,2.27c-.62.91-1.53,1.62-2.64,1.86-1.98.44-4.5-1.03-6.09-2.4l-1.44-1.24-4.44-4.44-2.12-2.12-1.6-1.51c-1.19-1.12-4.95-4.01-5.35-3.89-.07.02-.12.09-.21.2l-12.38,14.81-1.77,2.1-10.53,12.61-25.5,30.94c-1.01,1.23-2.56,1.86-3.96,2.39-1.02.39-2.11.45-3.13.27-.92-.16-1.57-.7-2.08-1.45l-9.09-13.61-6.78-10.16c-.04-.17-.19-.23-.29-.08l-.19.26-.12.16-.12.17-.12.17-.12.17-4.89,6.81-.12.17-.12.16-.12.16-.11.17-.12.17-.12.16-.12.16-.12.16-.12.16-1.35,1.89-1.44,1.81-.16.13c-1.71,1.38-3.41,2.95-5.76,2.22-1.28-.4-2.37-1.12-3.31-2.03-.61-.59-1.02-1.2-1.48-1.93l-5.74-9.06c-.42-.67-1.09-1.11-1.72-1.56-.46-.33-2.19.52-2.65,1.19l-16.12,23.37-14.13,20.42c-.42.61-.89,1-1.41,1.45-1.4,1.19-3.21,2.21-5.05,2.29-1.09.02-2.05-.4-2.68-1.3l-12.95-18.56-18.99,20.95-17.32,20.08c-1.14,1.32-2.71,2.07-4.27,2.65-.88.32-1.76.21-2.52-.25-1.52-.91-3.23-2.83-3.74-4.43s1.05-4.13,2.26-5.53l9.13-10.49,31.45-36.25c.5-.57.95-.95,1.58-1.3,1.22-.68,2.99-1.5,4.06-.97,1.01.5,2.28.95,2.99,1.94l11.84,16.5c.08.11.14.2.21.19.06,0,.13-.12.21-.22,3.71-4.63,7.25-9.41,10.61-14.35l22.62-33.23c.66-.98,1.47-1.64,2.59-1.96,2.14-.6,4.87.1,6.05,1.81l9.7,14.1,9.83-13.61c.43-.59.87-1.02,1.52-1.33.73-.4,1.47-.75,2.31-.94,1.34-.3,3.55.8,4.6,1.9l14.23,21.89c.65,1.01,3.59,1.96,4.87.42l29.17-35.15,19.48-23.11c1.86-2.21,5.89-1.92,7.5-.32l12.21,12.17c.54.54,1.24.8,1.9,1.07.48.2.97.14,1.39-.13.83-.54,1.56-1.11,2.19-1.94l18.74-24.69,7.22-9.72c1.03-1.38.62-3.5-.54-4.52l-9.03-7.96,2.01-1.88,1.12-1.03,32.86-12.54,2.69.15c.36.02.33.41.57.54Z"/><path fill="currentColor" d="M65.96,509.22v-7.62c.07-.04.15-.13.15-.27v-1c-.01-.27-.03-.52.1-.76,1.19-14.29,7.16-27.62,17.04-37.97l2.21-2.21c9.24-8.77,20.54-14.41,33.01-17.07,6.14-1.31,12.48-1.63,18.65-.44l7.82,1.51c14.92,4.31,27.94,12.05,39.59,22.26,1.49.09,3.24-.09,4.36-.91l3.56-2.66,9.6-6.76c10.01-6.56,19.14-10.58,30.94-12.96,9.53-1.92,18.93-1.38,28.2,1.52,6.44,2.01,12.32,5.11,17.79,9.01l7.17,5.12c1.87,1.34,2.72,3.47,2.58,5.76-.07,1.24-.58,2.26-1.44,3.09-1.58,1.52-3.11,2.11-5.32,1.4-1.15-.37-2.22-.9-3.22-1.58l-3.95-2.68-5.65-3.8-5.29-2.91c-3.48-1.66-7.03-2.83-10.81-3.6l-7.39-1.1c-4.77-.39-9.43.02-13.92,1.62l-10.73,3.81-4.32,1.91c-4.85,2.31-9.3,5.15-13.51,8.5-3.12,2.47-6.01,5.03-8.89,7.76l-3.55,3.38c-1.15,1.1-2.58,1.78-4.22,1.7-1.02-.05-2-.38-2.75-1.05l-3.21-2.86-3.92-3.44c-2.99-2.63-6.02-5.05-9.26-7.39-10.18-7.35-23.68-13.61-36.38-13.86-19.6-.38-38.04,10.86-47.56,27.86l-2.21,4.44c-1.19,2.39-1.91,4.89-2.21,7.54l-.64,5.71c-.4,3.61-.57,7.09-.34,10.72.96,14.66,6.45,29.59,13.1,42.56,1.45,2.16.32,4.91-1.55,6.62-.66.61-1.43.96-2.35,1.02-2.17.14-4.57-.84-5.71-2.7-6.92-11.33-11.63-23.7-14.14-36.77-.5-2.62-.8-5.12-1.14-7.76l-.11-.88-.03-1.53c0-.15-.08-.23-.15-.28Z"/><path fill="currentColor" d="M111.95,588.53c1.96-1.34,4.79-1.66,6.37-.08l6.52,6.49c6.26,5.97,12.79,11.5,19.75,16.64l10.92,7.46c9.84,6.18,20.11,11.33,31.15,14.99l9.85-3.71,11.37-5.3c6.31-3.29,12.15-7.2,17.76-11.59l12.74-9.99,9.6-8.17,3.13-2.98c5.07-4.83,9.54-10.11,13.76-15.72l8.14-10.79c3.54-4.7,6.75-9.53,9.57-14.7,3.07-5.64,5.6-11.43,7.58-17.54,1.43-4.39,2.48-8.72,3.3-13.24.38-2.09,1.76-4.17,3.61-5.26,1.51-.9,3.29-.87,4.81,0,2.5,1.44,4,4.79,3.29,7.54l-2.59,10.11c-1.66,5.33-3.64,10.4-6,15.45l-3.53,7.09c-7.96,15.01-18.78,29.3-30.48,41.61l-7.78,7.78c-17.72,16.87-38.04,30.18-60.91,38.98-5.22,2.01-11.35,1.59-16.4-.65l-10.97-4.86c-9.87-4.78-19.2-10.46-28.04-16.96-5.73-4.21-11.22-8.68-16.39-13.5l-2.14-2-3.94-3.82-4.83-5.04c-1.95-2.03-2.25-6.14.8-8.23Z"/></g><text fill="currentColor" font-size="110.34" font-family="Manrope, sans-serif" font-weight="700" transform="translate(377.76 542.94)"><tspan x="0" y="0">O</tspan><tspan letter-spacing="-.02em" x="82.7" y="0">r</tspan><tspan letter-spacing="0em" x="124.52" y="0">ga H</tspan><tspan letter-spacing="-.01em" x="357.71" y="0">e</tspan><tspan x="423.03" y="0">alth</tspan></text><text fill="currentColor" font-size="48.72" font-family="Manrope, sans-serif" font-weight="700" transform="translate(383.84 614.74)"><tspan x="0" y="0">Contabilidade e Fina</tspan><tspan letter-spacing="0em" x="480.77" y="0">n</tspan><tspan letter-spacing="-.01em" x="510.83" y="0">c</tspan><tspan x="538.14" y="0">ei</tspan><tspan letter-spacing="-.01em" x="581.14" y="0">r</tspan><tspan letter-spacing="0em" x="600.09" y="0">o</tspan></text></symbol>
+  <!-- Logo_banca_hor.svg (BRANCA, versão 19/11 "OrgaHealth") — recortado ao conteúdo -->
+  <symbol id="logo-h" viewBox="73 420 933 228"><g><path fill="currentColor" d="M360.32,434.82v1.97c-.07.04-.14.13-.14.28v.28s-.04.25-.04.25l-.06.22-.05.25-.04.25-.04.23-.04.24-.04.26-.04.24-.04.23-.04.25-.04.25-.04.23-.04.24-.04.26-.04.24-.04.23-.3,1.82-.04.26-.04.24-.04.23-.04.25-.04.25-.04.24-3,17.43-.05.28-.04.24-.04.23-.04.25-.04.25-.04.23-1.6,9.26-.04.27-.04.24-.04.23-.04.24-.04.23-.04.23-.04.25-.04.25-.04.23-.04.24-.04.26-.04.24-.04.23-.05.25v.33c-.21.25-.44-.06-.65-.22l-8.6-6.5-2.35-1.77c-.11-.08-.32-.29-.44-.28-.09,0-.24.18-.33.3l-5.97,7.02-25.6,33.78-1.05,1.54-1.53,2.27c-.62.91-1.53,1.62-2.64,1.86-1.98.44-4.5-1.03-6.09-2.4l-1.44-1.24-4.44-4.44-2.12-2.12-1.6-1.51c-1.19-1.12-4.95-4.01-5.35-3.89-.07.02-.12.09-.21.2l-12.38,14.81-1.77,2.1-10.53,12.61-25.5,30.94c-1.01,1.23-2.56,1.86-3.96,2.39-1.02.39-2.11.45-3.13.27-.92-.16-1.57-.7-2.08-1.45l-9.09-13.61-6.78-10.16c-.04-.17-.19-.23-.29-.08l-.19.26-.12.16-.12.17-.12.17-.12.17-4.89,6.81-.12.17-.12.16-.12.16-.11.17-.12.17-.12.16-.12.16-.12.16-.12.16-1.35,1.89-1.44,1.81-.16.13c-1.71,1.38-3.41,2.95-5.76,2.22-1.28-.4-2.37-1.12-3.31-2.03-.61-.59-1.02-1.2-1.48-1.93l-5.74-9.06c-.42-.67-1.09-1.11-1.72-1.56-.46-.33-2.19.52-2.65,1.19l-16.12,23.37-14.13,20.42c-.42.61-.89,1-1.41,1.45-1.4,1.19-3.21,2.21-5.05,2.29-1.09.02-2.05-.4-2.68-1.3l-12.95-18.56-18.99,20.95-17.32,20.08c-1.14,1.32-2.71,2.07-4.27,2.65-.88.32-1.76.21-2.52-.25-1.52-.91-3.23-2.83-3.74-4.43-.5-1.55,1.05-4.13,2.26-5.53l9.13-10.49,31.45-36.25c.5-.57.95-.95,1.58-1.3,1.22-.68,2.99-1.5,4.06-.97,1.01.5,2.28.95,2.99,1.94l11.84,16.5c.08.11.14.2.21.19.06,0,.13-.12.21-.22,3.71-4.63,7.25-9.41,10.61-14.35l22.62-33.23c.66-.98,1.47-1.64,2.59-1.96,2.14-.6,4.87.1,6.05,1.81l9.7,14.1,9.83-13.61c.43-.59.87-1.02,1.52-1.33.73-.4,1.47-.75,2.31-.94,1.34-.3,3.55.8,4.6,1.9l14.23,21.89c.65,1.01,3.59,1.96,4.87.42l29.17-35.15,19.48-23.11c1.86-2.21,5.89-1.92,7.5-.32l12.21,12.17c.54.54,1.24.8,1.9,1.07.48.2.97.14,1.39-.13.83-.54,1.56-1.11,2.19-1.94l18.74-24.69,7.22-9.72c1.03-1.38.62-3.5-.54-4.52l-9.03-7.96,2.01-1.88,1.12-1.03,32.86-12.54,2.69.15c.36.02.33.41.57.54Z"/><path fill="currentColor" d="M77.97,508.22v-7.62c.07-.04.15-.13.15-.27v-1c-.01-.27-.03-.52.1-.76,1.19-14.29,7.16-27.62,17.04-37.97l2.21-2.21c9.24-8.77,20.54-14.41,33.01-17.07,6.14-1.31,12.48-1.63,18.65-.44l7.82,1.51c14.92,4.31,27.94,12.05,39.59,22.26,1.49.09,3.24-.09,4.36-.91l3.56-2.66,9.6-6.76c10.01-6.56,19.14-10.58,30.94-12.96,9.53-1.92,18.93-1.38,28.2,1.52,6.44,2.01,12.32,5.11,17.79,9.01l7.17,5.12c1.87,1.34,2.72,3.47,2.58,5.76-.07,1.24-.58,2.26-1.44,3.09-1.58,1.52-3.11,2.11-5.32,1.4-1.15-.37-2.22-.9-3.22-1.58l-3.95-2.68-5.65-3.8-5.29-2.91c-3.48-1.66-7.03-2.83-10.81-3.6l-7.39-1.1c-4.77-.39-9.43.02-13.92,1.62l-10.73,3.81-4.32,1.91c-4.85,2.31-9.3,5.15-13.51,8.5-3.12,2.47-6.01,5.03-8.89,7.76l-3.55,3.38c-1.15,1.1-2.58,1.78-4.22,1.7-1.02-.05-2-.38-2.75-1.05l-3.21-2.86-3.92-3.44c-2.99-2.63-6.02-5.05-9.26-7.39-10.18-7.35-23.68-13.61-36.38-13.86-19.6-.38-38.04,10.86-47.56,27.86l-2.21,4.44c-1.19,2.39-1.91,4.89-2.21,7.54l-.64,5.71c-.4,3.61-.57,7.09-.34,10.72.96,14.66,6.45,29.59,13.1,42.56,1.45,2.16.32,4.91-1.55,6.62-.66.61-1.43.96-2.35,1.02-2.17.14-4.57-.84-5.71-2.7-6.92-11.33-11.63-23.7-14.14-36.77-.5-2.62-.8-5.12-1.14-7.76l-.11-.88-.03-1.53c0-.15-.08-.23-.15-.28Z"/><path fill="currentColor" d="M123.96,587.53c1.96-1.34,4.79-1.66,6.37-.08l6.52,6.49c6.26,5.97,12.79,11.5,19.75,16.64l10.92,7.46c9.84,6.18,20.11,11.33,31.15,14.99l9.85-3.71,11.37-5.3c6.31-3.29,12.15-7.2,17.76-11.59l12.74-9.99,9.6-8.17,3.13-2.98c5.07-4.83,9.54-10.11,13.76-15.72l8.14-10.79c3.54-4.7,6.75-9.53,9.57-14.7,3.07-5.64,5.6-11.43,7.58-17.54,1.43-4.39,2.48-8.72,3.3-13.24.38-2.09,1.76-4.17,3.61-5.26,1.51-.9,3.29-.87,4.81,0,2.5,1.44,4,4.79,3.29,7.54l-2.59,10.11c-1.66,5.33-3.64,10.4-6,15.45l-3.53,7.09c-7.96,15.01-18.78,29.3-30.48,41.61l-7.78,7.78c-17.72,16.87-38.04,30.18-60.91,38.98-5.22,2.01-11.35,1.59-16.4-.65l-10.97-4.86c-9.87-4.78-19.2-10.46-28.04-16.96-5.73-4.21-11.22-8.68-16.39-13.5l-2.14-2-3.94-3.82-4.83-5.04c-1.95-2.03-2.25-6.14.8-8.23Z"/></g><text fill="currentColor" font-size="110.34" font-family="Manrope, sans-serif" font-weight="700" transform="translate(389.77 541.94)"><tspan x="0" y="0">O</tspan><tspan letter-spacing="-.02em" x="82.7" y="0">r</tspan><tspan letter-spacing="0em" x="124.52" y="0">gaH</tspan><tspan letter-spacing="-.01em" x="335.65" y="0">e</tspan><tspan x="400.97" y="0">alth</tspan></text><text fill="currentColor" font-size="46.45" font-family="Manrope, sans-serif" font-weight="700" transform="translate(395.85 613.11)"><tspan x="0" y="0">Contabilidade e Fina</tspan><tspan letter-spacing="0em" x="458.36" y="0">n</tspan><tspan letter-spacing="-.02em" x="487.02" y="0">c</tspan><tspan x="513.05" y="0">ei</tspan><tspan letter-spacing="-.01em" x="554.04" y="0">r</tspan><tspan x="572.11" y="0">o</tspan></text></symbol>
   <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
@@ -399,13 +461,13 @@ footer .logo .lh{width:220px}
 
 <!-- header fixo (aparece depois do hero) -->
 <nav class="dock" id="dock" aria-label="Atalho">
-  <a class="logo" href="#topo" aria-label="Orga Health, voltar ao topo"><svg class="lh" viewBox="0 0 957 228" aria-hidden="true"><use href="#logo-h"/></svg><svg class="li" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg></a>
+  <a class="logo" href="#topo" aria-label="Orga Health, voltar ao topo"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg><svg class="li" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg></a>
   <a class="btn btn-sm" href="#diagnostico" tabindex="-1">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
 </nav>
 
 <header class="topbar">
   <div class="wrap">
-    <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 957 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
+    <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
     <a class="btn btn-sm btn-ghost" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
   </div>
 </header>
@@ -416,7 +478,7 @@ footer .logo .lh{width:220px}
 <section class="hero dark" id="topo" aria-labelledby="h1">
   <div class="wrap hero-grid">
     <div>
-      <span class="tag rv"><i aria-hidden="true"></i>Contabilidade exclusiva para médicos e clínicas</span>
+      <span class="tag rv"><i aria-hidden="true"></i>Contabilidade exclusiva para médicos</span>
       <h1 id="h1" class="rv" style="--i:1">Reduza impostos e organize suas finanças com <em>contabilidade médica especializada</em></h1>
       <p class="lead rv" style="--i:2">Planejamento tributário e patrimonial sob medida, suporte 24h via IA Organa com validação humana e foco na sua rotina médica.</p>
       <a class="btn rv" style="--i:3" id="heroCta" href="#diagnostico">Agendar diagnóstico das minhas finanças<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a>
@@ -426,10 +488,10 @@ footer .logo .lh{width:220px}
       </div>
     </div>
     <div class="stage rv" style="--i:2">
-      <div class="video" role="img" aria-label="Vídeo institucional dos sócios da Orga Health em ambiente de consultório premium">
-        <svg class="vwm" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg>
-        <button class="play" type="button" aria-label="Assistir ao vídeo institucional"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
-        <div class="cap"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg></i>Vídeo institucional dos sócios da Orga Health em ambiente de consultório premium</div>
+      <div class="video" id="video">
+        <img class="poster" src="assets/video/poster.jpg" width="1280" height="720" alt="" decoding="async">
+        <button class="play" type="button" id="play" aria-label="Assistir ao vídeo institucional da Orga Health"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
+        <div class="cap"><i aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></i>Conheça a Orga Health · 1 min</div>
       </div>
     </div>
   </div>
@@ -443,7 +505,7 @@ footer .logo .lh{width:220px}
     </figure>
     <div class="esp-text">
       <div class="big-n rv"><b>100% carteira médica</b></div>
-      <h2 class="h2 rv" style="--i:1" id="t-esp">Contabilidade <em>100% focada</em> em médicos e clínicas</h2>
+      <h2 class="h2 rv" style="--i:1" id="t-esp">Contabilidade <em>100% focada</em> em médicos</h2>
       <p class="lead rv" style="--i:2">Carteira 100% médica, planejamento tributário e patrimonial antecipando a LC 214/2025 e suporte 24h via IA Organa com validação humana.</p>
       <div class="cta-row rv" style="--i:3"><a class="btn" href="#diagnostico">Agendar diagnóstico financeiro<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
     </div>
@@ -462,21 +524,25 @@ footer .logo .lh{width:220px}
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></span>
         <h3>Foco exclusivo em saúde</h3>
         <p>100% da carteira são médicos; conhecemos sua rotina, regras do CFM e riscos tributários da profissão.</p>
+        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
       </article>
       <article class="pillar rv" style="--i:1" tabindex="0">
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.4 8-8 9-4.6-1-8-4.4-8-9V6z"/><path d="M9 12.5l2 2 4-4.5"/></svg></span>
         <h3>Planejamento patrimonial antecipado</h3>
         <p>Holding familiar e estrutura tributária preparadas para a LC 214/2025 e a reforma tributária.</p>
+        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
       </article>
       <article class="pillar rv" style="--i:2" tabindex="0">
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M12 8v4l2.5 1.5"/></svg></span>
         <h3>Suporte 24h com validação humana</h3>
         <p>IA Organa responde no WhatsApp na hora; especialistas conferem tudo antes de executar.</p>
+        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
       </article>
       <article class="pillar rv" style="--i:3" tabindex="0">
         <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg></span>
         <h3>Consultoria além das obrigações</h3>
         <p>Acompanhamento financeiro, folha, treinamento de equipe e diagnóstico personalizado, sem tabela fixa.</p>
+        <button class="pbtn" type="button" data-open="m-contato">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></button>
       </article>
     </div>
     <div class="cta-row center rv"><a class="btn" href="#diagnostico">Quero uma contabilidade feita para médicos<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
@@ -488,8 +554,8 @@ footer .logo .lh{width:220px}
   <div class="wrap dep-grid">
     <div class="dep-side">
       <h2 class="h2 rv" id="t-dep">Médicos que confiam sua contabilidade à <em>Orga Health</em></h2>
-      <p class="lead rv" style="--i:1">Avaliações reais de médicos de Cuiabá, Várzea Grande e Sinop no Google.</p>
-      <span class="g-badge rv" style="--i:2"><span class="g" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.9 6.5-9.6 6.5-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.4A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.8z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 7 4.4 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg></span><span class="stars" aria-label="5 estrelas"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span>Google</span>
+      <p class="lead rv" style="--i:1">Avaliações reais de clientes da Orga Health no Google.</p>
+      <a class="g-badge rv" href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.624796,-56.0982515,17z/data=!4m8!3m7!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!9m1!1b1!16s%2Fg%2F11rq4177zr" target="_blank" rel="noopener" style="--i:2"><span class="g" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.9 6.5-9.6 6.5-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.4A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.8z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 7 4.4 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg></span><span class="stars" aria-label="5 estrelas"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span><span><b>5,0</b> · 41 avaliações no Google</span></a>
       <div class="dep-nav rv" style="--i:3">
         <button class="nav-btn" type="button" data-dir="-1" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
         <button class="nav-btn" type="button" data-dir="1" aria-label="Próximo depoimento"><svg width="18" height="18" aria-hidden="true"><use href="#arrow"/></svg></button>
@@ -500,13 +566,15 @@ footer .logo .lh{width:220px}
       <div class="quote" id="quote" aria-live="polite">
         <span class="qm" aria-hidden="true">“</span>
         <span class="stars" aria-label="5 estrelas"><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg><svg width="16" height="16"><use href="#star"/></svg></span>
-        <blockquote id="qText">“Economia tributária real e atendimento que entende a rotina médica.” <span class="tbc">[confirmar]</span></blockquote>
-        <div class="who"><span class="av" id="qAv" aria-hidden="true">DR</span><div><b id="qName">Dr. Nome Sobrenome <span class="tbc">[confirmar]</span></b><small id="qLoc">Especialidade | Cuiabá - MT <span class="tbc">[confirmar]</span></small></div></div>
+        <blockquote id="qText">“Há 11 anos fazendo a contabilidade da minha clínica! Atendimento humanizado pela equipe! Super atentos. Salvando a médica aqui das burocracias de ser empresária! A melhor em contabilidade médica!”</blockquote>
+        <div class="who"><span class="av" id="qAv" aria-hidden="true">LM</span><div><b id="qName">Laryssa Moraes</b><small id="qLoc">Avaliação no Google · há 3 anos</small></div><a class="g-link" id="qLink" href="https://share.google/wNfM0pucmK8Y7VYWW" target="_blank" rel="noopener">Ver no Google<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
       </div>
       <div class="tabs" role="tablist" aria-label="Depoimentos">
-        <button class="tab" role="tab" aria-selected="true" data-i="0">Dr. Nome Sobrenome<small>Cuiabá - MT</small></button>
-        <button class="tab" role="tab" aria-selected="false" data-i="1">Dra. Nome Sobrenome<small>Várzea Grande - MT</small></button>
-        <button class="tab" role="tab" aria-selected="false" data-i="2">Dr. Nome Sobrenome<small>Sinop - MT</small></button>
+        <button class="tab" role="tab" aria-selected="true" data-i="0">Laryssa Moraes<small>Google · 5 estrelas</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="1">Frederico Dorea<small>Google · 5 estrelas</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="2">Frederico Oswaldo<small>Google · 5 estrelas</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="3">Keylly Martinez<small>Google · 5 estrelas</small></button>
+        <button class="tab" role="tab" aria-selected="false" data-i="4">Camila Costa<small>Google · 5 estrelas</small></button>
       </div>
     </div>
   </div>
@@ -542,7 +610,7 @@ footer .logo .lh{width:220px}
       <ul class="ticks rv" style="--i:2">
         <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Planejamento tributário e patrimonial sob medida</li>
         <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Suporte 24h via IA Organa com validação humana</li>
-        <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Contabilidade exclusiva para médicos e clínicas</li>
+        <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Contabilidade exclusiva para médicos</li>
       </ul>
     </div>
     <form class="fcard rv" style="--i:2" id="lead" action="#" method="post" novalidate>
@@ -561,7 +629,7 @@ footer .logo .lh{width:220px}
           </select><span class="err">Selecione uma opção.</span></div>
       </div>
       <button class="btn" type="submit">Agendar diagnóstico das minhas finanças<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></button>
-      <p class="lgpd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seus dados estão seguros e protegidos conforme LGPD.</p>
+      <p class="lgpd"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Seus dados estão seguros e protegidos conforme a LGPD. <a href="#politica-de-privacidade" data-open="m-politica" style="color:inherit">Ver política de privacidade</a></span></p>
     </form>
   </div>
 </section>
@@ -579,9 +647,9 @@ footer .logo .lh{width:220px}
         <svg class="wm" viewBox="0 0 865 645" aria-hidden="true"><use href="#iso"/></svg>
         <figcaption class="cap"><i aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg></i>Foto da fachada ou ambiente interno da sede da Orga Health em Várzea Grande</figcaption>
       </figure>
-      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Mariano%20de%20Campos%20Maia%20(Alameda)%2C%20Ponte%20Nova%20-%20Construmat%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078115-245" target="_blank" rel="noopener" aria-label="Abrir a localização da Orga Health no Google Maps (nova aba)">
+      <a class="map" href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.6246961,-56.0982957,159a,75y,165.14h,88.38t/data=!3m7!1e1!3m5!1smTmoWq3UsBP6fLeyMyfMoQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.6223937990303057%26panoid%3DmTmoWq3UsBP6fLeyMyfMoQ%26yaw%3D165.14140999172295!7i16384!8i8192!4m14!1m7!3m6!1s0x939daf4623e6bca5:0x697af7324472d65f!2sOrgaHealth+Contabilidade!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr!3m5!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr?entry=ttu&amp;g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Abrir a localização da Orga Health no Google Maps (nova aba)">
         <div class="frame">
-          <iframe src="https://maps.google.com/maps?q=Rua%20Mariano%20de%20Campos%20Maia%20%28Alameda%29%2C%20Ponte%20Nova%20-%20Construmat%2C%20V%C3%A1rzea%20Grande%20-%20MT%2C%2078115-245&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" title="Mapa da sede da Orga Health em Várzea Grande" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
+          <iframe src="https://maps.google.com/maps?q=-15.624796,-56.0982515&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc=near" title="Mapa da sede da Orga Health em Várzea Grande" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>
         </div>
         <div class="k"><span>Várzea Grande – MT</span><span>Abrir no Google Maps<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
       </a>
@@ -596,24 +664,159 @@ footer .logo .lh{width:220px}
   <div class="f-wave" aria-hidden="true"><svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 0H1440V20C1000 90 420 90 0 30Z" fill="#f8f3ed"/><path d="M0 30C420 90 1000 90 1440 20" fill="none" stroke="#ba8539" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></div>
   <div class="wrap f-grid">
     <div>
-      <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 957 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
-      <p class="f-about">Contabilidade exclusiva para médicos e clínicas</p>
+      <a class="logo" href="#topo" aria-label="Orga Health"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
+      <p class="f-about">Contabilidade exclusiva para médicos</p>
       <div class="socials">
         <a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener" aria-label="Instagram @orgahealth.oficial"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
         <a href="https://orgahealth.com.br" target="_blank" rel="noopener" aria-label="Site orgahealth.com.br"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></a>
         <a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" aria-hidden="true"><use href="#wa"/></svg></a>
       </div>
     </div>
-    <div><h4>Endereço</h4><p>Várzea Grande – MT<br><span style="color:var(--gold-50)">[endereço completo a confirmar]</span></p></div>
+    <div><h4>Endereço</h4><p><a href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.6246961,-56.0982957,159a,75y,165.14h,88.38t/data=!3m7!1e1!3m5!1smTmoWq3UsBP6fLeyMyfMoQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.clients6.google.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D1.6223937990303057%26panoid%3DmTmoWq3UsBP6fLeyMyfMoQ%26yaw%3D165.14140999172295!7i16384!8i8192!4m14!1m7!3m6!1s0x939daf4623e6bca5:0x697af7324472d65f!2sOrgaHealth+Contabilidade!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr!3m5!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!16s%2Fg%2F11rq4177zr?entry=ttu&amp;g_ep=EgoyMDI2MTExNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">R. Mariano de Campos Maia (Alameda)<br>Construmat, Várzea Grande – MT<br>CEP 78115-245</a></p></div>
     <div><h4>Contato</h4><ul>
       <li><a href="https://wa.me/556530269282?text=Quero%20agendar%20meu%20diagn%C3%B3stico%20financeiro%20com%20a%20Orga%20Health" target="_blank" rel="noopener">65 3026-9282</a></li>
       <li><a class="mail" href="mailto:financeiro@orgahealth.com.br">financeiro@orgahealth.com.br</a></li>
       <li><a href="https://instagram.com/orgahealth.oficial" target="_blank" rel="noopener">@orgahealth.oficial</a></li>
     </ul></div>
-    <div><h4>Legal</h4><ul><li><a href="#">Política de privacidade</a></li><li><a href="#">Termos de uso</a></li></ul></div>
+    <div><h4>Legal</h4><ul><li><a href="#politica-de-privacidade" data-open="m-politica">Política de privacidade</a></li><li><a href="#termos-de-uso" data-open="m-termos">Termos de uso</a></li></ul></div>
   </div>
   <div class="f-bar"><div class="wrap"><span>© 2026 Orga Health. Todos os direitos reservados.</span><span class="credit">Desenvolvido por <img src="assets/img/logo-v4-borges-branca.webp" width="78" height="22" alt="V4 Borges &amp; Co"></span></div></div>
 </footer>
+
+<!-- ================= POP-UPS ================= -->
+<dialog class="modal" id="m-contato" aria-labelledby="m-contato-t">
+  <div class="m-card m-contact">
+    <button class="m-x" type="button" data-close aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span>
+    <h3 id="m-contato-t">Quero falar com especialista</h3>
+    <p>Um especialista em contabilidade médica da Orga Health responde você pelo WhatsApp.</p>
+    <a class="wa-go" href="https://wa.me/556530269282?text=Ol%C3%A1%21%20Quero%20falar%20com%20um%20especialista%20da%20Orga%20Health." target="_blank" rel="noopener"><svg width="22" height="22" aria-hidden="true"><use href="#wa"/></svg>Ir para WhatsApp</a>
+  </div>
+</dialog>
+
+<dialog class="modal" id="m-politica" aria-labelledby="m-politica-t">
+  <div class="m-card m-doc">
+    <button class="m-x" type="button" data-close aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <header><small>Legal</small><h3 id="m-politica-t">Política de Privacidade</h3><p>Última atualização: 19 de novembro de 2026</p></header>
+    <div class="m-body">
+      <h4>1. Quem somos</h4>
+      <p>Esta Política de Privacidade explica como a <strong>OrgaHealth Contabilidade</strong> (“Orga Health”, “nós”), com sede na R. Mariano de Campos Maia (Alameda), Construmat, Várzea Grande – MT, CEP 78115-245, trata os dados pessoais de quem acessa esta página e preenche nossos formulários, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 – LGPD).</p>
+      <p>Para os fins da LGPD, a Orga Health é a controladora dos dados pessoais tratados por meio desta página.</p>
+
+      <h4>2. Quais dados coletamos</h4>
+      <ul>
+        <li><strong>Dados que você nos informa:</strong> nome, sobrenome, número de WhatsApp, e-mail e perfil profissional (por exemplo, médico plantonista ou recém-formado), ao preencher o formulário de diagnóstico ou ao falar conosco pelo WhatsApp.</li>
+        <li><strong>Dados de navegação:</strong> endereço IP, tipo de navegador e dispositivo, páginas acessadas, data e horário de acesso, coletados automaticamente por cookies e tecnologias semelhantes.</li>
+      </ul>
+      <p>Não solicitamos dados pessoais sensíveis por meio desta página. Pedimos que você não os envie pelo formulário.</p>
+
+      <h4>3. Para que usamos seus dados</h4>
+      <ul>
+        <li>Entrar em contato para agendar e realizar o diagnóstico financeiro solicitado;</li>
+        <li>Apresentar propostas de serviços de contabilidade, planejamento tributário e patrimonial;</li>
+        <li>Responder dúvidas e solicitações enviadas por você;</li>
+        <li>Enviar comunicações sobre nossos serviços, sempre com a opção de deixar de recebê-las;</li>
+        <li>Melhorar a página, medir seu desempenho e garantir sua segurança;</li>
+        <li>Cumprir obrigações legais e regulatórias.</li>
+      </ul>
+
+      <h4>4. Bases legais</h4>
+      <p>Tratamos seus dados com base no seu consentimento (art. 7º, I, da LGPD), na execução de procedimentos preliminares relacionados a um contrato que você solicitou (art. 7º, V), no cumprimento de obrigação legal ou regulatória (art. 7º, II) e no nosso legítimo interesse em melhorar nossos serviços e nos comunicar com você, respeitados os seus direitos (art. 7º, IX).</p>
+
+      <h4>5. Compartilhamento de dados</h4>
+      <p>Não vendemos nem alugamos seus dados pessoais. Podemos compartilhá-los somente com:</p>
+      <ul>
+        <li>Prestadores de serviço que nos ajudam a operar (hospedagem, ferramentas de atendimento e de gestão de contatos, mensageria como o WhatsApp), que tratam os dados apenas conforme nossas instruções;</li>
+        <li>Autoridades públicas, quando exigido por lei ou ordem judicial;</li>
+        <li>Parceiros envolvidos na prestação do serviço contratado por você, mediante sua ciência.</li>
+      </ul>
+      <p>Alguns desses fornecedores podem armazenar dados fora do Brasil. Nesses casos, adotamos as garantias previstas nos arts. 33 a 36 da LGPD.</p>
+
+      <h4>6. Cookies</h4>
+      <p>Usamos cookies essenciais para o funcionamento da página e cookies de terceiros, como os do Google Maps e do Google Fonts, que podem coletar dados de navegação. Você pode bloquear ou apagar cookies nas configurações do seu navegador; algumas funções da página podem deixar de funcionar corretamente.</p>
+
+      <h4>7. Por quanto tempo guardamos</h4>
+      <p>Mantemos seus dados apenas pelo tempo necessário para cumprir as finalidades desta política ou pelo prazo exigido por lei. Dados de contato de quem não se tornou cliente são eliminados em até 24 meses após o último contato, ou antes, se você pedir.</p>
+
+      <h4>8. Seus direitos</h4>
+      <p>Conforme o art. 18 da LGPD, você pode, a qualquer momento e sem custo:</p>
+      <ul>
+        <li>Confirmar se tratamos seus dados e acessá-los;</li>
+        <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
+        <li>Pedir a anonimização, o bloqueio ou a eliminação de dados desnecessários ou tratados em desacordo com a lei;</li>
+        <li>Pedir a portabilidade dos dados a outro fornecedor;</li>
+        <li>Saber com quem compartilhamos seus dados;</li>
+        <li>Revogar o consentimento e pedir a eliminação dos dados tratados com base nele;</li>
+        <li>Apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD).</li>
+      </ul>
+
+      <h4>9. Segurança</h4>
+      <p>Adotamos medidas técnicas e administrativas para proteger seus dados contra acessos não autorizados, perda, alteração ou divulgação indevida. Nenhum sistema é totalmente imune a riscos, mas trabalhamos continuamente para reduzi-los.</p>
+
+      <h4>10. Menores de idade</h4>
+      <p>Esta página é destinada a profissionais adultos. Não coletamos intencionalmente dados de menores de 18 anos.</p>
+
+      <h4>11. Alterações desta política</h4>
+      <p>Podemos atualizar esta política a qualquer momento. A versão vigente estará sempre disponível nesta página, com a data da última atualização.</p>
+
+      <h4>12. Contato</h4>
+      <p>Para exercer seus direitos ou tirar dúvidas sobre esta política, fale com nosso canal de privacidade pelo e-mail <a href="mailto:financeiro@orgahealth.com.br">financeiro@orgahealth.com.br</a> ou pelo telefone (65) 3026-9282.</p>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal" id="m-termos" aria-labelledby="m-termos-t">
+  <div class="m-card m-doc">
+    <button class="m-x" type="button" data-close aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <header><small>Legal</small><h3 id="m-termos-t">Termos de Uso</h3><p>Última atualização: 19 de novembro de 2026</p></header>
+    <div class="m-body">
+      <h4>1. Aceitação</h4>
+      <p>Estes Termos de Uso regulam o acesso e o uso desta página, mantida pela <strong>OrgaHealth Contabilidade</strong> (“Orga Health”). Ao navegar por ela ou enviar o formulário, você declara que leu e concorda com estes termos e com a nossa <a href="#politica-de-privacidade" data-open="m-politica">Política de Privacidade</a>. Se não concordar, não utilize a página.</p>
+
+      <h4>2. Finalidade da página</h4>
+      <p>Esta página apresenta os serviços de contabilidade da Orga Health para médicos e permite solicitar um diagnóstico financeiro e contato com nossa equipe. O conteúdo é informativo e não constitui consultoria contábil, tributária ou jurídica individual, que depende da análise do seu caso e da contratação formal dos serviços.</p>
+
+      <h4>3. Cadastro e informações enviadas</h4>
+      <p>Ao preencher o formulário, você se compromete a informar dados verdadeiros, atuais e de sua titularidade, e é responsável por eles. O envio do formulário não cria obrigação de contratação para nenhuma das partes.</p>
+
+      <h4>4. Uso adequado</h4>
+      <p>Você concorda em não:</p>
+      <ul>
+        <li>Usar a página para fins ilegais ou que violem direitos de terceiros;</li>
+        <li>Enviar dados de outra pessoa sem autorização ou informações falsas;</li>
+        <li>Tentar acessar áreas restritas, interferir no funcionamento ou comprometer a segurança da página;</li>
+        <li>Copiar, reproduzir ou explorar comercialmente o conteúdo sem autorização prévia e por escrito.</li>
+      </ul>
+
+      <h4>5. Propriedade intelectual</h4>
+      <p>Marcas, logotipos, textos, imagens, vídeos e o layout desta página pertencem à Orga Health ou são usados com autorização, e são protegidos pela legislação de propriedade intelectual. O acesso à página não concede nenhuma licença de uso sobre eles.</p>
+
+      <h4>6. Links e serviços de terceiros</h4>
+      <p>A página pode conter links e recursos de terceiros, como Google Maps, Instagram e WhatsApp. Esses serviços têm termos e políticas próprios, pelos quais a Orga Health não se responsabiliza.</p>
+
+      <h4>7. Limitação de responsabilidade</h4>
+      <p>Buscamos manter as informações da página corretas e atualizadas, mas elas podem conter imprecisões ou ficar desatualizadas, especialmente diante de mudanças na legislação tributária. A Orga Health não se responsabiliza por decisões tomadas exclusivamente com base no conteúdo desta página, nem por indisponibilidades temporárias, falhas técnicas ou danos causados por vírus ou ações de terceiros.</p>
+
+      <h4>8. Avaliações de clientes</h4>
+      <p>Os depoimentos exibidos são avaliações públicas feitas por clientes no Google e refletem experiências individuais. Resultados podem variar conforme a situação de cada profissional.</p>
+
+      <h4>9. Alterações</h4>
+      <p>Podemos alterar estes termos a qualquer momento. A versão vigente estará sempre disponível nesta página, com a data da última atualização.</p>
+
+      <h4>10. Lei aplicável e foro</h4>
+      <p>Estes termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da Comarca de Várzea Grande – MT para resolver eventuais controvérsias, salvo disposição legal em contrário, inclusive as do Código de Defesa do Consumidor.</p>
+
+      <h4>11. Contato</h4>
+      <p>Dúvidas sobre estes termos podem ser enviadas para <a href="mailto:financeiro@orgahealth.com.br">financeiro@orgahealth.com.br</a> ou pelo telefone (65) 3026-9282.</p>
+    </div>
+  </div>
+</dialog>
+
+<!-- aviso de cookies (primeira visita) -->
+<div class="cookie" id="cookie" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies para melhorar sua experiência. Saiba mais na <button class="lnk" type="button" data-open="m-politica">Política de privacidade</button>.</p>
+  <button class="ok" type="button" id="cookieOk">Entendi</button>
+</div>
 
 <!-- botões flutuantes -->
 <div class="fab">
@@ -648,20 +851,22 @@ footer .logo .lh{width:220px}
 
   /* depoimentos */
   var data=[
-    {q:'“Economia tributária real e atendimento que entende a rotina médica.”',n:'Dr. Nome Sobrenome',l:'Especialidade | Cuiabá - MT'},
-    {q:'“Segurança patrimonial e suporte 24h que resolve de verdade.”',n:'Dra. Nome Sobrenome',l:'Especialidade | Várzea Grande - MT'},
-    {q:'“Migração de CNPJ tranquila e planejamento estratégico personalizado.”',n:'Dr. Nome Sobrenome',l:'Especialidade | Sinop - MT'}
+    {q:'“Há 11 anos fazendo a contabilidade da minha clínica! Atendimento humanizado pela equipe! Super atentos. Salvando a médica aqui das burocracias de ser empresária! A melhor em contabilidade médica!”',n:'Laryssa Moraes',u:'https://share.google/wNfM0pucmK8Y7VYWW'},
+    {q:'“Excelente atendimento, profissionais qualificados, estrutura diferenciada. Não à toa, é referência em serviços contábeis no estado.”',n:'Frederico Dorea',u:'https://share.google/YNqLDz8ZBdBUmysH8'},
+    {q:'“A melhor empresa de contabilidade do estado. Profissionais capacitados, dedicados e atentos às necessidades de seus clientes.”',n:'Frederico Oswaldo',u:'https://share.google/iNQ1pvhYlky1pBOcX'},
+    {q:'“Equipe super profissional, atendimento impecável. Super recomendo, escritório com a melhor equipe! 👏🏻👏🏻”',n:'Keylly Martinez',u:'https://share.google/6RtWy1yHHRoHFKYCL'},
+    {q:'“Oferecem um ótimo serviço, são especializados na área da saúde! Estratégia tributária deles é top.”',n:'Camila Costa',u:'https://share.google/nRjPNIeQqZIKKP0vw'}
   ];
-  var cur=0,quote=document.getElementById('quote'),tabs=[].slice.call(document.querySelectorAll('.tab')),T=' <span class="tbc">[confirmar]</span>',busy=null;
-  function initials(n){var w=n.replace(/^(Dra?\.)\s*/,'').trim().split(/\s+/);return ((w[0]||'')[0]||'')+((w.length>1?w[w.length-1]:'')[0]||'');}
+  var cur=0,quote=document.getElementById('quote'),tabs=[].slice.call(document.querySelectorAll('.tab')),busy=null;
+  function initials(n){var w=n.trim().split(/\s+/);return ((w[0]||'')[0]||'')+((w.length>1?w[w.length-1]:'')[0]||'');}
   function show(i,focus){
     i=(i+data.length)%data.length;if(i===cur&&!focus)return;cur=i;
     tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;});
     if(focus)tabs[i].focus();
     quote.classList.add('swap');clearTimeout(busy);
     busy=setTimeout(function(){
-      var x=data[i];document.getElementById('qText').innerHTML=x.q+T;document.getElementById('qName').innerHTML=x.n+T;
-      document.getElementById('qLoc').innerHTML=x.l+T;document.getElementById('qAv').textContent=initials(x.n).toUpperCase()||'DR';
+      var x=data[i];document.getElementById('qText').textContent=x.q;document.getElementById('qName').textContent=x.n;
+      document.getElementById('qLink').href=x.u;document.getElementById('qAv').textContent=initials(x.n).toUpperCase();
       quote.classList.remove('swap');
       var tb=tabs[i],tl=tb.parentNode;if(tl.scrollWidth>tl.clientWidth)tl.scrollTo({left:tb.offsetLeft-tl.offsetLeft-16,behavior:reduce?'auto':'smooth'});
     },reduce?0:200);
@@ -680,6 +885,44 @@ footer .logo .lh{width:220px}
       var open=q.getAttribute('aria-expanded')==='true',a=document.getElementById(q.getAttribute('aria-controls'));
       q.setAttribute('aria-expanded',!open);a.classList.toggle('open',!open);
     });
+  });
+
+  /* vídeo institucional: o play troca o pôster pelo vídeo */
+  var vbox=document.getElementById('video');
+  document.getElementById('play').addEventListener('click',function(){
+    var v=document.createElement('video');
+    v.src='assets/video/orgahealth-institucional.mp4';v.poster='assets/video/poster.jpg';
+    v.controls=true;v.playsInline=true;v.preload='auto';v.setAttribute('aria-label','Vídeo institucional da Orga Health');
+    vbox.appendChild(v);vbox.querySelector('.play').hidden=true;vbox.querySelector('.cap').hidden=true;
+    var p=v.play();if(p&&p.catch)p.catch(function(){});v.focus();
+  });
+
+  /* pop-ups: contratar, política de privacidade e termos de uso (sem trocar de página) */
+  var lastFocus=null;
+  function openModal(id){
+    var m=document.getElementById(id);if(!m||m.open)return;
+    document.querySelectorAll('dialog.modal[open]').forEach(function(o){o.close()});
+    lastFocus=document.activeElement;
+    if(m.showModal)m.showModal();else m.setAttribute('open','');
+    var b=m.querySelector('.m-body');if(b)b.scrollTop=0;
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-open]');
+    if(t){e.preventDefault();e.stopPropagation();openModal(t.getAttribute('data-open'));return;}
+    if(e.target.closest('[data-close]')){e.target.closest('dialog').close();}
+  });
+  document.querySelectorAll('dialog.modal').forEach(function(m){
+    m.addEventListener('click',function(e){if(e.target===m)m.close();});
+    m.addEventListener('close',function(){if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true});});
+  });
+
+  /* aviso de cookies: aparece só na primeira visita */
+  var ck=document.getElementById('cookie'),seen=false;
+  try{seen=localStorage.getItem('oh_cookies_ok')==='1';}catch(e){}
+  if(!seen){ck.hidden=false;setTimeout(function(){ck.classList.add('on')},600);}
+  document.getElementById('cookieOk').addEventListener('click',function(){
+    try{localStorage.setItem('oh_cookies_ok','1');}catch(e){}
+    ck.classList.remove('on');setTimeout(function(){ck.hidden=true},400);
   });
 
   /* formulário: máscara + validação inline */

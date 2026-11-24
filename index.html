@@ -81,7 +81,6 @@ button{font:inherit;color:inherit}
 
 /* ---------- logo oficial ---------- */
 .logo{display:inline-flex;text-decoration:none;color:var(--cream)}
-.topbar .logo{color:var(--marsala)}
 .logo .lh{width:212px;height:auto}
 .logo .li{display:none;width:40px;height:auto}
 
@@ -96,16 +95,16 @@ button{font:inherit;color:inherit}
 /* =========================================================
    HEADER FIXO (dock) — marsala + logo branca
    ========================================================= */
-.topbar{position:absolute;inset:0 0 auto;z-index:20;padding-top:22px}
+.topbar{position:absolute;inset:0 0 auto;z-index:20;padding:16px 0;background:var(--navy)}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .dock{position:fixed;left:50%;top:12px;z-index:60;width:min(calc(100% - 24px),820px);transform:translate(-50%,-140%);opacity:0;
   display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 7px 7px 22px;border-radius:999px;
-  background:rgba(89,17,20,.94);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);
+  background:rgba(13,27,42,.94);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(217,188,147,.2),0 18px 40px -22px rgba(13,27,42,.7);
   transition:transform .45s var(--ease-drawer),opacity .3s var(--ease-out)}
 .dock.on{transform:translate(-50%,0);opacity:1}
 .dock .logo .lh{width:168px}
-@media (prefers-reduced-transparency:reduce){.dock{background:var(--marsala);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (prefers-reduced-transparency:reduce){.dock{background:var(--navy);-webkit-backdrop-filter:none;backdrop-filter:none}}
 
 /* =========================================================
    01 HERO — marsala predominante
@@ -159,9 +158,13 @@ button{font:inherit;color:inherit}
 .s-dif{padding:var(--sec) 0}
 .sec-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(36px,4.5vw,56px)}
 .sec-head .lead{padding-bottom:6px}
+.sec-head-top{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
+.sec-head-top .lead{max-width:none;padding-top:6px}
 .pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .pillar{position:relative;isolation:isolate;padding:32px 28px 34px;border-radius:20px;cursor:default;outline:0;
-  transition:transform .35s var(--ease-out),color .3s ease}
+  box-shadow:inset 0 0 0 1px rgba(186,133,57,.55);
+  transition:transform .35s var(--ease-out),color .3s ease,box-shadow .35s var(--ease-out)}
+.pillar.on{box-shadow:inset 0 0 0 1px rgba(186,133,57,0)}
 .pillar::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:var(--marsala);opacity:0;transition:opacity .35s var(--ease-out);box-shadow:0 26px 50px -28px rgba(89,17,20,.7)}
 .pillar .pi{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--marsala);box-shadow:inset 0 0 0 1.5px rgba(89,17,20,.28);margin-bottom:26px;transition:color .3s ease,box-shadow .3s ease,background-color .3s ease}
 .pillar h3{font-weight:700;font-size:clamp(18px,1.5vw,21px);line-height:1.25;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px;transition:color .3s ease}
@@ -178,7 +181,7 @@ button{font:inherit;color:inherit}
 .pillar.on p{color:rgba(255,255,255,.82)}
 .pillar:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media (hover:hover) and (pointer:fine){
-  .pillar:hover{transform:scale(1.035)}
+  .pillar:hover{transform:scale(1.035);box-shadow:inset 0 0 0 1px rgba(186,133,57,0)}
   .pillar:hover::before{opacity:1}
   .pillar:hover .pi{color:var(--marsala);background:var(--cream);box-shadow:none}
   .pillar:hover h3{color:#fff}
@@ -391,7 +394,7 @@ footer .logo .lh{width:220px}
   .dep-side .cta-row{order:2}
 }
 @media (max-width:640px){
-  .topbar{padding-top:16px}
+  .topbar{padding:12px 0}
   .topbar .logo .lh{width:168px}
   .topbar .btn-sm{display:none}
   .hero{padding-top:100px}
@@ -464,7 +467,7 @@ footer .logo .lh{width:220px}
 <header class="topbar">
   <div class="wrap">
     <a class="logo" href="#topo" aria-label="OrgaHealth"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
-    <a class="btn btn-sm btn-line" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
+    <a class="btn btn-sm btn-ghost" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
   </div>
 </header>
 
@@ -511,8 +514,8 @@ footer .logo .lh{width:220px}
 <!-- ================= 03 DIFERENCIAIS ================= -->
 <section class="s-dif" id="diferenciais" aria-labelledby="t-dif">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="h2 rv" id="t-dif">O que a OrgaHealth <em>faz por você</em></h2>
+    <div class="sec-head sec-head-top">
+      <h2 class="h2 rv" id="t-dif">O que a OrgaHealth<br><em>faz por você</em></h2>
       <p class="lead rv" style="--i:1"><strong>Seu imposto é revisado todo mês.</strong> A cada apuração, avaliamos se o regime atual continua fazendo sentido. Se houver uma opção mais econômica, propomos o reenquadramento e orientamos sobre os prazos.</p>
     </div>
     <div class="pillars" id="pillars">

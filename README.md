@@ -60,7 +60,7 @@ Elementos fixos: header flutuante que aparece após o hero e botão **voltar ao 
 | Creme | `#F8F3ED` | Fundo das seções claras |
 | Grafite | `#262626` | Texto corrido |
 
-**Tipografia:** [Manrope](https://fonts.google.com/specimen/Manrope) (títulos, labels e botões) + [Lato](https://fonts.google.com/specimen/Lato) (texto corrido).
+**Tipografia:** [Source Serif 4](https://fonts.google.com/specimen/Source+Serif+4) (títulos, auto-hospedada em `assets/fonts/`, licença OFL), [Manrope](https://fonts.google.com/specimen/Manrope) (labels e botões) e [Lato](https://fonts.google.com/specimen/Lato) (texto corrido).
 
 ## Ferramentas e tecnologias
 

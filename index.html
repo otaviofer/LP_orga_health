@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/SourceSerif4-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* =========================================================
    OrgaHealth LP — v2 (rodada de ajustes 17/11/2026)
@@ -35,7 +36,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:96px}
 body{font:400 17px/1.65 Lato,'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+@font-face{font-family:'Source Serif 4';src:url(assets/fonts/SourceSerif4-latin-var.woff2) format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
 h1,h2,h3,.man{font-family:Manrope,'Segoe UI',Arial,sans-serif}
+h1,.h2,.pillar h3{font-family:'Source Serif 4',Georgia,'Times New Roman',serif;font-optical-sizing:auto}
 h1,h2,h3{text-wrap:balance}
 p{text-wrap:pretty}
 a{color:inherit}
@@ -46,7 +49,7 @@ button{font:inherit;color:inherit}
 .skip:focus{top:16px}
 
 /* ---------- tipografia ---------- */
-.h2{font-weight:700;font-size:clamp(30px,3.6vw,48px);line-height:1.08;letter-spacing:-.03em;color:var(--ink)}
+.h2{font-weight:700;font-size:clamp(32px,3.8vw,50px);line-height:1.08;letter-spacing:-.02em;color:var(--ink)}
 .h2 em{font-style:normal;color:var(--marsala)}
 .dark .h2{color:#fff}
 .dark .h2 em{color:var(--gold-50)}
@@ -62,18 +65,23 @@ button{font:inherit;color:inherit}
 @media (hover:hover) and (pointer:fine){
   .btn:hover{background:#c69449}
   .btn:hover .ic{transform:translateX(3px) rotate(-45deg)}
+  .btn-down:hover .ic{transform:translateY(3px)}
 }
 .btn-sm{min-height:46px;padding:5px 5px 5px 20px;gap:12px;font-size:11.5px}
 .btn-sm .ic{width:36px;height:36px}
 .btn-ghost{background:rgba(255,255,255,.08);color:#fff;box-shadow:inset 0 0 0 1px rgba(217,188,147,.35)}
 .btn-ghost .ic{background:var(--gold);color:var(--navy)}
 @media (hover:hover) and (pointer:fine){.btn-ghost:hover{background:rgba(255,255,255,.14)}}
+.btn-line{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1px rgba(13,27,42,.25)}
+.btn-line .ic{background:var(--gold);color:var(--navy)}
+@media (hover:hover) and (pointer:fine){.btn-line:hover{background:rgba(13,27,42,.05)}}
 .cta-row{margin-top:48px;display:flex}
 .cta-row.center{justify-content:center}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
 /* ---------- logo oficial ---------- */
 .logo{display:inline-flex;text-decoration:none;color:var(--cream)}
+.topbar .logo{color:var(--marsala)}
 .logo .lh{width:212px;height:auto}
 .logo .li{display:none;width:40px;height:auto}
 
@@ -102,18 +110,18 @@ button{font:inherit;color:inherit}
 /* =========================================================
    01 HERO — marsala predominante
    ========================================================= */
-.hero{position:relative;color:#fff;overflow:hidden;padding:160px 0 clamp(96px,10vw,140px);background:linear-gradient(135deg,#591114 0%,#440c0f 55%,#2a0608 100%);isolation:isolate}
+.hero{position:relative;color:var(--ink);overflow:hidden;padding:160px 0 clamp(96px,10vw,140px);background:var(--cream);isolation:isolate}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.14fr);gap:clamp(36px,4.5vw,64px);align-items:start}
 .hero .stage{margin-top:clamp(40px,5vw,72px);margin-right:calc(min(var(--gutter),40px) * -.5)}
-.tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(217,188,147,.3);font:700 11px/1.2 Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-50)}
-.tag i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(186,133,57,.25)}
-.tag i::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold-50)}
-.hero h1{font-weight:700;font-size:clamp(34px,4.2vw,58px);line-height:1.04;letter-spacing:-.04em;margin:26px 0 24px}
-.hero h1 em{font-style:normal;color:var(--gold-50)}
-.hero .lead{color:rgba(255,255,255,.8);max-width:50ch;margin-bottom:40px}
-.proof{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(217,188,147,.22);font-size:14.5px;color:rgba(255,255,255,.78)}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:999px;background:rgba(13,27,42,.06);box-shadow:inset 0 0 0 1px rgba(13,27,42,.22);font:700 11px/1.2 Manrope;letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
+.tag i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(13,27,42,.12)}
+.tag i::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--navy)}
+.hero h1{font-weight:700;font-size:clamp(40px,5vw,72px);line-height:1.02;letter-spacing:-.025em;margin:26px 0 24px;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--marsala)}
+.hero .lead{color:var(--text-2);max-width:50ch;margin-bottom:40px}
+.proof{display:flex;flex-wrap:wrap;gap:14px 28px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line);font-size:14.5px;color:var(--text-2)}
 .proof span{display:inline-flex;align-items:center;gap:10px}
-.proof svg{color:var(--gold-50);flex:none}
+.proof svg{color:var(--marsala);flex:none}
 
 .video{position:relative;aspect-ratio:16/9;border-radius:28px;overflow:hidden;display:grid;place-items:center;isolation:isolate;
   background:var(--navy);box-shadow:0 0 0 1px rgba(217,188,147,.22),0 40px 80px -40px rgba(13,6,6,.75)}
@@ -242,13 +250,14 @@ button{font:inherit;color:inherit}
 /* =========================================================
    05 FORMULÁRIO — azul chapado, sem moldura dupla
    ========================================================= */
-.s-form{color:#fff;padding:var(--sec) 0;background:var(--navy)}
+.s-form{color:var(--ink);padding:var(--sec) 0;background:var(--cream)}
+.s-form .tag{margin-bottom:20px}
 .form-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
 .s-form .lead{margin-top:20px}
-.ticks{list-style:none;margin-top:36px;border-top:1px solid var(--line-dark)}
-.ticks li{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-dark);font:600 16px/1.4 Manrope}
-.ticks i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:rgba(186,133,57,.16);color:var(--gold-50);box-shadow:inset 0 0 0 1px rgba(217,188,147,.24)}
-.fcard{background:var(--cream);color:var(--text);padding:clamp(24px,3.4vw,44px);border-radius:26px}
+.ticks{list-style:none;margin-top:36px;border-top:1px solid var(--line)}
+.ticks li{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font:600 16px/1.4 Manrope;color:var(--ink)}
+.ticks i{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:rgba(89,17,20,.07);color:var(--marsala);box-shadow:inset 0 0 0 1px rgba(89,17,20,.16)}
+.fcard{background:#fff;box-shadow:0 0 0 1px var(--line),0 30px 60px -44px rgba(13,27,42,.45);color:var(--text);padding:clamp(24px,3.4vw,44px);border-radius:26px}
 .fcard h3{display:flex;align-items:center;gap:12px;font-weight:800;font-size:clamp(19px,1.7vw,23px);letter-spacing:-.02em;color:var(--ink)}
 .fcard h3 i{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--marsala);color:var(--cream)}
 .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
@@ -296,7 +305,7 @@ button{font:inherit;color:inherit}
 /* =========================================================
    07 RODAPÉ — só marsala
    ========================================================= */
-footer{position:relative;color:rgba(248,243,237,.78);font-size:15px;padding:clamp(110px,11vw,150px) 0 0;background:var(--marsala)}
+footer{position:relative;color:rgba(248,243,237,.78);font-size:15px;padding:clamp(110px,11vw,150px) 0 0;background:var(--navy)}
 .f-wave{position:absolute;left:0;right:0;top:-1px;height:clamp(50px,6vw,90px)}
 .f-wave svg{width:100%;height:100%}
 .f-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr .8fr;gap:40px;padding-bottom:64px}
@@ -455,20 +464,20 @@ footer .logo .lh{width:220px}
 <header class="topbar">
   <div class="wrap">
     <a class="logo" href="#topo" aria-label="OrgaHealth"><svg class="lh" viewBox="0 0 933 228" aria-hidden="true"><use href="#logo-h"/></svg></a>
-    <a class="btn btn-sm btn-ghost" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
+    <a class="btn btn-sm btn-line" href="#diagnostico">Agendar diagnóstico<span class="ic"><svg width="16" height="16"><use href="#arrow"/></svg></span></a>
   </div>
 </header>
 
 <main id="conteudo">
 
 <!-- ================= 01 HERO ================= -->
-<section class="hero dark" id="topo" aria-labelledby="h1">
+<section class="hero" id="topo" aria-labelledby="h1">
   <div class="wrap hero-grid">
     <div>
-      <span class="tag rv"><i aria-hidden="true"></i>Contabilidade exclusiva para médicos</span>
-      <h1 id="h1" class="rv" style="--i:1">Reduza impostos e organize suas finanças com <em>contabilidade médica especializada</em></h1>
-      <p class="lead rv" style="--i:2">Planejamento tributário e patrimonial sob medida, suporte 24h via IA Organa com validação humana e foco na sua rotina médica.</p>
-      <a class="btn rv" style="--i:3" id="heroCta" href="#diagnostico">Agendar diagnóstico das minhas finanças<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a>
+      <span class="tag rv"><i aria-hidden="true"></i>Contabilidade para médicos e clínicas</span>
+      <h1 id="h1" class="rv" style="--i:1"><em>Pague menos</em> impostos, dentro da lei.</h1>
+      <p class="lead rv" style="--i:2">Somos especialistas na rotina de médicos e clínicas. Todo mês, revisamos sua tributação para identificar onde você pode economizar.</p>
+      <a class="btn btn-down rv" style="--i:3" id="heroCta" href="#diferenciais">Conheça nossos diferenciais<span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
       <div class="proof rv" style="--i:4">
         <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Cuiabá, Várzea Grande e Sinop</span>
         <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Diagnóstico gratuito, sem compromisso</span>
@@ -503,32 +512,32 @@ footer .logo .lh{width:220px}
 <section class="s-dif" id="diferenciais" aria-labelledby="t-dif">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="h2 rv" id="t-dif">Especialização médica que <em>protege seu patrimônio</em></h2>
-      <p class="lead rv" style="--i:1">Quatro pilares que separam uma contabilidade comum de uma estrutura feita para a realidade do médico.</p>
+      <h2 class="h2 rv" id="t-dif">O que a OrgaHealth <em>faz por você</em></h2>
+      <p class="lead rv" style="--i:1"><strong>Seu imposto é revisado todo mês.</strong> A cada apuração, avaliamos se o regime atual continua fazendo sentido. Se houver uma opção mais econômica, propomos o reenquadramento e orientamos sobre os prazos.</p>
     </div>
     <div class="pillars" id="pillars">
       <article class="pillar rv" tabindex="0">
-        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/></svg></span>
-        <h3>Foco exclusivo em saúde</h3>
-        <p>100% da carteira são médicos; conhecemos sua rotina, regras do CFM e riscos tributários da profissão.</p>
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.5" width="14" height="19" rx="2.5"/><rect x="8" y="5.5" width="8" height="4" rx="1"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.5h.01M12 16.5h.01M15.5 16.5h.01"/></svg></span>
+        <h3>BPO financeiro</h3>
+        <p>Contas a pagar e a receber e controle do fluxo de caixa.</p>
         <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
       <article class="pillar rv" style="--i:1" tabindex="0">
-        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.6-3.4 8-8 9-4.6-1-8-4.4-8-9V6z"/><path d="M9 12.5l2 2 4-4.5"/></svg></span>
-        <h3>Planejamento patrimonial antecipado</h3>
-        <p>Holding familiar e estrutura tributária preparadas para a LC 214/2025 e a reforma tributária.</p>
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></svg></span>
+        <h3>Notas fiscais 24h</h3>
+        <p>Emitimos suas notas quando você precisar.</p>
         <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
       <article class="pillar rv" style="--i:2" tabindex="0">
-        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M12 8v4l2.5 1.5"/></svg></span>
-        <h3>Suporte 24h com validação humana</h3>
-        <p>IA Organa responde no WhatsApp na hora; especialistas conferem tudo antes de executar.</p>
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="8.5" r="3"/><path d="M2.5 19.5c.6-3 2.8-5 5.5-5s4.9 2 5.5 5"/><path d="M13.2 15.6c.9-.7 2-1.1 3.3-1.1 2.7 0 4.9 2 5.5 5"/></svg></span>
+        <h3>Consultoria próxima</h3>
+        <p>Seu consultor entende a sua rotina e sugere melhorias.</p>
         <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
       <article class="pillar rv" style="--i:3" tabindex="0">
-        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></svg></span>
-        <h3>Consultoria além das obrigações</h3>
-        <p>Acompanhamento financeiro, folha, treinamento de equipe e diagnóstico personalizado, sem tabela fixa.</p>
+        <span class="pi" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="17" rx="2.5"/><path d="M9 4.5V3.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M8.5 13.5l2.5 2.5 4.5-5"/></svg></span>
+        <h3>Check-up 360 mensal</h3>
+        <p>Revisamos seus números, certidões e pendências tributárias.</p>
         <a class="pbtn" href="#diagnostico">Contratar<svg width="14" height="14" aria-hidden="true"><use href="#arrow"/></svg></a>
       </article>
     </div>
@@ -540,8 +549,7 @@ footer .logo .lh{width:220px}
 <section class="s-dep" id="depoimentos" aria-labelledby="t-dep">
   <div class="wrap dep-grid">
     <div class="dep-side">
-      <h2 class="h2 rv" id="t-dep">Médicos que confiam sua contabilidade à <em>OrgaHealth</em></h2>
-      <p class="lead rv" style="--i:1">Avaliações reais de clientes da OrgaHealth no Google.</p>
+      <h2 class="h2 rv" id="t-dep">Quem já confia na <em>OrgaHealth</em></h2>
       <a class="g-badge rv" href="https://www.google.com/maps/place/OrgaHealth+Contabilidade/@-15.624796,-56.0982515,17z/data=!4m8!3m7!1s0x939daf4623e6bca5:0x697af7324472d65f!8m2!3d-15.624796!4d-56.0982515!9m1!1b1!16s%2Fg%2F11rq4177zr" target="_blank" rel="noopener" style="--i:2"><span class="g" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 48 48"><path fill="#4285F4" d="M45 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.9 6.5-9.6 6.5-16.1z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.6-3.9-12.3-9.1H4.4v5.7C8 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.7 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.4A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.8z"/><path fill="#EA4335" d="M24 10.8c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.2 29.9 2 24 2 15.4 2 8 7 4.4 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.3-9.1z"/></svg></span><span class="stars" aria-label="5 estrelas"><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg><svg width="14" height="14"><use href="#star"/></svg></span><span><b>5,0</b> · 41 avaliações no Google</span></a>
       <div class="dep-nav rv" style="--i:3">
         <button class="nav-btn" type="button" data-dir="-1" aria-label="Depoimento anterior"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
@@ -570,30 +578,40 @@ footer .logo .lh{width:220px}
 <!-- ================= DÚVIDAS FREQUENTES (conversa) ================= -->
 <section class="s-faq" id="duvidas" aria-labelledby="t-faq">
   <div class="wrap">
-    <div class="faq-head"><h2 class="h2 rv" id="t-faq">Dúvidas <em>frequentes</em></h2></div>
+    <div class="faq-head"><h2 class="h2 rv" id="t-faq">Dúvidas de <em>quem atende</em></h2></div>
     <div class="chat" id="chat">
-      <button class="q rv" type="button" aria-expanded="true" aria-controls="a1"><span class="bubble">Contador generalista atende igual?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
-      <div class="a open" id="a1"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Não. Somos exclusivos da saúde: 100% da carteira são médicos, conhecemos sua rotina e regras</p></div></div></div>
+      <button class="q rv" type="button" aria-expanded="true" aria-controls="a1"><span class="bubble">Devo atuar como pessoa física (CPF) ou abrir um CNPJ?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a open" id="a1"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Depende do quanto você fatura e de como atua. Em geral, quanto maior a renda, mais o CNPJ costuma compensar, porque o imposto tende a ser menor. Nós simulamos os dois cenários com os seus números para você decidir com segurança.</p></div></div></div>
 
-      <button class="q rv" style="--i:1" type="button" aria-expanded="false" aria-controls="a2"><span class="bubble">Vale a pena abrir PJ agora?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
-      <div class="a" id="a2"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Sim. Diagnóstico gratuito mostra economia real no seu caso, sem compromisso</p></div></div></div>
+      <button class="q rv" style="--i:1" type="button" aria-expanded="false" aria-controls="a2"><span class="bubble">Posso trocar de contador?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a2"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Pode, a qualquer momento. É só nos avisar quem é seu contador atual. Nós cuidamos do restante e organizamos a sua contabilidade.</p></div></div></div>
 
-      <button class="q rv" style="--i:2" type="button" aria-expanded="false" aria-controls="a3"><span class="bubble">Tenho medo da Reforma Tributária e bitributação.</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
-      <div class="a" id="a3"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Planejamento patrimonial antecipa mudanças da LC 214/2025 e protege seu patrimônio</p></div></div></div>
+      <button class="q rv" style="--i:2" type="button" aria-expanded="false" aria-controls="a3"><span class="bubble">Como funciona a emissão de notas fiscais?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a3"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Se preferir, a gente emite por você. É só pedir pelo WhatsApp: emitimos a nota e enviamos direto para você e para o hospital ou a clínica, sem você precisar entrar em sistema nenhum.</p></div></div></div>
 
-      <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a4"><span class="bubble">Suporte 24h é só robô?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
-      <div class="a" id="a4"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>IA Organa responde na hora; especialistas validam tudo antes de agir.</p></div></div></div>
+      <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a4"><span class="bubble">Contador generalista atende igual?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a4"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Não. Somos exclusivos da saúde: 100% da carteira são médicos, conhecemos sua rotina e regras</p></div></div></div>
+
+      <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a5"><span class="bubble">Vale a pena abrir PJ agora?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a5"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Sim. Diagnóstico gratuito mostra economia real no seu caso, sem compromisso</p></div></div></div>
+
+      <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a6"><span class="bubble">Tenho medo da Reforma Tributária e bitributação.</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a6"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>Planejamento patrimonial antecipa mudanças da LC 214/2025 e protege seu patrimônio</p></div></div></div>
+
+      <button class="q rv" style="--i:3" type="button" aria-expanded="false" aria-controls="a7"><span class="bubble">Suporte 24h é só robô?</span><span class="pm" aria-hidden="true"><svg width="16" height="16"><use href="#plus"/></svg></span></button>
+      <div class="a" id="a7"><div><div class="reply"><span class="ava" aria-hidden="true"><svg viewBox="0 0 865 645"><use href="#iso"/></svg></span><p>IA Organa responde na hora; especialistas validam tudo antes de agir.</p></div></div></div>
     </div>
     <div class="cta-row center rv"><a class="btn" href="#diagnostico">Fale com um especialista<span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a></div>
   </div>
 </section>
 
 <!-- ================= 05 FORMULÁRIO ================= -->
-<section class="s-form dark" id="diagnostico" aria-labelledby="t-form">
+<section class="s-form" id="diagnostico" aria-labelledby="t-form">
   <div class="wrap form-grid">
     <div>
-      <h2 class="h2 rv" id="t-form">Agende seu diagnóstico <em>financeiro personalizado</em></h2>
-      <p class="lead rv" style="--i:1">Preencha os dados e um especialista em contabilidade médica entrará em contato para apresentar sua proposta.</p>
+      <span class="tag rv"><i aria-hidden="true"></i>Próximo passo</span>
+      <h2 class="h2 rv" style="--i:1" id="t-form">Sua PJ pode pagar <em>menos impostos?</em></h2>
+      <p class="lead rv" style="--i:2">Conte como você atua. Nossa equipe fala com você pelo WhatsApp para entender seu cenário.</p>
       <ul class="ticks rv" style="--i:2">
         <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Planejamento tributário e patrimonial sob medida</li>
         <li><i aria-hidden="true"><svg width="15" height="15"><use href="#check"/></svg></i>Suporte 24h via IA Organa com validação humana</li>
